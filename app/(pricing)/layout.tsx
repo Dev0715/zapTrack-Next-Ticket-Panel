@@ -1,12 +1,12 @@
 import Footer from "../../components/Footer/page";
 import Navbar from "../../components/Navbar/Navbar";
 
-const MarketingLayout = ({
+const PricingLayout = ({
     children
 }: {
     children: React.ReactNode;
 }) => {
-    return (
+    return <>
         <div className="h-full dark:bg-[#1F1F1F]">
             <Navbar />
             <main className="bg-white">
@@ -14,7 +14,7 @@ const MarketingLayout = ({
             </main>
             <Footer />
         </div>
-    );
+    </>
 }
 
-export default MarketingLayout;
+export default PricingLayout;
