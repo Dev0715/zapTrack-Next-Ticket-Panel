@@ -1,10 +1,17 @@
-"use client";
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
+import { config } from '../api/auth/[...nextauth]/route';
 
-const AuthLayout = ({
+const AuthLayout = async ({
     children
 }: {
     children: React.ReactNode;
 }) => {
+    const session = await getServerSession(config);
+    if (session !== null) {
+        redirect('/dashboard');
+    }
+
     return <>
         <div className="h-full min-h-full relative">
             <div className="flex h-full" style={{ minHeight: `calc(100vh - 48px)` }}>
