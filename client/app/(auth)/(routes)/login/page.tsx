@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getCsrfToken, getProviders } from "next-auth/react";
 import { FormEvent, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
-import { redirect } from 'next/navigation'
+import { toast } from "sonner";
 
 import OauthButton from "../_components/OauthButton/page";
 
@@ -25,25 +25,27 @@ const Login = () => {
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("AAA");
+
         if (error)
             setError(undefined);
 
-        console.log("BBB");
         const formData = new FormData(event.currentTarget);
-        console.log("formData", formData.get('username'));
-        console.log("password", formData.get('password'));
+
         signIn('credentials', {
             username: formData.get('username'),
             password: formData.get('password'),
-            redirect: false
+            redirect: true
         }).then((result) => {
             if (result?.error) {
                 setError(result.error);
-            } else {
-                redirect(`/dashboard`);
             }
-        });
+            // toast.error("Your username/email or password are incorrect.")
+            // else {
+            //     redirect(`/dashboard`);
+            // }
+        }).catch((reason) => {
+            // toast.error("Your username/email or password are incorrect.")
+        })
     }
 
     return <>

@@ -21,12 +21,22 @@ const config = {
                 username: { type: 'text' },
                 password: { type: 'password' }
             },
-            authorize(credentials) {
-                if (
-                    credentials?.username === 'admin' &&
-                    credentials.password === 'admin'
-                ) {
-                    return { id: '1', name: 'admin' };
+            async authorize(credentials) {
+                const res = await fetch("http://localhost:5001/api/user/signin", {
+                    method: 'POST',
+                    body: JSON.stringify(credentials),
+                    headers: { "Content-Type": "application/json" }
+                })
+                const response = await res.json();
+
+                if (res.ok && response.status) {
+                    const user = response.user;
+                    return {
+                        id: user._id,
+                        name: user.username,
+                        email: user.email,
+                        image: user.photo
+                    }
                 }
 
                 return null
@@ -36,9 +46,9 @@ const config = {
     pages: {
         signIn: '/login',
         signOut: "/",
-        error: '/auth/error',
-        verifyRequest: '/auth/verify-request',
-        newUser: '/auth/new-user'
+        // error: '/auth/error',
+        // verifyRequest: '/auth/verify-request',
+        // newUser: '/auth/new-user'
     }
 } satisfies NextAuthOptions
 
