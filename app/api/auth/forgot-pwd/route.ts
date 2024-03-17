@@ -21,7 +21,7 @@ export async function POST(req: Request, res: Response) {
             return NextResponse.json({
                 status: false,
                 wrongInfo: true,
-                msg: "If this email is registered with us, check it for a link to reset your password."
+                msg: "This email does not exist."
             }, { status: 200 });
         }
 
@@ -41,8 +41,8 @@ export async function POST(req: Request, res: Response) {
         // console.log(hostName);
         // console.log(sendGridUser);
         // console.log(sendGridName);
-        // console.log(user);
-        console.log(token);
+        console.log(user.email);
+        // console.log(token);
 
         await sgMail.send({
             to: user.email,
