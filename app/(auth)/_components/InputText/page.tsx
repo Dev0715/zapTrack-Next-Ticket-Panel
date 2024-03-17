@@ -11,7 +11,7 @@ interface InputTextProps {
 const InputText = ({ tagId, type, name, placeholder, error, value, onChange }: InputTextProps) => {
     return <>
         <fieldset className="mb-2 border-0 m-0 p-0 relative w-full">
-            <input type={type} required name={name} placeholder={placeholder} className={`bg-white border-2 rounded-[3px] m-0 px-4 py-[4.8px] w-full ${error ? `border-[#e44057]` : `border-[#d8dee9]`}`} onChange={onChange} value={value} />
+            <input type={type} required name={name} placeholder={placeholder} className={`bg-white border-2 rounded-[3px] m-0 px-4 py-[4.8px] w-full text-[#4C566A] ${error ? `border-[#e44057]` : `border-[#d8dee9]`}`} onChange={onChange} value={value} />
             {
                 error &&
                 <ul className="text-[#ff6363]">

@@ -17,7 +17,7 @@ export async function POST(req: Request, res: Response) {
             return NextResponse.json({
                 data: {
                     status: false,
-                    msg: "Username is already in use"
+                    msg: "User already exist."
                 }
             }, { status: 200 });
         }

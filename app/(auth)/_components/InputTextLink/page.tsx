@@ -16,7 +16,7 @@ interface InputTextLinkProps {
 const InputTextLink = ({ tagId, type, name, placeholder, error, value, onChange, linkUrl, linkTitle, linkLabel }: InputTextLinkProps) => {
     return <>
         <fieldset className="mb-2 border-0 m-0 p-0 relative w-full">
-            <input type={type} required name={name} placeholder={placeholder} className={`bg-white border-2 rounded-[3px] m-0 px-4 py-[4.8px] w-full ${error ? `border-[#e44057]` : `border-[#d8dee9]`}`} onChange={onChange} value={value} />
+            <input type={type} required name={name} placeholder={placeholder} className={`bg-white border-2 rounded-[3px] m-0 px-4 py-[4.8px] w-full text-[#4C566A] ${error ? `border-[#e44057]` : `border-[#d8dee9]`}`} onChange={onChange} value={value} />
             <Link href={linkUrl} title={linkTitle} className="text-[.876rem] text-[#4c566a] opacity-100 absolute right-4 top-[0.6rem]" style={{ transition: 'all .3s linear' }}>{linkLabel}</Link>
             {
                 error &&
