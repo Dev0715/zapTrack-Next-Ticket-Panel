@@ -1,9 +1,19 @@
 import NextAuth from "next-auth"
 import type { NextAuthOptions } from "next-auth"
+import ldap from "ldapjs"
+import axios from "axios"
 
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import GitHubProvider from "next-auth/providers/github"
 import GitlabProvider from "next-auth/providers/gitlab"
 import CredentialsProvider from "next-auth/providers/credentials"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+import { signIn } from "@/app/actions/auth"
+import connectDB from "@/services/connectDB"
+
+import UserModel from "@/models/UserModel"
 
 const config = {
     providers: [
@@ -18,37 +28,60 @@ const config = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                username: { type: 'text' },
+                email: { type: 'email' },
                 password: { type: 'password' }
             },
             async authorize(credentials) {
-                const res = await fetch("http://localhost:5001/api/user/signin", {
-                    method: 'POST',
-                    body: JSON.stringify(credentials),
-                    headers: { "Content-Type": "application/json" }
-                })
-                const response = await res.json();
+                // const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+                await connectDB();
+                let email = credentials?.email;
+                let password = credentials?.password || "";
 
-                if (res.ok && response.status) {
-                    const user = response.user;
-                    return {
-                        id: user._id,
-                        name: user.username,
-                        email: user.email,
-                        image: user.photo
-                    }
+                let user = await UserModel.findOne({ email: email });
+                if (!user) {
+                    return null;
                 }
 
-                return null
+                if (!bcrypt.compareSync(password, user.password)) {
+                    return null;
+                }
+
+                let token = jwt.sign({
+                    userId: user._id,
+                    email: user.email
+                }, process.env.LOGIN_HASH_TOKEN as string, {
+                    expiresIn: "3h"
+                });
+
+                return {
+                    id: user._id,
+                    name: user.fullname,
+                    email: user.email,
+                    token: token
+                }
             }
         })
     ],
+    // adapter: MongoDBAdapter(connectDB()),
     pages: {
         signIn: '/login',
         signOut: "/",
-        // error: '/auth/error',
+        error: '/auth/error',
         // verifyRequest: '/auth/verify-request',
-        // newUser: '/auth/new-user'
+        newUser: '/register'
+    },
+    session: {
+        strategy: "jwt"
+    },
+    callbacks: {
+        async jwt({ token, user }: { token: any, user: any }) {
+            const isSignIn = user ? true : false
+            if (isSignIn) {
+                token.username = user.username
+                token.password = user.password
+            }
+            return token
+        }
     }
 } satisfies NextAuthOptions
 

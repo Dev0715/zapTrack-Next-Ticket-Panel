@@ -1,14 +1,32 @@
 "use client"
 
-import { signOut } from 'next-auth/react'
+import { useState, useEffect } from 'react';
+import { signOut, getSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FiFolder, FiCompass, FiHelpCircle, FiBell, FiChevronDown, FiPlus, FiLifeBuoy, FiCommand, FiMessageSquare } from "react-icons/fi";
-import { useState } from 'react';
+
+import { getUserByEmail } from '@/app/actions/auth';
 
 const Dashboard = () => {
     const [projectPopShow, setProjectPopShow] = useState(false);
     const [helpPopShow, setHelpPopShow] = useState(false);
     const [profilePopShow, setProfilePopShow] = useState(false);
+    const [user, setUser] = useState<any>(null);
+
+    useEffect(() => {
+        getSession().then((session: any) => {
+            // setUser(session.user);
+            getUserByEmail({
+                email: session.user.email
+            }).then((res: any) => {
+                const data = res.data;
+                if (data.status)
+                    setUser(data.user);
+            }).catch(err => {
+
+            })
+        })
+    }, []);
 
     return <>
         <nav className="bg-[#d8dee9] flex h-12 justify-between relative" >
@@ -135,8 +153,8 @@ const Dashboard = () => {
                                     <img alt="DevKing" src="https://www.gravatar.com/avatar/da2797ae8a31569b03809648a66cf9a9?s=200&d=https%3A%2F%2Ftree.taiga.io%2Fv-1708969004480%2Fimages%2Fuser-avatars%2Fuser-avatar-01.png" title="DevKing" style={{ background: 'rgb(210, 198, 139)' }} className="h-[65px] w-[65px] rounded-full border-[2px] border-[#fff]" />
                                 </Link>
                                 <div className="pl-2 pt-2">
-                                    <Link href="profile" className="text-[#2e3440] mb-1 p-0">DevKing</Link>
-                                    <div className="mb-2 p-0 text-[.875rem] text-[#70728f] overflow-hidden w-full">sacreddevking@gmail.com</div>
+                                    <Link href="profile" className="text-[#2e3440] mb-1 p-0">{user?.username}</Link>
+                                    <div className="mb-2 p-0 text-[.875rem] text-[#70728f] overflow-hidden w-full">{user?.email}</div>
                                     <p className='mb-2 leading-normal'>
                                         <Link href="user-settings/user-profile" title="Edit profile" className="p-0 text-[#008aa8]">Edit profile</Link>
                                     </p>

@@ -4,14 +4,14 @@ import Link from "next/link";
 
 const Navbar = () => {
     return <>
-        <nav className="bg-white border-gray-200 dark:bg-gray-900">
+        <nav className="bg-white border-gray-200 dark:bg-gray-900 z-[100]">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                 <Link href={`/`} className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src={`/logo.webp`} className="w-36" alt="Flowbite Logo" />
                 </Link>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse justify-center items-center gap-1">
                     <Link href={`/login`} className="min-w-20 text-center font-normal text-[#70728F] pb-0 text-base cursor-pointer">Log in</Link>
-                    <Link href={`/login`} className="flex relative flex-row bg-[#83EEDE] cursor-pointer rounded	px-5 py-2">
+                    <Link href={`/register`} className="flex relative flex-row bg-[#83EEDE] cursor-pointer rounded	px-5 py-2">
                         <span className="font-medium text-base">
                             Get Taiga for free
                         </span>
@@ -23,7 +23,7 @@ const Navbar = () => {
                         </svg>
                     </button>
                     <div>
-                        <Link href={`/login`} className="relative text-right text-[#70728F] px-1 py-0">ES</Link>
+                        <Link href={``} className="relative text-right text-[#70728F] px-1 py-0">ES</Link>
                     </div>
                 </div>
                 <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
