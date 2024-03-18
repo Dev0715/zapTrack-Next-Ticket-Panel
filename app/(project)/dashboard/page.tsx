@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { getSession } from 'next-auth/react'
 
-import Navbar from '../_components/Navbar/page';
 import ContainerDboard from '../_components/ContainerDboard/page';
 import CardProject from '../_components/CardProject/page';
 import BtnBgGreen from '../_components/BtnBgGreen/page';
@@ -27,10 +26,9 @@ const Dashboard = () => {
 
     return <>
         <div>
-            <Navbar />
             <div>
                 <div className='h-full min-h-full relative'>
-                    <div className="flex my-4 px-5 max-w-[1200px]">
+                    <div className="flex my-4 px-5 max-w-[1200px] w-full">
                         <div className="flex-1">
                             <h1 className='font-medium text-[1.4rem] text-[#008aa8] mb-4'>Projects Dashboard</h1>
                             <div className='flex flex-row mr-6'>

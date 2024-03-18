@@ -1,6 +1,8 @@
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
+
 import { config } from '../api/auth/[...nextauth]/route';
+import Navbar from './_components/Navbar/page';
 
 const ProjectLayout = async ({
     children
@@ -13,6 +15,7 @@ const ProjectLayout = async ({
     }
 
     return <>
+        <Navbar />
         {children}
     </>
 }
