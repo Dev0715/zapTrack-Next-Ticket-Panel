@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 import BtnFormSubmit from "../_components/BtnFormSubmit/page";
@@ -12,8 +11,6 @@ import { validateForgotPwdInput } from "../_utils/validations/users";
 import { forgotPwd } from "@/app/actions/auth";
 
 const ForgotPassword = () => {
-    const router = useRouter();
-
     const [formData, setFormData] = useState({ email: "" });
     const [errors, setErrors] = useState({ email: "" });
 
@@ -26,13 +23,12 @@ const ForgotPassword = () => {
         if (!isValid) {
             setErrors(errors);
             return;
-        }
+        } else setErrors({ email: "" });
 
         forgotPwd(formData)
             .then((res: any) => {
                 if (res?.status) {
                     toast.success(res.msg);
-                    // router.push("/reset-password")
                 } else
                     toast.error(res.msg);
             }).catch(err => {

@@ -18,10 +18,10 @@ interface ResetPasswordProps {
 
 const ResetPassword = ({ params }: ResetPasswordProps) => {
     const router = useRouter();
+    const initFormData = { password: "", password2: "" };
 
-    const [formData, setFormData] = useState({ password: "", password2: "" });
-    const [error, setError] = useState({ password: "", password2: "" });
-    // const [token, setToken] = useState("");
+    const [formData, setFormData] = useState(initFormData);
+    const [errors, setErrors] = useState(initFormData);
 
     const handleChange = (event: any) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -30,9 +30,9 @@ const ResetPassword = ({ params }: ResetPasswordProps) => {
     const handleSubmit = () => {
         const { isValid, errors } = validateResetPwdInput(formData);
         if (!isValid) {
-            setError(errors)
+            setErrors(errors)
             return;
-        }
+        } else setErrors(errors);
 
         resetPwd({
             password: formData.password,
@@ -56,8 +56,8 @@ const ResetPassword = ({ params }: ResetPasswordProps) => {
                 <span >And hey, you may want to eat some more iron-rich food, it's good for your brain :P</span>
             </p>
             <div className="mb-4">
-                <InputText type="password" name="password" placeholder="New password" error={error.password} onChange={handleChange} value={formData.password} />
-                <InputText type="password" name="password2" placeholder="Re-type new password" error={error.password2} onChange={handleChange} value={formData.password2} />
+                <InputText type="password" name="password" placeholder="New password" error={errors.password} onChange={handleChange} value={formData.password} />
+                <InputText type="password" name="password2" placeholder="Re-type new password" error={errors.password2} onChange={handleChange} value={formData.password2} />
                 <BtnFormSubmit type="submit" title="Reset Password" label="Reset Password" onClick={handleSubmit} />
             </div>
         </div>

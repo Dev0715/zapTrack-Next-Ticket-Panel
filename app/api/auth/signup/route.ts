@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import bcrypt from "bcrypt"
 
 import UserModel, { SIGNIN_TYPE } from "@/models/UserModel";
@@ -17,7 +17,7 @@ export async function POST(req: Request, res: Response) {
             return NextResponse.json({
                 data: {
                     status: false,
-                    msg: "User already exist."
+                    msg: "User already exists."
                 }
             }, { status: 200 });
         }

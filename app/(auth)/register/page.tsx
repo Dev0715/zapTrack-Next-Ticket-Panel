@@ -15,11 +15,12 @@ import { signUp } from "@/app/actions/auth";
 
 const Register = () => {
     const router = useRouter();
+    const initFormData = { username: "", full_name: "", email: "", password: "" };
 
     const [providers, setProviders] = useState<null | any>([]);
     const [csrfToken, setCsrfToken] = useState<string | undefined>("");
-    const [formData, setFormData] = useState({ username: "", full_name: "", email: "", password: "" });
-    const [errors, setErrors] = useState({ username: "", full_name: "", email: "", password: "" });
+    const [formData, setFormData] = useState(initFormData);
+    const [errors, setErrors] = useState(initFormData);
     const [terms, setTerms] = useState(false);
 
     useEffect(() => {
@@ -41,14 +42,13 @@ const Register = () => {
         if (!isValid) {
             setErrors(errors);
             return;
-        }
+        } else setErrors(initFormData);
 
         if (!terms)
             return;
 
         signUp(formData).then((res: any) => {
-            console.log(res);
-            const { status, msg, user } = res.data;
+            const { status, msg } = res.data;
             if (status) {
                 toast.success(msg);
                 router.push("/dashboard");

@@ -1,5 +1,5 @@
-import { NextResponse, type NextRequest } from "next/server";
-import UserModel, { SIGNIN_TYPE } from "@/models/UserModel";
+import { NextResponse } from "next/server";
+import UserModel from "@/models/UserModel";
 import connectDB from "@/services/connectDB";
 
 export async function POST(req: Request, res: Response) {
@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response) {
                 data: {
                     status: true,
                     user: user,
-                    msg: "User exist."
+                    msg: "User exists."
                 }
             }, { status: 200 });
         }

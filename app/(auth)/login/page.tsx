@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getCsrfToken, getProviders } from "next-auth/react";
 import { signIn } from "next-auth/react";
-// import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 import BtnFormSubmit from "../_components/BtnFormSubmit/page";
@@ -15,13 +14,13 @@ import InputTextLink from "../_components/InputTextLink/page";
 import { validateLoginInput } from "../_utils/validations/users";
 
 const Login = () => {
-    // const router = useRouter();
+    let isErrorMsg = false;
+    const initFormData = { email: "", password: "" };
 
     const [providers, setProviders] = useState<null | any>([]);
     const [csrfToken, setCsrfToken] = useState<string | undefined>("");
-    const [formData, setFormData] = useState({ email: "", password: "" });
-    const [errors, setErrors] = useState({ email: "", password: "" });
-    let isErrorMsg = false;
+    const [formData, setFormData] = useState(initFormData);
+    const [errors, setErrors] = useState(initFormData);
 
     useEffect(() => {
         getProviders().then(providers => {
@@ -49,7 +48,7 @@ const Login = () => {
         if (!isValid) {
             setErrors(errors);
             return;
-        }
+        } else setErrors(initFormData);
 
         signIn('credentials', {
             email: formData.email,
