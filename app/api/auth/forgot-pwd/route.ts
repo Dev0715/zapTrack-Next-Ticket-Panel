@@ -36,7 +36,7 @@ export async function POST(req: Request, res: Response) {
 
         const hostName = process.env.HOSTNAME || "http://localhost:3000";
         const sendGridUser = process.env.SENDGRID_USER || "noreply@answersheet.au";
-        const sendGridName = process.env.SENDGRID_NAME || "Answersheet";
+        const sendGridName = process.env.SENDGRID_NAME || "ZapTrack";
 
         // console.log(hostName);
         // console.log(sendGridUser);
@@ -54,7 +54,6 @@ export async function POST(req: Request, res: Response) {
             html: `
             <div style="background: #fafafa; font-family: sans-serif; max-width: 660px; margin: auto">
                 <div style="padding: 10px; margin-bottom: 20px; background: #d6e4f1">
-                    <img src="${hostName}/logo.png" />
                 </div>
                 <div style="padding: 10px 20px; border-top: 2px solid #ebebeb; border-bottom: 2px solid #ebebeb;">
                     <h2 style="color: #005492;">Password reset</h2>

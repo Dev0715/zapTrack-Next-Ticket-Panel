@@ -40,11 +40,17 @@ const config = {
                     return null;
                 }
 
+                if (!user.status) {
+                    // Login failed, please email support@zaptrack.com.
+                    console.log("Login failed, please email support@zaptrack.com.")
+                    return null;
+                }
+
                 let token = jwt.sign({
                     userId: user._id,
                     email: user.email
                 }, process.env.LOGIN_HASH_TOKEN as string, {
-                    expiresIn: "3h"
+                    expiresIn: "24h"
                 });
 
                 return {

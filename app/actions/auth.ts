@@ -51,10 +51,21 @@ const getUserByEmail = (formData: any) => {
     })
 }
 
+const verifyEmail = (formData: any) => {
+    return new Promise((resolve, reject) => {
+        axios.post('/api/auth/verify-email', formData).then((res) => {
+            resolve(res.data);
+        }).catch((err: any) => {
+            reject(err);
+        })
+    })
+}
+
 export {
     signIn,
     signUp,
     forgotPwd,
     resetPwd,
-    getUserByEmail
+    getUserByEmail,
+    verifyEmail
 }

@@ -55,7 +55,7 @@ const Navbar = () => {
                     onMouseEnter={() => setProjectPopShow(true)}
                     onMouseLeave={() => setProjectPopShow(false)}>
                     <div className="items-center flex h-full">
-                        <Link href="projects" title="Projects" className="text-[#008aa8] flex items-center py-1 px-2">
+                        <Link href="/projects" title="Projects" className="text-[#008aa8] flex items-center py-1 px-2">
                             <FiFolder className="w-[0.9rem] h-[0.9rem] mt-[1.6px] mr-1" />
                             <span className='text-[#008aa8] text-[.9rem]'>Projects</span>
                         </Link>
@@ -75,9 +75,9 @@ const Navbar = () => {
                                     </Link>
                                 </li> */}
                                 </ul>
-                                <Link href="projects" title="View all projects" className="text-[#008aa8] px-2 py-[12.8px] block">View all projects</Link>
+                                <Link href="/projects" title="View all projects" className="text-[#008aa8] px-2 py-[12.8px] block">View all projects</Link>
                                 <div className="flex flex-row baseline">
-                                    <Link href="project/new" title="New project" className="flex flex-1 py-[5.6px] block text-center text-[.875rem] text-[#008aa8] bg-[#83eede] rounded-[4px] justify-center items-center hover:text-white hover:bg-[#008AA8]">
+                                    <Link href="/project/new" title="New project" className="flex flex-1 py-[5.6px] block text-center text-[.875rem] text-[#008aa8] bg-[#83eede] rounded-[4px] justify-center items-center hover:text-white hover:bg-[#008AA8]">
                                         <FiPlus className="w-[1.3rem] h-[1.3rem]" />
                                         <span className='text-center'>New project</span>
                                     </Link>
