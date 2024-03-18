@@ -1,18 +1,13 @@
 import NextAuth from "next-auth"
 import type { NextAuthOptions } from "next-auth"
-import ldap from "ldapjs"
-import axios from "axios"
 
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import GitHubProvider from "next-auth/providers/github"
 import GitlabProvider from "next-auth/providers/gitlab"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { signIn } from "@/app/actions/auth"
 import connectDB from "@/services/connectDB"
-
 import UserModel from "@/models/UserModel"
 
 const config = {
@@ -55,8 +50,9 @@ const config = {
 
                 return {
                     id: user._id,
-                    name: user.fullname,
+                    name: user.username,
                     email: user.email,
+                    image: user.photo,
                     token: token
                 }
             }

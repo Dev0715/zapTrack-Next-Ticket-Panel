@@ -1,6 +1,8 @@
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { config } from '../api/auth/[...nextauth]/route';
+import { getUserByEmail } from '@/app/actions/auth';
+import { setItem } from '@/app/utils/localstore';
 
 const AuthLayout = async ({
     children
@@ -8,7 +10,8 @@ const AuthLayout = async ({
     children: React.ReactNode;
 }) => {
     const session = await getServerSession(config);
-    if (session !== null) {
+    console.log(session);
+    if (session !== null && session.user !== null && session?.user?.email !== null) {
         redirect('/dashboard');
     }
 

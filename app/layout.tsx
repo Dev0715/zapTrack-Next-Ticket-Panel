@@ -19,7 +19,7 @@ const RootLayout = ({
 }>) => {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={`bg-white ${inter.className}`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
