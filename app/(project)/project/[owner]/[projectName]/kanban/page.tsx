@@ -9,13 +9,13 @@ import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
 
 interface KanbanProps {
     params: {
-        projectId: string,
+        owner: string,
         projectName: string
     }
 }
 
 const Kanban = ({ params }: KanbanProps) => {
-    console.log(params.projectId);
+    console.log(params.owner);
     console.log(params.projectName);
 
     return <>
