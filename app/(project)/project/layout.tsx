@@ -4,7 +4,11 @@ const ProjectLayout = ({
     children: React.ReactNode;
 }) => {
     return <>
-        {children}
+        <div>
+            <div className="h-full min-h-full relative">
+                {children}
+            </div>
+        </div>
     </>
 }
 
