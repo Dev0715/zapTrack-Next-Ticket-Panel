@@ -8,7 +8,7 @@ import CardProject from '../_components/CardProject/page';
 import BtnBgGreen from '../_components/BtnBgGreen/page';
 
 import { getUserByEmail } from '@/app/actions/auth';
-import { setItem } from '@/app/utils/localstore';
+import { setItem, LS_USER } from '@/app/utils/localstore';
 
 const Dashboard = () => {
     useEffect(() => {
@@ -18,7 +18,7 @@ const Dashboard = () => {
             }).then((res: any) => {
                 const data = res.data;
                 if (data.status) {
-                    setItem('user', JSON.stringify(data.user));
+                    setItem(LS_USER, JSON.stringify(data.user));
                 }
             }).catch(err => { })
         })
@@ -27,7 +27,7 @@ const Dashboard = () => {
     return <>
         <div>
             <div>
-                <div className='h-full min-h-full relative'>
+                <div className='flex justify-center items-center h-full min-h-full relative'>
                     <div className="flex my-4 px-5 max-w-[1200px] w-full">
                         <div className="flex-1">
                             <h1 className='font-medium text-[1.4rem] text-[#008aa8] mb-4'>Projects Dashboard</h1>

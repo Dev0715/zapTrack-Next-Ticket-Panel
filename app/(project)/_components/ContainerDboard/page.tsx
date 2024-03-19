@@ -16,15 +16,15 @@ const ContainerDboard = ({ title, descBold, descNormal }: ContainerDboardProps) 
             <div className="border-b border-b-[#e2e3e9] py-4 flex">
                 <div className="bg-[#d4d5d3] h-[48px] w-[4px] mr-4 basis-12" />
                 <div className="flex flex-col">
-                    <div className="w-[30vw] bg-[#f1f1f4] h-[1rem] mb-4" />
-                    <div className="w-[30vw] bg-[#f1f1f4] h-[1rem] mb-4" />
+                    <div className="w-[8vw] bg-[#f1f1f4] h-[1rem] mb-4" />
+                    <div className="w-[18vw] bg-[#f1f1f4] h-[1rem] mb-4" />
                 </div>
             </div>
             <div className="flex pt-4">
                 <div className="bg-[#d4d5d3] h-[48px] w-[4px] mr-4 basis-12" />
                 <div className="flex flex-col">
-                    <div className="w-[30vw] bg-[#f1f1f4] h-[1rem] mb-4" />
-                    <div className="w-[30vw] bg-[#f1f1f4] h-[1rem] mb-4" />
+                    <div className="w-[8vw] bg-[#f1f1f4] h-[1rem] mb-4" />
+                    <div className="w-[18vw] bg-[#f1f1f4] h-[1rem] mb-4" />
                 </div>
             </div>
         </div>

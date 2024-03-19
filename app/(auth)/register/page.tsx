@@ -15,12 +15,12 @@ import { signUp } from "@/app/actions/auth";
 
 const Register = () => {
     const router = useRouter();
-    const initFormData = { username: "", full_name: "", email: "", password: "" };
+    const INIT_FORM_DATA = { username: "", full_name: "", email: "", password: "" };
 
     const [providers, setProviders] = useState<null | any>([]);
     const [csrfToken, setCsrfToken] = useState<string | undefined>("");
-    const [formData, setFormData] = useState(initFormData);
-    const [errors, setErrors] = useState(initFormData);
+    const [formData, setFormData] = useState(INIT_FORM_DATA);
+    const [errors, setErrors] = useState(INIT_FORM_DATA);
     const [terms, setTerms] = useState(false);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Register = () => {
         if (!isValid) {
             setErrors(errors);
             return;
-        } else setErrors(initFormData);
+        } else setErrors(INIT_FORM_DATA);
 
         if (!terms)
             return;

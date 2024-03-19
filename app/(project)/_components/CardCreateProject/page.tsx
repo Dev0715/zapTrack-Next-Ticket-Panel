@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import { useState, ReactNode } from "react";
 import { FaQuestion } from "react-icons/fa";
+import Link from "next/link";
 
 interface CardCreateProjectProps {
     href: string,
@@ -10,8 +11,16 @@ interface CardCreateProjectProps {
 }
 
 const CardCreateProject = ({ href, title, desc, icon, help }: CardCreateProjectProps) => {
+    const [showHelp, setShowHelp] = useState(false);
+
+    const handleShowHelp = (e: any) => {
+        e.stopPropagation();
+        // e.preventEventDefault();
+        setShowHelp(!showHelp);
+    }
+
     return <>
-        <a title={title} href={href} className="flex items-center justify-center relative cursor-pointer text-[#434456] border-b border-b-[#e2e3e9] hover:bg-[#008aa819] hover:ease-in hover:duration-300 hover:transition-[background]">
+        <Link title={title} href={href} className="flex items-center justify-center relative cursor-pointer text-[#434456] border-b border-b-[#e2e3e9] hover:bg-[#008aa819] hover:ease-in hover:duration-300 hover:transition-[background]">
             <div className="self-start px-4 py-6">
                 {icon}
             </div>
@@ -21,16 +30,16 @@ const CardCreateProject = ({ href, title, desc, icon, help }: CardCreateProjectP
                 {
                     help &&
                     <>
-                        <div className="absolute top-[1.5rem] right-[1.5rem]">
+                        <div className="absolute top-[1.5rem] right-[1.5rem]" onClick={handleShowHelp}>
                             <FaQuestion className="w-[1.2rem] h-[1.2rem] fill-[#434456]" />
                         </div>
-                        <div className="hidden mt-4 overflow-hidden" style={{ transition: 'all .3s .2s cubic-bezier(0,0,.53,1.32)' }}>
+                        <div className={`${showHelp ? `block` : `hidden`} mt-4 overflow-hidden`} style={{ transition: 'all .3s .2s cubic-bezier(0,0,.53,1.32)' }}>
                             <p className="leading-normal">{help}</p>
                         </div>
                     </>
                 }
             </div>
-        </a>
+        </Link>
     </>
 }
 

@@ -18,10 +18,10 @@ interface ResetPasswordProps {
 
 const ResetPassword = ({ params }: ResetPasswordProps) => {
     const router = useRouter();
-    const initFormData = { password: "", password2: "" };
+    const INIT_FORM_DATA = { password: "", password2: "" };
 
-    const [formData, setFormData] = useState(initFormData);
-    const [errors, setErrors] = useState(initFormData);
+    const [formData, setFormData] = useState(INIT_FORM_DATA);
+    const [errors, setErrors] = useState(INIT_FORM_DATA);
 
     const handleChange = (event: any) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });

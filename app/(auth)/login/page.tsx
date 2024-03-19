@@ -15,12 +15,12 @@ import { validateLoginInput } from "../_utils/validations/users";
 
 const Login = () => {
     let isErrorMsg = false;
-    const initFormData = { email: "", password: "" };
+    const INIT_FORM_DATA = { email: "", password: "" };
 
     const [providers, setProviders] = useState<null | any>([]);
     const [csrfToken, setCsrfToken] = useState<string | undefined>("");
-    const [formData, setFormData] = useState(initFormData);
-    const [errors, setErrors] = useState(initFormData);
+    const [formData, setFormData] = useState(INIT_FORM_DATA);
+    const [errors, setErrors] = useState(INIT_FORM_DATA);
 
     useEffect(() => {
         getProviders().then(providers => {
@@ -48,7 +48,7 @@ const Login = () => {
         if (!isValid) {
             setErrors(errors);
             return;
-        } else setErrors(initFormData);
+        } else setErrors(INIT_FORM_DATA);
 
         signIn('credentials', {
             email: formData.email,

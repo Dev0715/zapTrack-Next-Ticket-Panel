@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { createSearchParamsBailoutProxy } from 'next/dist/client/components/searchparams-bailout-proxy';
 
 const signIn = (formData: any) => {
     return new Promise((resolve, reject) => {
