@@ -1,13 +1,21 @@
 import { MdClose } from "react-icons/md";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-const ModalBulkCreate = () => {
+interface ModalBulkCreateProps {
+    show: boolean,
+    hideBulkModal: any
+}
+
+const ModalBulkCreate = ({ show, hideBulkModal }: ModalBulkCreateProps) => {
     return <>
-        <div className="flex items-center justify-center transition-opacity duration-300 bg-white opacity-95 fixed top-0 left-0 right-0 bottom-0 z-[98]">
+        <div className={`items-center justify-center transition-opacity duration-300 bg-white opacity-95 fixed top-0 left-0 right-0 bottom-0 z-[98] ${show ? `flex` : `hidden`} `}>
             <div className="inline">
-                <a className="w-8 h-8 top-12 right-12 absolute text-[#5a5b72] cursor-pointer transition-fill duration-200" title="close">
+                <button
+                    className="w-8 h-8 top-12 right-12 absolute text-[#5a5b72] cursor-pointer transition-fill duration-200"
+                    title="close"
+                    onClick={hideBulkModal}>
                     <MdClose className="w-8 h-8" />
-                </a>
+                </button>
             </div>
             <form className="basis-[600px] grow-0 max-w-[600px]">
                 <h2 className="text-center text-[1.7rem] leading-tight mb-4 text-[#2e3440] font-normal">New bulk insert</h2>
