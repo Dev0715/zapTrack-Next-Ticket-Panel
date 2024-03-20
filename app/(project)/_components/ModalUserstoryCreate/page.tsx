@@ -5,13 +5,12 @@ import { RiTeamFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 
-
 const ModalUserstoryCreate = () => {
     return <>
         <div className="flex items-center justify-center transition-opacity duration-300 z-[99] bg-white opacity-95 fixed top-0 bottom-0 left-0 right-0">
             <div className="inline">
                 <a className="w-8 h-8 cursor-pointer text-[#5aab72] absolute top-12 right-12 transition-colors duration-200" title="close">
-                    <MdClose className="w-2 h-2" />
+                    <MdClose className="w-8 h-8" />
                 </a>
             </div>
             <form className="basis-[700px] max-w-[700px] w-[700px] grow-0">

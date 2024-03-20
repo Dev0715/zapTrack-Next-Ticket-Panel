@@ -8,6 +8,7 @@ import { SlPeople } from "react-icons/sl";
 import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
 import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
 import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
+import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
 
 interface KanbanProps {
     params: {
@@ -151,6 +152,8 @@ const Kanban = ({ params }: KanbanProps) => {
             </section>
 
             <ModalUserstoryCreate />
+
+            <ModalBulkCreate />
         </div>
     </>
 }
