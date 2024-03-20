@@ -1,4 +1,4 @@
-import { MdClose, MdOutlineAdd } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 const ModalBulkCreate = () => {

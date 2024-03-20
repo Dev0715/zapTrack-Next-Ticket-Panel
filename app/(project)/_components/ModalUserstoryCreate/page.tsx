@@ -1,7 +1,6 @@
 import { MdClose, MdOutlineAdd } from "react-icons/md";
-import { RiArrowDownSLine } from "react-icons/ri";
+import { RiArrowDownSLine, RiTeamFill } from "react-icons/ri";
 import { FaRegClock } from "react-icons/fa6";
-import { RiTeamFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 
