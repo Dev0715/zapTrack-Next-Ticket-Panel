@@ -1,11 +1,13 @@
 "use client"
 
+import { useEffect } from "react";
 import { LuKanbanSquare } from "react-icons/lu";
 import { CiSearch, CiSettings, CiMenuKebab, CiFilter } from "react-icons/ci";
 import { SlPeople } from "react-icons/sl";
 
 import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
 import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
+import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
 
 interface KanbanProps {
     params: {
@@ -18,6 +20,10 @@ const Kanban = ({ params }: KanbanProps) => {
     console.log(params.owner);
     console.log(params.projectName);
 
+    useEffect(() => {
+
+    }, []);
+
     return <>
         <div className="flex h-full" style={{ minHeight: `calc(100vh - 48px)` }}>
             <div className="bg-[#3b4252] z-[9]">
@@ -28,7 +34,7 @@ const Kanban = ({ params }: KanbanProps) => {
                                 <h1 className="bg-[#2e3440] m-0 p-4 pl-3 text-[2em]">
                                     <a className="items-center flex text-[#83eede] text-[.875rem] no-underline" title="test1" href="/project/johnwindergold71722223-test1-1/timeline">
                                         <img className="bg-[#d6a1d4] rounded-sm h-6 w-6 mr-3" alt="test1" src="v-1708969004480/images/project-logos/project-logo-05.png" />
-                                        <span className=""> test1 </span>
+                                        <span className=""> {params.projectName} </span>
                                     </a>
                                 </h1>
                                 <ul className="pb-2">
@@ -143,59 +149,8 @@ const Kanban = ({ params }: KanbanProps) => {
                     </div>
                 </div>
             </section>
-            {/* <div className="z-[99] bg-[#fffffff2] bottom-0 hidden left-0 transparent fixed right-0 top-0" />
-            <div className="bg-[#fffffff2] hidden top-0 left-0 bottom-0 right-0 fixed transparent z-[98]">
-                <a className="w-8 h-8 cursor-pointer text-[#5a5b72] absolute right-12 top-12 duration-200 transition-[fill] text-[#088aa8]" title="close">
-                    <svg className="icon icon-close" style={{ fill: '' }}>
-                        <use xlinkHref="#icon-close" href="#icon-close">
-                        </use>
-                    </svg>
-                </a>
-                <form className="ng-pristine ng-invalid ng-invalid-required">
-                    <h2 className="title">New bulk insert</h2>
-                    <fieldset >
-                        <div className="label">Select status</div>
-                        <div className="bulk-status-selector-wrapper">
-                            <button type="button" className="bulk-status-selector"><span />
-                                <svg className="icon icon-arrow-down" style={{ fill: '' }}>
-                                    <use xlinkHref="#icon-arrow-down" href="#icon-arrow-down">
-                                    </use>
-                                </svg>
-                            </button>
-                            <div className="bulk-status-option-wrapper ng-hide" >
-                                <button type="button" className="bulk-status-option">New</button>
-                                <button type="button" className="bulk-status-option">Ready</button>
-                                <button type="button" className="bulk-status-option">In progress</button>
-                                <button type="button" className="bulk-status-option">Ready for test</button>
-                                <button type="button" className="bulk-status-option">Done</button>
-                                <button type="button" className="bulk-status-option">Archived</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset className="creation-position">
-                        <div className="label">Location</div>
-                        <div className="creation-position-fields">
-                            <label className="custom-radio">
-                                <input id="top-backlog" type="radio" defaultValue="bottom" defaultChecked className="ng-pristine ng-untouched ng-valid ng-empty" />
-                                <span className="radio-control" />
-                                <span className="radio-label">at the bottom</span>
-                            </label>
-                            <label className="custom-radio">
-                                <input id="bottom-backlog" type="radio" defaultValue="top" className="ng-pristine ng-untouched ng-valid ng-empty" />
-                                <span className="radio-control" />
-                                <span className="radio-label">on top</span>
-                            </label>
-                        </div>
-                    </fieldset>
 
-                    <fieldset>
-                        <textarea cols={200} wrap="off" className="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" placeholder="One item per line..." />
-                    </fieldset>
-                    <div className="lb-action-wrapper">
-                        <button type="submit" title="Save" className="btn-small js-submit-button">Save</button>
-                    </div>
-                </form>
-            </div> */}
+            <ModalUserstoryCreate />
         </div>
     </>
 }
