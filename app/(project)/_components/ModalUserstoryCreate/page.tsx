@@ -1,16 +1,26 @@
+import Link from "next/link";
 import { MdClose, MdOutlineAdd } from "react-icons/md";
 import { RiArrowDownSLine, RiTeamFill } from "react-icons/ri";
 import { FaRegClock } from "react-icons/fa6";
 import { IoBagSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 
-const ModalUserstoryCreate = () => {
+interface ModalUserstoryCreateProps {
+    show?: boolean,
+    hideStoryModal: any
+}
+
+const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProps) => {
     return <>
-        <div className="flex items-center justify-center transition-opacity duration-300 z-[99] bg-white opacity-95 fixed top-0 bottom-0 left-0 right-0">
+        <div className={`items-center justify-center transition-opacity duration-300 z-[99] bg-white opacity-95 fixed top-0 bottom-0 left-0 right-0 ${show ? `flex` : `hidden`} `}>
             <div className="inline">
-                <a className="w-8 h-8 cursor-pointer text-[#5aab72] absolute top-12 right-12 transition-colors duration-200" title="close">
+                <button
+                    className="w-8 h-8 cursor-pointer text-[#5aab72] absolute top-12 right-12 transition-colors duration-200"
+                    title="close"
+                    onClick={() => hideStoryModal()}
+                >
                     <MdClose className="w-8 h-8" />
-                </a>
+                </button>
             </div>
             <form className="basis-[700px] max-w-[700px] w-[700px] grow-0">
                 <h2 className="text-center text-[1.7rem] leading-tight mb-4 text-[#2e3440] text-normal">
