@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Links = () => {
     return <>
         <div className="flex relative flex-col items-center justify-center w-full h-auto max-w-full mt-0 bg-[#70728F] min-w-0 px-[15px] py-[50px]">
@@ -24,34 +26,34 @@ const Links = () => {
                                     <div className="flex-col justify-start items-start min-w-0 -mt-[10px] flex flex-1 self-stretch" style={{ height: `calc(100 % + 10px)` }}>
                                         <h5 className="relative w-full h-auto max-w-none text-[18px] text-white font-bold mt-[10px] mr-0 ml-0 mb-[15px] self-start text-left min-w-0">Taiga</h5>
                                         <div className="relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://tree.taiga.io/login">Login</a>
+                                            <Link className="text-white inline font-medium" href="https://tree.taiga.io/login">Login</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" target="_blank" href="https://tree.taiga.io/project/taiga/timeline">Taiga project</a>
+                                            <Link className="text-white inline font-medium" target="_blank" href="https://tree.taiga.io/project/taiga/timeline">Taiga project</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://community.taiga.io/t/taiga-30min-setup/">Self-host Taiga</a>
+                                            <Link className="text-white inline font-medium" href="https://community.taiga.io/t/taiga-30min-setup/">Self-host Taiga</Link>
                                         </div>
-                                        <a className="mt-[10px] relative w-full h-auto max-w-[800px] text-white pt-8 min-w-0" href="https://penpot.app/">
+                                        <Link className="mt-[10px] relative w-full h-auto max-w-[800px] text-white pt-8 min-w-0" href="https://penpot.app/">
                                             <span className="text-white font-normal">Taiga´s sister software: </span>
                                             <span className="text-white font-bold">PENPOT</span>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="ml-10 flex relative flex-col h-auto max-w-full border-l-none border-l-white min-w-0 p-0" style={{ width: `calc((100% - 4* 40px* 3 / 12)` }}>
                                     <div className="flex-col justify-start items-start min-w-0 -mt-[10px] flex flex-1 self-stretch" style={{ height: `calc(100 % + 10px)` }}>
                                         <h5 className="relative w-full h-auto max-w-none text-[18px] text-white font-bold mt-[10px] mr-0 ml-0 mb-[15px] self-start text-left min-w-0">Help</h5>
                                         <div className="relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://community.taiga.io/c/learn-taiga-basic/">Resources</a>
+                                            <Link className="text-white inline font-medium" href="https://community.taiga.io/c/learn-taiga-basic/">Resources</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://tree.taiga.io/project/taiga/issues">Bugs &amp; feature requests</a>
+                                            <Link className="text-white inline font-medium" href="https://tree.taiga.io/project/taiga/issues">Bugs &amp; feature requests</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://github.com/kaleidos-ventures/taiga-front/issues">GitHub Issues</a>
+                                            <Link className="text-white inline font-medium" href="https://github.com/kaleidos-ventures/taiga-front/issues">GitHub Issues</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="mailto:support@taiga.io">support@taiga.io</a>
+                                            <Link className="text-white inline font-medium" href="mailto:support@taiga.io">support@taiga.io</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -59,22 +61,22 @@ const Links = () => {
                                     <div className="flex-col justify-start items-start min-w-0 -mt-[10px] flex flex-1 self-stretch" style={{ height: `calc(100 % + 10px)` }}>
                                         <h5 className="relative w-full h-auto max-w-none text-[18px] text-white font-bold mt-[10px] mr-0 ml-0 mb-[15px] self-start text-left min-w-0">Social</h5>
                                         <div className="relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://community.taiga.io/">Community</a>
+                                            <Link className="text-white inline font-medium" href="https://community.taiga.io/">Community</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://twitter.com/taigaio">Twitter</a>
+                                            <Link className="text-white inline font-medium" href="https://twitter.com/taigaio">Twitter</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://github.com/kaleidos-ventures/">GitHub</a>
+                                            <Link className="text-white inline font-medium" href="https://github.com/kaleidos-ventures/">GitHub</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://www.youtube.com/channel/UCPylOFXlUHW55ErP8q2R2DQ/videos">YouTube</a>
+                                            <Link className="text-white inline font-medium" href="https://www.youtube.com/channel/UCPylOFXlUHW55ErP8q2R2DQ/videos">YouTube</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://www.linkedin.com/company/taigaio">LinkedIn</a>
+                                            <Link className="text-white inline font-medium" href="https://www.linkedin.com/company/taigaio">LinkedIn</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="https://www.instagram.com/taiga.io/">Instagram</a>
+                                            <Link className="text-white inline font-medium" href="https://www.instagram.com/taiga.io/">Instagram</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -82,22 +84,22 @@ const Links = () => {
                                     <div className="flex-col justify-start items-start min-w-0 -mt-[10px] flex flex-1 self-stretch" style={{ height: `calc(100 % + 10px)` }}>
                                         <h5 className="relative w-full h-auto max-w-none text-[18px] text-white font-bold mt-[10px] mr-0 ml-0 mb-[15px] self-start text-left min-w-0">Legal</h5>
                                         <div className="relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="/terms-and-conditions">Terms &amp; conditions</a>
+                                            <Link className="text-white inline font-medium" href="/terms-and-conditions">Terms &amp; conditions</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="/privacy-policy">Privacy policy</a>
+                                            <Link className="text-white inline font-medium" href="/privacy-policy">Privacy policy</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="/DPA">Data processing Addendum</a>
+                                            <Link className="text-white inline font-medium" href="/DPA">Data processing Addendum</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="/cookie-policy">Cookie policy</a>
+                                            <Link className="text-white inline font-medium" href="/cookie-policy">Cookie policy</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="/security">Security</a>
+                                            <Link className="text-white inline font-medium" href="/security">Security</Link>
                                         </div>
                                         <div className="mt-[10px] relative w-full h-auto max-w-[800px] text-white min-w-0">
-                                            <a className="text-white inline font-medium" href="/code-of-conduct">Code of conduct</a>
+                                            <Link className="text-white inline font-medium" href="/code-of-conduct">Code of conduct</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const PrivacyPolicy = () => {
     return <>
         <div className="flex relative flex-col items-center justify-center w-full h-auto max-w-full bg-[#F7F9FB] m-0 px-[15px] pt-[66.72px] pb-[53.28px]">
@@ -15,7 +17,7 @@ const PrivacyPolicy = () => {
                                     <div className="ρd__all ρd__div ρt ρ_2IPqi">KALEIDOS INC SUCURSAL EN ESPAÑA S.L.
                                         ES W0249639F
                                         Calle Diego de Leon 16, 2 - 7, 28006, Madrid, Spain
-                                        <a className="ρd__all ρd__a ρt ρdn ρdUKiI" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</a>
+                                        <Link className="ρd__all ρd__a ρt ρdn ρdUKiI" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</Link>
                                     </div>
                                 </div>
                             </div>
@@ -116,13 +118,13 @@ const PrivacyPolicy = () => {
                                     <div className="ρd__all ρd__div ρt ρicyaj">
                                         <ul className="ρd__all ρd__ul ρvg3Tw">
                                             <li className="ρd__all ρd__li ρt ρtLfqC">
-                                                They will be exercised by e-mail: <a className="ρd__all ρd__a ρt ρdn ρkzcix" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</a>, or at the registered office of KALEIDOS: Calle Fortuny, 19, 1º IZQ, 28010 Madrid, Spain
+                                                They will be exercised by e-mail: <Link className="ρd__all ρd__a ρt ρdn ρkzcix" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</Link>, or at the registered office of KALEIDOS: Calle Fortuny, 19, 1º IZQ, 28010 Madrid, Spain
                                             </li>
                                             <li className="ρd__all ρd__li ρt ρmwOan">
                                                 We inform you that you can exercise, where appropriate, the rights of access, rectification or deletion, limitation of processing, opposition, to the portability of the data or not to be subject to a decision based solely on the automated processing, as well as to withdraw the consent given.
                                             </li>
                                             <li className="ρd__all ρd__li ρt ρpqswB">
-                                                You can file complaints at the Spanish Data Protection Agency: <a className="ρd__all ρd__a ρt ρdn ρhjFlp" target="_blank" href="https://www.aepd.es/es">www.aepd.es</a>, Spanish Control Authority
+                                                You can file complaints at the Spanish Data Protection Agency: <Link className="ρd__all ρd__a ρt ρdn ρhjFlp" target="_blank" href="https://www.aepd.es/es">www.aepd.es</Link>, Spanish Control Authority
                                             </li>
                                             <li className="ρd__all ρd__li ρt ρ_0MMel">
                                                 More information in the complete Privacy Policy of this document.
@@ -153,12 +155,12 @@ const PrivacyPolicy = () => {
                         When you contact us through these channels, we will ask for your consent to obtain your email address, name and surname and economic data such as the billing address.
                         You may not, when providing any information that may be requested from you, choose expressions that are offensive, coinciding with brands, tradenames, names or pseudonyms of public figures or celebrities for whose use you are not authorized.
                         It is essential that you keep your reference data, passwords and access codes generated at all times. You will be solely responsible for the use of your personal account, and in this respect you undertake to make diligent use of this information, not to make it available to third parties, and to inform us, without delay, of its loss or theft.
-                        In order to ensure that the information provided is always up to date and free of errors, you must notify KALEIDOS as soon as possible of any changes to your personal data by sending an e-mail to the e-mail address: <a className="ρd__all ρd__a ρt ρdn ρlj3Z4" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</a>
+                        In order to ensure that the information provided is always up to date and free of errors, you must notify KALEIDOS as soon as possible of any changes to your personal data by sending an e-mail to the e-mail address: <Link className="ρd__all ρd__a ρt ρdn ρlj3Z4" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</Link>
                         Likewise, by clicking on the “I accept” (or equivalent) button incorporated in the aforementioned forms, you declare that the information and data you have provided are accurate and truthful.
                     </div>
                     <div className="ρd__all ρd__div ρt ρr8QjK">b) Data obtained indirectly.</div>
                     <div className="ρd__all ρd__div ρt ρamg8U">
-                        When you browse, different cookies and other tracking devices may be installed on your device, as explained in our <a className="ρd__all ρd__a ρt ρdn ρzwPRq" target="_blank" href="/cookie-policy">Cookie Policy</a>.
+                        When you browse, different cookies and other tracking devices may be installed on your device, as explained in our <Link className="ρd__all ρd__a ρt ρdn ρzwPRq" target="_blank" href="/cookie-policy">Cookie Policy</Link>.
                     </div>
                 </div>
                 <div className="ρd__all ρd__div ρ_3Q49U">
@@ -293,7 +295,7 @@ const PrivacyPolicy = () => {
                     </div>
                     <div className="ρd__all ρd__div ρt ρvHMkv">
                         <ul className="ρd__all ρd__ul ρhoLlD">
-                            <li className="ρd__all ρd__li ρt ρd5B7">By sending an e-mail to <a className="ρd__all ρd__a ρt ρdn ρc5Uri" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</a> indicating the right you wish to exercise and your identification data.
+                            <li className="ρd__all ρd__li ρt ρd5B7">By sending an e-mail to <Link className="ρd__all ρd__a ρt ρdn ρc5Uri" target="_blank" href="mailto:privacy@taiga.io">privacy@taiga.io</Link> indicating the right you wish to exercise and your identification data.
                             </li>
                             <li className="ρd__all ρd__li ρt ρuMg">
                                 By sending a written request to the address Calle Fortuny, 19, 1º IZQ, 28010 Madrid, Spain indicating the right you wish to exercise and your personal data.
@@ -305,13 +307,13 @@ const PrivacyPolicy = () => {
                     </div>
                     <div className="ρd__all ρd__div ρt ρnqqzq">
                         We also inform you that you have the right to file a complaint at the Spanish Data Protection Agency, Spanish Data Protection Authority, if you believe that we have breached the applicable data protection legislation regarding the processing of your personal data.
-                        In addition, we inform you that you can sign up for the Robinson List at <a className="ρd__all ρd__a ρt ρdn ρnf1U7" target="_blank" href="https://www.listarobinson.es/home">https://www.listarobinson.es/</a>: the advertising exclusion system managed by the Spanish Association for the Digital economy (ADIGITAL), where you can register in order to show your opposition to your data being used for the purpose of sending you commercial communications.
+                        In addition, we inform you that you can sign up for the Robinson List at <Link className="ρd__all ρd__a ρt ρdn ρnf1U7" target="_blank" href="https://www.listarobinson.es/home">https://www.listarobinson.es/</Link>: the advertising exclusion system managed by the Spanish Association for the Digital economy (ADIGITAL), where you can register in order to show your opposition to your data being used for the purpose of sending you commercial communications.
                     </div>
                 </div>
                 <div className="ρd__all ρd__div ρcpxe6">
                     <div className="ρd__all ρd__div ρt ρyovLo">7. Retention periods and Cookies.</div>
                     <div className="ρd__all ρd__div ρt ρtcOFx">We will only keep your data for as long as necessary to provide you with these services. Any of the data you provide us through the channels will be blocked as long as they are no longer necessary to manage the service and will only be available if there is a legal obligation (derived from a request from the appropriate authorities) and when you exercise your rights.
-                        Regarding the personal data obtained through the KALEIDOS channels, KALEIDOS uses Cookies according to the <a className="ρd__all ρd__a ρt ρdn ρ_6Q8O" href="/cookie-policy"><span className="ρd__all ρd__span" style={{ color: '#008AA8', fontWeight: 500 }}>Cookie Policy</span></a>
+                        Regarding the personal data obtained through the KALEIDOS channels, KALEIDOS uses Cookies according to the <Link className="ρd__all ρd__a ρt ρdn ρ_6Q8O" href="/cookie-policy"><span className="ρd__all ρd__span" style={{ color: '#008AA8', fontWeight: 500 }}>Cookie Policy</span></Link>
                     </div>
                 </div>
                 <div className="ρd__all ρd__div ρgaPJb">

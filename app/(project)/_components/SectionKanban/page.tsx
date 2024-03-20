@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { CiSearch, CiFilter } from "react-icons/ci";
 
 import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
 import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
+import ZoomLabel from "./_components/ZoomLabel/page";
 
 interface SectionKanbanProps {
     handleAddUserstory: any,
@@ -9,6 +11,8 @@ interface SectionKanbanProps {
 }
 
 const SectionKanban = ({ handleAddUserstory, handleAddBulk }: SectionKanbanProps) => {
+    const [zoom, setZoom] = useState<number>(0);
+
     return <>
         <section className="flex flex-col max-h-full max-w-full pt-4 pl-4 relative flex-1">
             <div className="bg-white pb-4 pr-4">
@@ -31,30 +35,10 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk }: SectionKanbanProps
                     <div className="baseline">
                         <div className="flex items-center">
                             <div className="font-medium text-[.7rem] text-[#008aa8] mr-2 uppercase">Zoom:</div>
-                            <label className="mr-2" title="Compact">
-                                <input type="radio" defaultValue={0} className="hidden p-0" />
-                                <div className="flex items-center bg-[#008aa8] rounded-2xl cursor-pointer w-auto h-4">
-                                    <span className="text-[.7rem] text-white px-5">Compact</span>
-                                </div>
-                            </label>
-                            <label className="mr-2" title="Default">
-                                <input type="radio" defaultValue={1} className="hidden p-0" />
-                                <div className="flex items-center bg-[#d8dee9] rounded-2xl cursor-pointer w-4 h-4">
-                                    <span className="text-[.7rem] text-white px-5 hidden" >Default</span>
-                                </div>
-                            </label>
-                            <label className="mr-2" title="Detailed">
-                                <input type="radio" defaultValue={2} className="hidden p-0" />
-                                <div className="flex items-center bg-[#d8dee9] rounded-2xl cursor-pointer w-4 h-4">
-                                    <span className="text-[.7rem] text-white px-5 hidden">Detailed</span>
-                                </div>
-                            </label>
-                            <label className="mr-2" title="Expanded">
-                                <input type="radio" defaultValue={3} className="hidden p-0" />
-                                <div className="flex items-center bg-[#d8dee9] rounded-2xl cursor-pointer w-4 h-4">
-                                    <span className="text-[.7rem] text-white px-5 hidden">Expanded</span>
-                                </div>
-                            </label>
+                            <ZoomLabel title="Compact" value={0} selected={zoom === 0} handleSelected={() => setZoom(0)} />
+                            <ZoomLabel title="Default" value={1} selected={zoom === 1} handleSelected={() => setZoom(1)} />
+                            <ZoomLabel title="Detailed" value={2} selected={zoom === 2} handleSelected={() => setZoom(2)} />
+                            <ZoomLabel title="Expanded" value={3} selected={zoom === 3} handleSelected={() => setZoom(3)} />
                         </div>
                     </div>
                 </div>

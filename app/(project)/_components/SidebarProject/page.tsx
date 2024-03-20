@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LuKanbanSquare } from "react-icons/lu";
 import { CiSearch, CiSettings, CiMenuKebab } from "react-icons/ci";
 import { SlPeople } from "react-icons/sl";
@@ -14,17 +15,17 @@ const SidebarProject = ({ projectName }: SidebarProjectProps) => {
                     <div className="h-full overflow-x-hidden overflow-y-auto">
                         <div className="fle flex-col h-full w-[200px]">
                             <h1 className="bg-[#2e3440] m-0 p-4 pl-3 text-[2em]">
-                                <a className="items-center flex text-[#83eede] text-[.875rem] no-underline" title="test1" href="/project/johnwindergold71722223-test1-1/timeline">
+                                <Link className="items-center flex text-[#83eede] text-[.875rem] no-underline" title="test1" href="/project/johnwindergold71722223-test1-1/timeline">
                                     <img className="bg-[#d6a1d4] rounded-sm h-6 w-6 mr-3" alt="test1" src="https://tree.taiga.io/v-1708969004480/images/project-logos/project-logo-01.png" />
                                     <span className=""> {projectName} </span>
-                                </a>
+                                </Link>
                             </h1>
                             <ul className="pb-2">
                                 <li className="mb-0">
-                                    <a className="text-[#d8dee9] bg-[#2e3440] font-bold flex items-center text-[.875rem] h-10 p-0 duration-200 transition-[background-color]" title="Kanban" href="/project/johnwindergold71722223-test1-1/kanban">
+                                    <Link className="text-[#d8dee9] bg-[#2e3440] font-bold flex items-center text-[.875rem] h-10 p-0 duration-200 transition-[background-color]" title="Kanban" href="/project/johnwindergold71722223-test1-1/kanban">
                                         <LuKanbanSquare className="mx-3 w-6 h-6 text-[#d8dee9]" />
                                         <span className="text-[#d8dee9] font-bold text-[.875rem]"> Kanban </span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                             <ul className="border-b border-t border-[#2e3440] mt-auto pb-2">
@@ -35,16 +36,16 @@ const SidebarProject = ({ projectName }: SidebarProjectProps) => {
                                     </button>
                                 </li>
                                 <li className="list-none mb-2">
-                                    <a className="flex items-center text-[#tight] text-[.875rem] h-10 p-0 duration-200 transition-[background-color]" title="Team" href="/project/johnwindergold71722223-test1-1/team">
+                                    <Link className="flex items-center text-[#tight] text-[.875rem] h-10 p-0 duration-200 transition-[background-color]" title="Team" href="/project/johnwindergold71722223-test1-1/team">
                                         <SlPeople className="w-6 h-6 text-[#d8dee9] mx-3" />
                                         <span className="cursor-pointer text-[#d8dee9] text-[.875rem] leading-tight"> Team </span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="list-none mb-2 ng-star-inserted" style={{}}>
-                                    <a className="flex items-center text-[#d8dee9] text-[.875rem] h-10 p-0 duration-200 transition-[background-color]" title="Settings" href="/project/johnwindergold71722223-test1-1/admin/project-profile/details">
+                                    <Link className="flex items-center text-[#d8dee9] text-[.875rem] h-10 p-0 duration-200 transition-[background-color]" title="Settings" href="/project/johnwindergold71722223-test1-1/admin/project-profile/details">
                                         <CiSettings className="w-6 h-6 text-[#d8dee9] mx-3" />
                                         <span className="cursor-pointer text-[#d8dee9] text-[.875rem] leading-tight"> Settings </span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                             <button type="button" className="text-[#d8dee9] flex justify-end w-full p-2 text-[.875rem]">

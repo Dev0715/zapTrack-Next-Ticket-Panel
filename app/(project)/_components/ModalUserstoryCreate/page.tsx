@@ -92,34 +92,34 @@ const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProp
                                 <ul className="text-[.875rem] bg-white border border-[#d8dee9] rounded text-[#008aa8] hidden m-0 p-2 absolute top-8 z-[2] w-[203px]"
                                     style={{ boxShadow: `4px 4px 8px rgba(46,52,64,.1)` }}>
                                     <li className="mb-1">
-                                        <a title="New" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                        <Link title="New" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
                                             <span className="item-text">New</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="mb-1">
-                                        <a title="Ready" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                        <Link title="Ready" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
                                             <span className="item-text">Ready</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="mb-1">
-                                        <a title="In progress" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                        <Link title="In progress" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
                                             <span className="item-text">In progress</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="mb-1">
-                                        <a title="Ready for test" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                        <Link title="Ready for test" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
                                             <span className="item-text">Ready for test</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="mb-1">
-                                        <a title="Done" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                        <Link title="Done" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
                                             <span className="item-text">Done</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li >
-                                        <a title="Archived" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                        <Link title="Archived" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
                                             <span className="item-text">Archived</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </fieldset>
@@ -150,22 +150,22 @@ const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProp
                                                         <img alt="undefined" src="https://tree.taiga.io/v-1708969004480/images/unnamed.png" title="undefined" className="w-[3rem] h-[3rem]" />
                                                     </div>
                                                     <div className="grow-1 ml-2">
-                                                        <a title="Edit assignment" className="text-[#008aa8] relative">
+                                                        <Link title="Edit assignment" href="#" className="text-[#008aa8] relative">
                                                             <span>Assign</span>
-                                                        </a>&nbsp;<span className="text-[#5a5b72]">or</span>&nbsp;
-                                                        <a href="#" title="Assign to me" className="text-[#008aa8]">
+                                                        </Link>&nbsp;<span className="text-[#5a5b72]">or</span>&nbsp;
+                                                        <Link href="#" title="Assign to me" className="text-[#008aa8]">
                                                             <span>Assign to me</span>
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="text-[.875rem] bg-white border border-[#d8dee9] rounded text-[#008aa8] hidden left-0 m-0 p-2 absolute top-[60px] w-[203px] z-[2]"
                                                 style={{ boxShadow: `4px 4px 8px rgba(46,52,64,.1)` }}>
                                                 <input type="text" placeholder="Search for users" className="mb-2 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full" />
-                                                <a title="aasdfasdfadfsdf" className="flex items-center h-auto mb-1 min-h-[2rem] p-1">
+                                                <Link title="aasdfasdfadfsdf" href="#" className="flex items-center h-auto mb-1 min-h-[2rem] p-1">
                                                     <img className="rounded-full mr-2 h-[1.75rem] w-[1.75rem]" />
                                                     <span title="aasdfasdfadfsdf" className="text-[#4c566a] grow-1 min-w-0 overflow-hidden relative text-ellipsis flex-initial">aasdfasdfadfsdf</span>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </section>

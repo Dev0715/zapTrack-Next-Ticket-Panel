@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const PanelAbout = () => {
     return <>
         <div className="flex relative flex-col w-full h-auto max-w-full bg-none min-w-0 p-0" id="About">
@@ -11,10 +13,10 @@ const PanelAbout = () => {
                                 <div className="ml-[30px] flex relative flex-col h-auto max-w-full justify-start items-center min-w-0 p-0 " style={{ width: `calc((100% - 2* 30px)* 7 / 12)` }}>
                                     <div className="text-xl pb-1 relative left-auto top-auto text-[#4C566A]">Taiga is an open-source project management software for cross-functional teams that work agile across both scrum and kanban frameworks.<br />
                                         Taiga's birth goes back to a
-                                        <a className="text-[#008AA8] underline" href="https://kaleidos.net/">
+                                        <Link className="text-[#008AA8] underline" href="https://kaleidos.net/">
                                             <span className="text-[#008AA8] underline">Kaleidos</span>
                                             <span className="text-[#008AA8]"> </span>
-                                        </a>hackathon in 2013. The team at Kaleidos, filled with frustration, couldn't find an intuitive and visually appealing tool to facilitate agile methodologies for both developers and designers. So, we did what was right. We decided to come up with a better tool and that's how Taiga's journey began! <br />
+                                        </Link>hackathon in 2013. The team at Kaleidos, filled with frustration, couldn't find an intuitive and visually appealing tool to facilitate agile methodologies for both developers and designers. So, we did what was right. We decided to come up with a better tool and that's how Taiga's journey began! <br />
                                         In only a couple of years, Taiga was rolled out and immediately won "The Best Agile Tool” in the 2015 Agile Awards. Most recently, it was cited as one of the Top 7 project management tools for 2020 by OpenSource.com and it continues to be cited as one of the best agile project management tools with a worldwide footprint.
                                     </div>
                                 </div>
@@ -26,11 +28,11 @@ const PanelAbout = () => {
                             </div>
                         </div>
                         <div className="mt-6 relative w-full h-auto max-w-none text-[#4C566A] text-xl min-w-0">We are now busy working on the next iteration of Taiga, something we codenamed
-                            <a className="text-[#008AA8] italic inline" href="https://community.taiga.io/t/announcing-the-next-taiga-and-much-more/107">
+                            <Link className="text-[#008AA8] italic inline" href="https://community.taiga.io/t/announcing-the-next-taiga-and-much-more/107">
                                 <span className="underline">TaigaNext</span>
-                            </a>, and it will showcase the Kaleidos vision around lean and design processes, connecting our two products, both Taiga and <a className="text-[#008AA8] inline" href="https://penpot.app/">
+                            </Link>, and it will showcase the Kaleidos vision around lean and design processes, connecting our two products, both Taiga and <Link className="text-[#008AA8] inline" href="https://penpot.app/">
                                 <span className="text-[#008AA8] underline">Penpot</span>
-                            </a> together.<br />
+                            </Link> together.<br />
                             By the way, in case you're wondering, the name of Taiga comes after the boreal forest which lies across the subarctic region. It's strikingly beautiful from a distance but deadly if you enter the Taiga unprepared. A new project is like the Taiga forest, so we created our unique Taiga where you can start any project without any worry at all, we've got you covered. Just enjoy the Taiga!
                         </div>
                     </div>

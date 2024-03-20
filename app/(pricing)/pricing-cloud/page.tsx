@@ -88,7 +88,7 @@ const CloudPricing = () => {
                                             <path d="M437.3 30L202.7 339.3 64 200.7l-64 64L213.3 478 512 94z" />
                                         </svg>
                                         <div className="relative w-full h-auto max-w-[800px] text-left text-[16px] text-[#4C566A] min-w-0">
-                                            <a className="text-[#008AA8] underline font-bold inline" target="_blank" href="https://community.taiga.io/">Community</a> support</div>
+                                            <Link className="text-[#008AA8] underline font-bold inline" target="_blank" href="https://community.taiga.io/">Community</Link> support</div>
                                     </div>
                                 </div>
                             </div>
