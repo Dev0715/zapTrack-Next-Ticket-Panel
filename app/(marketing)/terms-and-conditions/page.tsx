@@ -44,7 +44,7 @@ const TermsAndConditions = () => {
                                 These Terms and Conditions apply to both our cloud and our on-premise Kaleidos’ Products &amp; Services. However, please note that on-premise Kaleidos’ Products &amp; Services may be subject to particular terms and conditions. In that case, any particular terms and conditions will be informed to you and/or separately agreed with you at the time of your subscription. Said particular terms and conditions will prevail in the event of conflict with these general Terms and Conditions.
                             </li>
                             <li className="ρd__all ρd__li ρt ρivrIi">
-                                Additionally, please note that Kaleidos’ Products &amp; Services may be built on open-source software (as further explained in Section 6) which may be freely accessible in one or more open-source repositories (for example, in the case of Taiga, you may find our open-source project <a className="ρd__all ρd__a ρt ρdn ρ_9FKau" target="_blank" href="https://github.com/kaleidos-ventures/">here</a>). On top of that open-source software, we have developed Kaleidos’ Products &amp; Services, which allow us to provide our Users with extra functionalities and services.
+                                Additionally, please note that Kaleidos’ Products &amp; Services may be built on open-source software (as further explained in Section 6) which may be freely accessible in one or more open-source repositories (for example, in the case of Taiga, you may find our open-source project <Link className="ρd__all ρd__a ρt ρdn ρ_9FKau" target="_blank" href="https://github.com/kaleidos-ventures/">here</Link>). On top of that open-source software, we have developed Kaleidos’ Products &amp; Services, which allow us to provide our Users with extra functionalities and services.
                             </li>
                         </ol>
                     </div>
@@ -150,7 +150,7 @@ const TermsAndConditions = () => {
                                 Fees are dependable on the type of subscription, as well as on the number of End Users that the Customer wishes to add to their workspace.
                             </li>
                             <li className="ρd__all ρd__li ρt ρwg4CT">
-                                More information on the different types of subscriptions offered by Kaleidos and their respective prices is available in the following links: <a className="ρd__all ρd__a ρt ρdn ρc8Mde" target="_blank" href="/pricing-cloud">https://www.taiga.io/pricing-cloud</a> (for Taiga) and <a className="ρd__all ρd__a ρt ρdn ρkc7Kz" href="https://penpot.app/">https://penpot.app/</a> (for Penpot).
+                                More information on the different types of subscriptions offered by Kaleidos and their respective prices is available in the following links: <Link className="ρd__all ρd__a ρt ρdn ρc8Mde" target="_blank" href="/pricing-cloud">https://www.taiga.io/pricing-cloud</Link> (for Taiga) and <Link className="ρd__all ρd__a ρt ρdn ρkc7Kz" href="https://penpot.app/">https://penpot.app/</Link> (for Penpot).
                             </li>
                             <li className="ρd__all ρd__li ρt ρn0CB4">
                                 Additionally, please note that certain features of Kaleidos’ Products &amp; Services may be available only upon a separate written agreement between the Customer and Kaleidos. In such scenarios, fees will be agreed between the Customer and Kaleidos.
@@ -485,13 +485,13 @@ const TermsAndConditions = () => {
                     <div className="ρd__all ρd__div ρt ρnyzK4">
                         <ul className="ρd__all ρd__ul ρzYxo6">
                             <li className="ρd__all ρd__li ρt ρg0Z73">
-                                You may access Taiga’s Privacy Policy <a className="ρd__all ρd__a ρt ρdn ρiNuxE" target="_blank" href="/privacy-policy">here</a>.
+                                You may access Taiga’s Privacy Policy <Link className="ρd__all ρd__a ρt ρdn ρiNuxE" target="_blank" href="/privacy-policy">here</Link>.
                             </li>
                             <li className="ρd__all ρd__li ρt ρiJsX">
-                                You may access Taiga’s DPA <a className="ρd__all ρd__a ρt ρdn ρf6Mdj" target="_blank" href="/DPA">here</a>.
+                                You may access Taiga’s DPA <Link className="ρd__all ρd__a ρt ρdn ρf6Mdj" target="_blank" href="/DPA">here</Link>.
                             </li>
                             <li className="ρd__all ρd__li ρt ρ_5AlpB">
-                                You may access Taiga’s Cookies Policy <a className="ρd__all ρd__a ρt ρdn ρvc1Q9" target="_blank" href="/cookie-policy">here</a>.
+                                You may access Taiga’s Cookies Policy <Link className="ρd__all ρd__a ρt ρdn ρvc1Q9" target="_blank" href="/cookie-policy">here</Link>.
                             </li>
                         </ul>
                     </div>
@@ -612,7 +612,7 @@ const TermsAndConditions = () => {
                     <div className="ρd__all ρd__div ρt ρvShh">
                         <ol className="ρd__all ρd__ol ρutcXe">
                             <li className="ρd__all ρd__li ρt ρlrf4W">
-                                Any User who wishes to address a complaint, question or suggestion may do so by sending an email to <a className="ρd__all ρd__a ρt ρdn ρq9UFd" target="_blank" href="mailto:support@taiga.io">support@taiga.io</a>.
+                                Any User who wishes to address a complaint, question or suggestion may do so by sending an email to <Link className="ρd__all ρd__a ρt ρdn ρq9UFd" target="_blank" href="mailto:support@taiga.io">support@taiga.io</Link>.
                             </li>
                         </ol>
                     </div>
@@ -658,7 +658,7 @@ const TermsAndConditions = () => {
                                 We may send notices to you by e-mail, by posting them on the websites and/or dashboards of the different Kaleidos’ Products &amp; Services or by any other method we choose. Such notice will be effective on dispatch.
                             </li>
                             <li className="ρd__all ρd__li ρt ρuxc9J">
-                                If you want to send notices to us, please use our physical address (calle Fortuny, 19, 1º IZQ, 28010 Madrid, Spain) or our email address (<a className="ρd__all ρd__a ρt ρdn ρsEvEs" target="_blank" href="mailto:support@taiga.io">support@taiga.io</a>). Such notice will be effective when received.
+                                If you want to send notices to us, please use our physical address (calle Fortuny, 19, 1º IZQ, 28010 Madrid, Spain) or our email address (<Link className="ρd__all ρd__a ρt ρdn ρsEvEs" target="_blank" href="mailto:support@taiga.io">support@taiga.io</Link>). Such notice will be effective when received.
                             </li>
                         </ol>
                     </div>
@@ -707,7 +707,7 @@ const TermsAndConditions = () => {
                                 Where allowed by law, you and Kaleidos waive you/our own jurisdiction and agree to submit any conflict, controversy and/or claim related to these Terms and Conditions to the exclusive jurisdiction of the Courts of the City of Madrid.
                             </li>
                             <li className="ρd__all ρd__li ρt ρnz8Ka">
-                                Users have the right to file a claim through the European Commission's online dispute resolution platform, which can be accessed via this <a className="ρd__all ρd__a ρt ρdn ρgcsVh" target="_blank" href="https://ec.europa.eu/consumers/odr/main/?event=main.home2.show">link</a>.
+                                Users have the right to file a claim through the European Commission's online dispute resolution platform, which can be accessed via this <Link className="ρd__all ρd__a ρt ρdn ρgcsVh" target="_blank" href="https://ec.europa.eu/consumers/odr/main/?event=main.home2.show">link</Link>.
                             </li>
                         </ol>
                     </div>

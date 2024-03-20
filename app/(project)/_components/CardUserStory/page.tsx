@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 import { CiMenuKebab } from "react-icons/ci";
 import { FaRegClock, FaPaperclip } from "react-icons/fa";
 
@@ -22,11 +22,11 @@ const CardUserStory = () => {
                 <div>
                 </div>
                 <h2 className="mb-2 px-3 text-[1.4rem] leading-tight text-[#2e3440] font-normal">
-                    <a href="project/johnwindergold71722223-test1-1/us/1?kanban-include_attachments=1&kanban-include_tasks=1&kanban-status=9274528"
+                    <Link href="project/johnwindergold71722223-test1-1/us/1?kanban-include_attachments=1&kanban-include_tasks=1&kanban-status=9274528"
                         className="text-[.875rem]" style={{ contain: `content` }}>
                         <span className="pr-1 text-[#008aa8]">#1</span>
                         <span className="text-[#2e3440] pr-1 break-all">AFAFA</span>
-                    </a>
+                    </Link>
                 </h2>
                 <div className="contents">
                     <div className="mb-2 px-3 flex relative">
