@@ -19,10 +19,12 @@ const AttrStatusUserstorySchema = new mongoose.Schema({
         required: true
     },
     is_closed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     is_archived: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true

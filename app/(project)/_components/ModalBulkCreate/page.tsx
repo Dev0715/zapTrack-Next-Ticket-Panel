@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { RiArrowDownSLine } from "react-icons/ri";
 
@@ -7,6 +8,8 @@ interface ModalBulkCreateProps {
 }
 
 const ModalBulkCreate = ({ show, hideBulkModal }: ModalBulkCreateProps) => {
+    const [popupShown, setPopupShown] = useState(false);
+
     return <>
         <div className={`items-center justify-center transition-opacity duration-300 bg-white opacity-95 fixed top-0 left-0 right-0 bottom-0 z-[98] ${show ? `flex` : `hidden`} `}>
             <div className="inline">
@@ -22,10 +25,12 @@ const ModalBulkCreate = ({ show, hideBulkModal }: ModalBulkCreateProps) => {
                 <fieldset className="mb-4 relative w-full">
                     <div className="text-[.7rem] text-[#2e3440] mb-1 uppercase">Select status</div>
                     <div className="relative">
-                        <button type="button" className="bg-[#e44057] text-[.875rem] border-2 border-transparent rounded-[3px] text-white flex justify-between px-4 py-1 w-full"><span>Ready</span>
+                        <button type="button" className="bg-[#e44057] text-[.875rem] border-2 border-transparent rounded-[3px] text-white flex justify-between px-4 py-1 w-full"
+                            onClick={() => setPopupShown(!popupShown)}>
+                            <span>Ready</span>
                             <RiArrowDownSLine className="w-4 h-4" />
                         </button>
-                        <div className="bg-white border border-[#d8dee9] rounded p-2 absolute w-full z-[2] hidden"
+                        <div className={`bg-white border border-[#d8dee9] rounded p-2 absolute w-full z-[2] ${popupShown ? `block` : `hidden`}`}
                             style={{ boxShadow: `4px 4px 8px rgba(216,222,233,.5)`, top: `calc(1.5rem + 4px)` }}>
                             <button type="button" className="text-[.875rem] text-[#008aa8] cursor-pointer p-1 text-left w-full">New</button>
                             <button type="button" className="text-[.875rem] text-[#70728f] cursor-pointer p-1 text-left w-full">Ready</button>
