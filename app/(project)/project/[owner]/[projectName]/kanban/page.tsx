@@ -6,8 +6,9 @@ import SidebarProject from "@/app/(project)/_components/SidebarProject/page";
 import SectionKanban from "@/app/(project)/_components/SectionKanban/page";
 import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
 import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
+import ModalSelectAssigner from "@/app/(project)/_components/ModalSelectAssigner/page";
 
-import { InfModUserstoryStatus, InfModProject } from "@/libs/interfaces/model.interface";
+import { InfModUserstoryStatus, InfModProject, InfModUserstory } from "@/libs/interfaces/model.interface";
 
 import { getProjectByUserIdAndProName } from "@/app/actions/project/user/projects";
 import { getStatusesByProId } from "@/app/actions/project/attrs/userstories";
@@ -22,6 +23,7 @@ interface KanbanProps {
 const Kanban = ({ params }: KanbanProps) => {
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
+    const [isShowAssignModal, setShowAssignModal] = useState(false);
     const [curStoryStatus, setCurStoryStatus] = useState<InfModUserstoryStatus>({
         _id: "",
         project_id: "",
@@ -31,6 +33,7 @@ const Kanban = ({ params }: KanbanProps) => {
         is_closed: false,
         is_archived: false
     });
+    const [curUserstory, setCurUserstory] = useState<InfModUserstory | null>(null);
     const [project, setProject] = useState<InfModProject | null>(null);
     const [storyStatuses, setStoryStatuses] = useState<any>([]);
 
@@ -73,6 +76,15 @@ const Kanban = ({ params }: KanbanProps) => {
         setShowBulkModal(false);
     }
 
+    const showAssignModal = (userStory: InfModUserstory) => {
+        setCurUserstory(userStory);
+        setShowAssignModal(true);
+    }
+
+    const hideAssignModal = () => {
+        setShowAssignModal(false);
+    }
+
     return <>
         <div className="flex h-full" style={{ minHeight: `calc(100vh - 48px)` }}>
             <SidebarProject projectName={params.projectName} />
@@ -80,6 +92,7 @@ const Kanban = ({ params }: KanbanProps) => {
             <SectionKanban
                 handleAddUserstory={(status) => showStoryModal(status)}
                 handleAddBulk={(status) => showBulkModal(status)}
+                handleSetAssign={(userStory) => showAssignModal(userStory)}
                 storyStatuses={storyStatuses}
                 project={project}
             />
@@ -87,6 +100,8 @@ const Kanban = ({ params }: KanbanProps) => {
             <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
 
             <ModalBulkCreate show={isShowBulkModal} storyStatus={curStoryStatus} storyStatuses={storyStatuses} hideBulkModal={hideBulkModal} />
+
+            <ModalSelectAssigner show={isShowAssignModal} hideAssignModal={hideAssignModal} userStory={curUserstory} />
         </div>
     </>
 }

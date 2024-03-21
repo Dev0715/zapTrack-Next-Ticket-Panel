@@ -5,10 +5,11 @@ import { FaRegClock, FaPaperclip } from "react-icons/fa";
 import { InfModUserstory } from "@/libs/interfaces/model.interface";
 
 interface CardUserStoryProps {
-    userStory: InfModUserstory
+    userStory: InfModUserstory,
+    handleSetAssign: (userStory: InfModUserstory) => void
 }
 
-const CardUserStory = ({ userStory }: CardUserStoryProps) => {
+const CardUserStory = ({ userStory, handleSetAssign }: CardUserStoryProps) => {
     return <>
 
         <div className="min-h-[120px] bg-white rounded cursor-move m-4 outline-0 overflow-hidden duration-200 transition-[box-shadow]"
@@ -21,21 +22,23 @@ const CardUserStory = ({ userStory }: CardUserStoryProps) => {
                     <span title="sadf" className="bg-[#282828] min-w-auto text-[.7rem] rounded-sm text-white max-w-[17ch] mb-2 mr-2 min-h-2 overflow-hidden px-1 text-ellipsis">sadf</span> */}
                 </div>
                 <div className="absolute right-1 top-1 z-[2]">
-                    <button className="rounded-sm py-1">
+                    {/* <button className="rounded-sm py-1">
                         <CiMenuKebab className="w-4 h-4" />
-                    </button>
+                    </button> */}
                 </div>
                 <div>
                 </div>
                 <h2 className="mb-2 px-3 text-[1.4rem] leading-tight text-[#2e3440] font-normal">
-                    <Link href="project/johnwindergold71722223-test1-1/us/1?kanban-include_attachments=1&kanban-include_tasks=1&kanban-status=9274528"
+                    {/* <Link href="/project/johnwindergold71722223-test1-1/us/1?kanban-include_attachments=1&kanban-include_tasks=1&kanban-status=9274528" */}
+                    <Link href="#"
                         className="text-[.875rem]" style={{ contain: `content` }}>
                         <span className="pr-1 text-[#008aa8]">#{userStory.location}</span>
                         <span className="text-[#2e3440] pr-1 break-all">{userStory.subject}</span>
                     </Link>
                 </h2>
                 <div className="contents">
-                    <div className="mb-2 px-3 flex relative">
+                    <div className="mb-2 px-3 flex relative"
+                        onClick={() => handleSetAssign(userStory)}>
                         <div className="items-center flex cursor-pointer -mr-1 relative">
                             <img title="Not assigned" src="https://tree.taiga.io/v-1708969004480/images/unnamed.png" className="border-2 border-white rounded-[15px] flex w-[30px] h-[30px]" />
                             <span className="text-[.875rem] text-[#70728f] ml-2">Not assigned</span>

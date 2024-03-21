@@ -12,11 +12,12 @@ import { getStoriesByProjectId } from "@/app/actions/project/user_story/story";
 interface SectionKanbanProps {
     handleAddUserstory: (status: InfModUserstoryStatus) => void,
     handleAddBulk: (status: InfModUserstoryStatus) => void,
+    handleSetAssign: (userStory: InfModUserstory) => void,
     storyStatuses: Array<InfModUserstoryStatus>,
     project: InfModProject | null
 }
 
-const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses, project }: SectionKanbanProps) => {
+const SectionKanban = ({ handleAddUserstory, handleAddBulk, handleSetAssign, storyStatuses, project }: SectionKanbanProps) => {
     const [zoom, setZoom] = useState<number>(0);
     const [userStories, setUserStories] = useState<Array<InfModUserstory>>([]);
 
@@ -82,7 +83,13 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses, proje
                         <div className="flex flex-nowrap">
                             {
                                 storyStatuses.map((status, idx) =>
-                                    <KanbanBody status={status} hint={idx === 0 && userStories.length === 0} userStories={userStories} />
+                                    <KanbanBody
+                                        key={idx}
+                                        status={status}
+                                        hint={idx === 0 && userStories.length === 0}
+                                        userStories={userStories}
+                                        handleSetAssign={(userStory) => handleSetAssign(userStory)}
+                                    />
                                 )
                             }
                         </div>
