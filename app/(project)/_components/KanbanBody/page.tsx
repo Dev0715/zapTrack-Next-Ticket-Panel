@@ -5,12 +5,13 @@ import CardUserStoryHint from "../CardUserStoryHint/page";
 import { InfModUserstoryStatus, InfModUserstory } from "@/libs/interfaces/model.interface";
 
 interface KanbanBodyProps {
-    status: InfModUserstoryStatus
+    status: InfModUserstoryStatus,
     hint?: boolean,
-    userStories: Array<InfModUserstory>
+    userStories: Array<InfModUserstory>,
+    handleSetAssign: (userStory: InfModUserstory) => void
 }
 
-const KanbanBody = ({ status, hint, userStories }: KanbanBodyProps) => {
+const KanbanBody = ({ status, hint, userStories, handleSetAssign }: KanbanBodyProps) => {
     const [cnt, setCnt] = useState(0);
 
     useEffect(() => {
@@ -50,7 +51,7 @@ const KanbanBody = ({ status, hint, userStories }: KanbanBodyProps) => {
             }
 
             {
-                userStories.map((story, idx) => story.status === status._id && <CardUserStory key={idx} userStory={story} />)
+                userStories.map((story, idx) => story.status === status._id && <CardUserStory key={idx} userStory={story} handleSetAssign={(userStory) => handleSetAssign(userStory)} />)
             }
         </div>
     </>
