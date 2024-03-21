@@ -7,6 +7,9 @@ import SectionKanban from "@/app/(project)/_components/SectionKanban/page";
 import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
 import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
 
+import { getProjectByUserIdAndProName } from "@/app/actions/project/user/projects";
+import { getStatusesByProId } from "@/app/actions/project/attrs/userstories";
+
 interface KanbanProps {
     params: {
         owner: string,
@@ -14,16 +17,54 @@ interface KanbanProps {
     }
 }
 
+interface UserStoryValue {
+    _id: string
+    project_id: string,
+    color: string,
+    name: string,
+    slug: string,
+    is_closed: boolean,
+    is_archived: boolean
+}
+
 const Kanban = ({ params }: KanbanProps) => {
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
-    const [storyStatus, setStoryStatus] = useState<number>(0);
+    const [curStoryStatus, setCurStoryStatus] = useState<UserStoryValue>({
+        _id: "",
+        project_id: "",
+        color: "",
+        name: "",
+        slug: "",
+        is_closed: false,
+        is_archived: false
+    });
+    const [project, setProject] = useState<any>(null);
+    const [storyStatuses, setStoryStatuses] = useState<any>([]);
 
     useEffect(() => {
+        getProjectByUserIdAndProName(params.owner, params.projectName).then((res: any) => {
+            const { status, project } = res;
+            if (status) {
+                setProject(project);
+            }
+        }).catch(err => { });
     }, []);
 
-    const showStoryModal = (status: number) => {
-        setStoryStatus(status);
+    useEffect(() => {
+        if (project === null)
+            return;
+
+        getStatusesByProId(project._id).then((res: any) => {
+            const { status, statuses } = res;
+            console.log(statuses);
+            if (status)
+                setStoryStatuses(statuses);
+        }).catch(err => { });
+    }, [project]);
+
+    const showStoryModal = (status: UserStoryValue) => {
+        setCurStoryStatus(status);
         setShowStoryModal(true);
     }
 
@@ -44,13 +85,14 @@ const Kanban = ({ params }: KanbanProps) => {
             <SidebarProject projectName={params.projectName} />
 
             <SectionKanban
-                handleAddUserstory={showStoryModal}
+                handleAddUserstory={(status) => showStoryModal(status)}
                 handleAddBulk={showBulkModal}
+                storyStatuses={storyStatuses}
             />
 
-            <ModalUserstoryCreate show={isShowStoryModal} status={storyStatus} hideStoryModal={hideStoryModal} />
+            <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
 
-            <ModalBulkCreate show={isShowBulkModal} hideBulkModal={hideBulkModal} />
+            <ModalBulkCreate show={isShowBulkModal} storyStatus={curStoryStatus} storyStatuses={storyStatuses} hideBulkModal={hideBulkModal} />
         </div>
     </>
 }
