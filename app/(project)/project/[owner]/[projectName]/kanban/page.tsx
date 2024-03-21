@@ -17,12 +17,13 @@ interface KanbanProps {
 const Kanban = ({ params }: KanbanProps) => {
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
+    const [storyStatus, setStoryStatus] = useState<number>(0);
 
     useEffect(() => {
-
     }, []);
 
-    const showStoryModal = () => {
+    const showStoryModal = (status: number) => {
+        setStoryStatus(status);
         setShowStoryModal(true);
     }
 
@@ -47,7 +48,7 @@ const Kanban = ({ params }: KanbanProps) => {
                 handleAddBulk={showBulkModal}
             />
 
-            <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
+            <ModalUserstoryCreate show={isShowStoryModal} status={storyStatus} hideStoryModal={hideStoryModal} />
 
             <ModalBulkCreate show={isShowBulkModal} hideBulkModal={hideBulkModal} />
         </div>
