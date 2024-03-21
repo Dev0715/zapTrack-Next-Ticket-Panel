@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+// import { ProjectProvider } from "@/libs/contexts/project.context";
 
 import "./globals.css";
 
@@ -27,9 +28,10 @@ const RootLayout = ({
                     disableTransitionOnChange
                     storageKey="jotion-theme-2"
                 >
-                    <Toaster position="top-center" />
-                    {children}
-
+                    {/* <ProjectProvider> */}
+                        <Toaster position="top-center" />
+                        {children}
+                    {/* </ProjectProvider> */}
                 </ThemeProvider>
             </body>
         </html>

@@ -10,17 +10,15 @@ import PointItem from "./_components/PointItem/page";
 
 interface ModalUserstoryCreateProps {
     show?: boolean,
-    status: number,
     hideStoryModal: any
 }
 
-const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCreateProps) => {
+const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProps) => {
     const [tagInputShown, setTagInputShown] = useState(false);
     const [statusBoxShown, setStatusBoxShown] = useState(false);
     const [searchAssignShown, setSearchAssignShown] = useState(false);
 
     const handleCreateStory = () => {
-        console.log(status);
         hideStoryModal();
     }
 

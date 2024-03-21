@@ -6,11 +6,12 @@ import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
 import ZoomLabel from "./_components/ZoomLabel/page";
 
 interface SectionKanbanProps {
-    handleAddUserstory: any,
-    handleAddBulk: any
+    handleAddUserstory: (status: any) => void,
+    handleAddBulk: (status: any) => void,
+    storyStatuses: Array<any>
 }
 
-const SectionKanban = ({ handleAddUserstory, handleAddBulk }: SectionKanbanProps) => {
+const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses }: SectionKanbanProps) => {
     const [zoom, setZoom] = useState<number>(0);
 
     return <>
@@ -47,48 +48,16 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk }: SectionKanbanProps
                 <div className="flex flex-col h-full overflow-hidden w-full">
                     <div className="bg-white basis-[2.75rem] min-h-[2.75rem] relative z-[5]">
                         <div className="flex absolute w-full overflow-visible flex-nowrap">
-                            <KanbanHeader
-                                title="New"
-                                color="#d8dee9"
-                                status=""
-                                handleAddUserstory={() => handleAddUserstory(0)}
-                                handleAddBulk={() => handleAddBulk()}
-                            />
-                            <KanbanHeader
-                                title="Ready"
-                                color="#e44057"
-                                status=""
-                                handleAddUserstory={() => handleAddUserstory(1)}
-                                handleAddBulk={() => handleAddBulk()}
-                            />
-                            <KanbanHeader
-                                title="In progress"
-                                color="#e47d40"
-                                status=""
-                                handleAddUserstory={() => handleAddUserstory(2)}
-                                handleAddBulk={() => handleAddBulk()}
-                            />
-                            <KanbanHeader
-                                title="Ready for test"
-                                color="#e4ce40"
-                                status=""
-                                handleAddUserstory={() => handleAddUserstory(3)}
-                                handleAddBulk={() => handleAddBulk()}
-                            />
-                            <KanbanHeader
-                                title="Done"
-                                color="#a8e440"
-                                status=""
-                                handleAddUserstory={() => handleAddUserstory(4)}
-                                handleAddBulk={() => handleAddBulk()}
-                            />
-                            <KanbanHeader
-                                title="Archived"
-                                color="#a9aabc"
-                                status=""
-                                handleAddUserstory={() => handleAddUserstory(5)}
-                                handleAddBulk={() => handleAddBulk()}
-                            />
+                            {
+                                storyStatuses.map((status, idx) =>
+                                    <KanbanHeader
+                                        key={idx}
+                                        status={status}
+                                        handleAddUserstory={(status) => handleAddUserstory(status)}
+                                        handleAddBulk={(status) => handleAddBulk(status)}
+                                    />
+                                )
+                            }
                         </div>
                     </div>
 
