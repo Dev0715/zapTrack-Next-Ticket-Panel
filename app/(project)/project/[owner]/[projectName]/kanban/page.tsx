@@ -7,6 +7,8 @@ import SectionKanban from "@/app/(project)/_components/SectionKanban/page";
 import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
 import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
 
+import { UserStoryStatus } from "@/libs/interfaces/model.interface";
+
 import { getProjectByUserIdAndProName } from "@/app/actions/project/user/projects";
 import { getStatusesByProId } from "@/app/actions/project/attrs/userstories";
 
@@ -17,24 +19,14 @@ interface KanbanProps {
     }
 }
 
-interface UserStoryValue {
-    _id: string
-    project_id: string,
-    color: string,
-    name: string,
-    slug: string,
-    is_closed: boolean,
-    is_archived: boolean
-}
-
 const Kanban = ({ params }: KanbanProps) => {
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
-    const [curStoryStatus, setCurStoryStatus] = useState<UserStoryValue>({
+    const [curStoryStatus, setCurStoryStatus] = useState<UserStoryStatus>({
         _id: "",
         project_id: "",
         color: "",
-        name: "",
+        name: "?",
         slug: "",
         is_closed: false,
         is_archived: false
@@ -63,7 +55,7 @@ const Kanban = ({ params }: KanbanProps) => {
         }).catch(err => { });
     }, [project]);
 
-    const showStoryModal = (status: UserStoryValue) => {
+    const showStoryModal = (status: UserStoryStatus) => {
         setCurStoryStatus(status);
         setShowStoryModal(true);
     }
@@ -72,7 +64,8 @@ const Kanban = ({ params }: KanbanProps) => {
         setShowStoryModal(false);
     }
 
-    const showBulkModal = () => {
+    const showBulkModal = (status: UserStoryStatus) => {
+        setCurStoryStatus(status);
         setShowBulkModal(true);
     }
 
@@ -86,7 +79,7 @@ const Kanban = ({ params }: KanbanProps) => {
 
             <SectionKanban
                 handleAddUserstory={(status) => showStoryModal(status)}
-                handleAddBulk={showBulkModal}
+                handleAddBulk={(status) => showBulkModal(status)}
                 storyStatuses={storyStatuses}
             />
 
