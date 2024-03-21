@@ -4,11 +4,12 @@ import { CiSearch, CiFilter } from "react-icons/ci";
 import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
 import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
 import ZoomLabel from "./_components/ZoomLabel/page";
+import { UserStoryStatus } from "@/libs/interfaces/model.interface";
 
 interface SectionKanbanProps {
-    handleAddUserstory: (status: any) => void,
-    handleAddBulk: (status: any) => void,
-    storyStatuses: Array<any>
+    handleAddUserstory: (status: UserStoryStatus) => void,
+    handleAddBulk: (status: UserStoryStatus) => void,
+    storyStatuses: Array<UserStoryStatus>
 }
 
 const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses }: SectionKanbanProps) => {
