@@ -14,6 +14,8 @@ interface ModalUserstoryCreateProps {
 
 const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCreateProps) => {
     const [tagInputShown, setTagInputShown] = useState(false);
+    const [statusBoxShown, setStatusBoxShown] = useState(false);
+    const [searchAssignShown, setSearchAssignShown] = useState(false);
 
     const handleCreateStory = () => {
         console.log(status);
@@ -21,7 +23,7 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
     }
 
     const handleAddTag = () => {
-
+        setTagInputShown(false);
     }
 
     return <>
@@ -105,7 +107,8 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                                             </div>
                                                         </div>
 
-                                                        <div className="cursor-pointer inline-block text-[#434456] transition-linear duration-200 mt-2 ml-2 hover:text-[#25a28c]">
+                                                        <div className="cursor-pointer inline-block text-[#434456] transition-linear duration-200 mt-2 ml-2 hover:text-[#25a28c]"
+                                                            onClick={() => handleAddTag()}>
                                                             <FaRegSave className="w-4 h-4" />
                                                         </div>
                                                     </div>
@@ -151,43 +154,49 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                         </div>
                         <div className="shrink-0 ml-4 px-4 pb-4 max-w-[300px]" style={{ flexBasis: `calc(200px + 2rem)`, minWidth: `calc(200px + 2rem)`, width: `calc(200px + 2rem)` }}>
                             <fieldset className="flex relative mb-4">
-                                <div className="bg-[#70728F] rounded-[3px] text-white cursor-pointer flex justify-between px-3 py-2 w-full">
+                                <div className="bg-[#70728F] rounded-[3px] text-white cursor-pointer flex justify-between px-3 py-2 w-full"
+                                    onClick={() => setStatusBoxShown(!statusBoxShown)}>
                                     <span>New</span>
-                                    <RiArrowDownSLine className="text-white w-[0.9rem] h-[0.9rem]" />
+                                    <div className="flex items-center justify-center">
+                                        <RiArrowDownSLine className="text-white w-[0.9rem] h-[0.9rem]" />
+                                    </div>
                                 </div>
-                                <ul className="text-[.875rem] bg-white border border-[#d8dee9] rounded text-[#008aa8] hidden m-0 p-2 absolute top-8 z-[2] w-[203px]"
-                                    style={{ boxShadow: `4px 4px 8px rgba(46,52,64,.1)` }}>
-                                    <li className="mb-1">
-                                        <Link title="New" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
-                                            <span className="item-text">New</span>
-                                        </Link>
-                                    </li>
-                                    <li className="mb-1">
-                                        <Link title="Ready" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
-                                            <span className="item-text">Ready</span>
-                                        </Link>
-                                    </li>
-                                    <li className="mb-1">
-                                        <Link title="In progress" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
-                                            <span className="item-text">In progress</span>
-                                        </Link>
-                                    </li>
-                                    <li className="mb-1">
-                                        <Link title="Ready for test" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
-                                            <span className="item-text">Ready for test</span>
-                                        </Link>
-                                    </li>
-                                    <li className="mb-1">
-                                        <Link title="Done" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
-                                            <span className="item-text">Done</span>
-                                        </Link>
-                                    </li>
-                                    <li >
-                                        <Link title="Archived" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
-                                            <span className="item-text">Archived</span>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                {
+                                    statusBoxShown &&
+                                    <ul className={`text-[.875rem] bg-white border border-[#d8dee9] rounded text-[#008aa8]  m-0 p-2 absolute top-8 z-[2] w-[203px] transition-all duration-250`}
+                                        style={{ boxShadow: `4px 4px 8px rgba(46,52,64,.1)` }}>
+                                        <li className="mb-1">
+                                            <Link title="New" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                                <span className="item-text">New</span>
+                                            </Link>
+                                        </li>
+                                        <li className="mb-1">
+                                            <Link title="Ready" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                                <span className="item-text">Ready</span>
+                                            </Link>
+                                        </li>
+                                        <li className="mb-1">
+                                            <Link title="In progress" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                                <span className="item-text">In progress</span>
+                                            </Link>
+                                        </li>
+                                        <li className="mb-1">
+                                            <Link title="Ready for test" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                                <span className="item-text">Ready for test</span>
+                                            </Link>
+                                        </li>
+                                        <li className="mb-1">
+                                            <Link title="Done" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                                <span className="item-text">Done</span>
+                                            </Link>
+                                        </li>
+                                        <li >
+                                            <Link title="Archived" href="#" className="flex items-center text-[#008aa8] min-h-[1.5rem] overflow-hidden text-ellipsis transition-all duration-[250] p-1">
+                                                <span className="item-text">Archived</span>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                }
                             </fieldset>
                             <div>
                                 <div >
@@ -200,7 +209,7 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                                     style={{ transform: `translateY(-.06rem)` }} />
                                                 <span className="text-[#008aa8]">at the bottom</span>
                                             </label>
-                                            <label className="flex self-center text-[.875rem] text-[#505c74] pl-1">
+                                            <label className="flex items-center justify-center text-[.875rem] text-[#505c74] pl-1">
                                                 <input type="radio" defaultValue="top" className="h-0 opacity-0 w-0" />
                                                 <span className="border-2 border-[#d8dee9] rounded-full grid h-[18px] mr-1 place-items-center w-[18px]"
                                                     style={{ transform: `translateY(-.06rem)` }} />
@@ -216,7 +225,8 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                                         <img alt="undefined" src="https://tree.taiga.io/v-1708969004480/images/unnamed.png" title="undefined" className="w-[3rem] h-[3rem]" />
                                                     </div>
                                                     <div className="grow-1 ml-2">
-                                                        <Link title="Edit assignment" href="#" className="text-[#008aa8] relative">
+                                                        <Link title="Edit assignment" href="#" className="text-[#008aa8] relative"
+                                                            onClick={() => setSearchAssignShown(true)}>
                                                             <span>Assign</span>
                                                         </Link>&nbsp;<span className="text-[#5a5b72]">or</span>&nbsp;
                                                         <Link href="#" title="Assign to me" className="text-[#008aa8]">
@@ -225,11 +235,14 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="text-[.875rem] bg-white border border-[#d8dee9] rounded text-[#008aa8] hidden left-0 m-0 p-2 absolute top-[60px] w-[203px] z-[2]"
+                                            <div className={`${searchAssignShown ? `block` : `hidden`} text-[.875rem] bg-white border border-[#d8dee9] rounded text-[#008aa8] left-0 m-0 p-2 absolute top-[60px] w-[203px] z-[2]`}
                                                 style={{ boxShadow: `4px 4px 8px rgba(46,52,64,.1)` }}>
                                                 <input type="text" placeholder="Search for users" className="mb-2 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full" />
-                                                <Link title="aasdfasdfadfsdf" href="#" className="flex items-center h-auto mb-1 min-h-[2rem] p-1">
-                                                    <img className="rounded-full mr-2 h-[1.75rem] w-[1.75rem]" />
+                                                <Link title="aasdfasdfadfsdf" href="#" className="flex items-center h-auto mb-1 min-h-[2rem] p-1"
+                                                    onClick={() => setSearchAssignShown(false)}>
+                                                    <img className="rounded-full mr-2 h-[1.75rem] w-[1.75rem]"
+                                                        src="https://i0.wp.com/tree.taiga.io/v-1708969004480/images/user-avatars/user-avatar-04.png?ssl=1"
+                                                        style={{ background: `rgba( 183, 203, 131, 1 )` }} />
                                                     <span title="aasdfasdfadfsdf" className="text-[#4c566a] grow-1 min-w-0 overflow-hidden relative text-ellipsis flex-initial">aasdfasdfadfsdf</span>
                                                 </Link>
                                             </div>
@@ -243,6 +256,20 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                             <li title="UX" className="text-[.875rem] bg-[#f9f9fb] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative cursor-pointer">
                                                 <span tg-loading="false" className="">UX</span>
                                                 <span className="text-[#4c566a] overflow-hidden text-ellipsis">?</span>
+                                                {/* <ul className="popover pop-points-open  active" style={{ visibility: 'visible', display: 'block' }}>
+                                                    <li><a className="point"><span className="item-text">?</span></a></li>
+                                                    <li><a className="point"><span className="item-text">0</span></a></li>
+                                                    <li><a className="point"><span className="item-text">1/2</span></a></li>
+                                                    <li><a className="point"><span className="item-text">1</span></a></li>
+                                                    <li><a className="point"><span className="item-text">2</span></a></li>
+                                                    <li><a className="point"><span className="item-text">3</span></a></li>
+                                                    <li><a className="point"><span className="item-text">5</span></a></li>
+                                                    <li><a className="point"><span className="item-text">8</span></a></li>
+                                                    <li><a className="point"><span className="item-text">10</span></a></li>
+                                                    <li><a className="point"><span className="item-text">13</span></a></li>
+                                                    <li><a className="point"><span className="item-text">20</span></a></li>
+                                                    <li><a className="point"><span className="item-text">40</span></a></li>
+                                                </ul> */}
                                             </li>
                                             <li title="Design" className="text-[.875rem] bg-[#f9f9fb] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative cursor-pointer">
                                                 <span tg-loading="false" className="">Design</span>
