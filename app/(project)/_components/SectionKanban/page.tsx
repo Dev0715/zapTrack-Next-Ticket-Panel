@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiSearch, CiFilter } from "react-icons/ci";
 
 import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
 import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
 import ZoomLabel from "./_components/ZoomLabel/page";
-import { UserStoryStatus } from "@/libs/interfaces/model.interface";
+
+import { InfModProject, InfModUserstoryStatus, InfModUserstory } from "@/libs/interfaces/model.interface";
+import { getStoriesByProjectId } from "@/app/actions/project/user_story/story";
+
 
 interface SectionKanbanProps {
-    handleAddUserstory: (status: UserStoryStatus) => void,
-    handleAddBulk: (status: UserStoryStatus) => void,
-    storyStatuses: Array<UserStoryStatus>
+    handleAddUserstory: (status: InfModUserstoryStatus) => void,
+    handleAddBulk: (status: InfModUserstoryStatus) => void,
+    storyStatuses: Array<InfModUserstoryStatus>,
+    project: InfModProject | null
 }
 
-const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses }: SectionKanbanProps) => {
+const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses, project }: SectionKanbanProps) => {
     const [zoom, setZoom] = useState<number>(0);
+    const [userStories, setUserStories] = useState<Array<InfModUserstory>>([]);
+
+    useEffect(() => {
+        if (project === null)
+            return;
+
+        getStoriesByProjectId(project._id).then((res: any) => {
+            const { status, stories } = res;
+            if (status)
+                setUserStories(stories);
+        });
+    }, [project]);
 
     return <>
         <section className="flex flex-col max-h-full max-w-full pt-4 pl-4 relative flex-1">
@@ -64,12 +80,11 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk, storyStatuses }: Sec
 
                     <div className="flex h-full mt-[1px] overflow-hidden overflow-x-auto text-[1rem] w-full">
                         <div className="flex flex-nowrap">
-                            <KanbanBody stories={[]} hint={true} />
-                            <KanbanBody stories={[]} />
-                            <KanbanBody stories={[]} />
-                            <KanbanBody stories={[]} />
-                            <KanbanBody stories={[]} />
-                            <KanbanBody stories={[]} />
+                            {
+                                storyStatuses.map((status, idx) =>
+                                    <KanbanBody status={status} hint={idx === 0 && userStories.length === 0} userStories={userStories} />
+                                )
+                            }
                         </div>
                     </div>
                 </div>

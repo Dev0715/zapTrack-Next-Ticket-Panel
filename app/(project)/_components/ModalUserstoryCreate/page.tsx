@@ -10,7 +10,7 @@ import PointItem from "./_components/PointItem/page";
 
 interface ModalUserstoryCreateProps {
     show?: boolean,
-    hideStoryModal: any
+    hideStoryModal: () => void
 }
 
 const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProps) => {
