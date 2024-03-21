@@ -51,42 +51,42 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk }: SectionKanbanProps
                                 title="New"
                                 color="#d8dee9"
                                 status=""
-                                handleAddUserstory={() => handleAddUserstory()}
+                                handleAddUserstory={() => handleAddUserstory(0)}
                                 handleAddBulk={() => handleAddBulk()}
                             />
                             <KanbanHeader
                                 title="Ready"
                                 color="#e44057"
                                 status=""
-                                handleAddUserstory={() => handleAddUserstory()}
+                                handleAddUserstory={() => handleAddUserstory(1)}
                                 handleAddBulk={() => handleAddBulk()}
                             />
                             <KanbanHeader
                                 title="In progress"
                                 color="#e47d40"
                                 status=""
-                                handleAddUserstory={() => handleAddUserstory()}
+                                handleAddUserstory={() => handleAddUserstory(2)}
                                 handleAddBulk={() => handleAddBulk()}
                             />
                             <KanbanHeader
                                 title="Ready for test"
                                 color="#e4ce40"
                                 status=""
-                                handleAddUserstory={() => handleAddUserstory()}
+                                handleAddUserstory={() => handleAddUserstory(3)}
                                 handleAddBulk={() => handleAddBulk()}
                             />
                             <KanbanHeader
                                 title="Done"
                                 color="#a8e440"
                                 status=""
-                                handleAddUserstory={() => handleAddUserstory()}
+                                handleAddUserstory={() => handleAddUserstory(4)}
                                 handleAddBulk={() => handleAddBulk()}
                             />
                             <KanbanHeader
                                 title="Archived"
                                 color="#a9aabc"
                                 status=""
-                                handleAddUserstory={() => handleAddUserstory()}
+                                handleAddUserstory={() => handleAddUserstory(5)}
                                 handleAddBulk={() => handleAddBulk()}
                             />
                         </div>

@@ -1,16 +1,29 @@
 import Link from "next/link";
+import { useState } from "react";
 import { MdClose, MdOutlineAdd } from "react-icons/md";
 import { RiArrowDownSLine, RiTeamFill } from "react-icons/ri";
 import { FaRegClock } from "react-icons/fa6";
 import { IoBagSharp } from "react-icons/io5";
-import { FaLock } from "react-icons/fa";
+import { FaLock, FaRegSave } from "react-icons/fa";
 
 interface ModalUserstoryCreateProps {
     show?: boolean,
+    status: number,
     hideStoryModal: any
 }
 
-const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProps) => {
+const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCreateProps) => {
+    const [tagInputShown, setTagInputShown] = useState(false);
+
+    const handleCreateStory = () => {
+        console.log(status);
+        hideStoryModal();
+    }
+
+    const handleAddTag = () => {
+
+    }
+
     return <>
         <div className={`items-center justify-center transition-opacity duration-300 z-[99] bg-white opacity-95 fixed top-0 bottom-0 left-0 right-0 ${show ? `flex` : `hidden`} `}>
             <div className="inline">
@@ -22,7 +35,7 @@ const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProp
                     <MdClose className="w-8 h-8" />
                 </button>
             </div>
-            <form className="basis-[700px] max-w-[700px] w-[700px] grow-0">
+            <div className="basis-[700px] max-w-[700px] w-[700px] grow-0">
                 <h2 className="text-center text-[1.7rem] leading-tight mb-4 text-[#2e3440] text-normal">
                     <span >New user story</span>
                 </h2>
@@ -50,10 +63,63 @@ const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProp
                             <fieldset className="relative mb-4 border-0 m-0 p-0 w-full">
                                 <div className="w-full flex flex-wrap content-center">
                                     <div className="flex items-center gap-2 flex-wrap">
-                                        <button title="Add tag" className="bg-[#f9f9fb] text-[#008aa8] p-2 text-[.875rem] items-center border-0 rounded inline-flex justify-center text-center">
-                                            <span>Add tag</span>
-                                            <MdOutlineAdd className="w-4 h-4" />
-                                        </button>
+                                        {
+                                            tagInputShown ?
+                                                <>
+                                                    <div className="flex items-start grow-0 shrink-0 relative w-[250px]" >
+                                                        <input type="text" placeholder="Enter tag" className="border-[#70728f] mr-1 max-h-[2rem] p-[6px] w-[14rem] bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0" />
+
+                                                        <div className="relative">
+                                                            <div className="bg-[#51dd55] cursor-pointer h-[2rem] w-[2rem] border-2 border-[#4c566a] rounded-[3px] transition-color duration-300" />
+
+                                                            <div className="bg-white border border-[#d8dee9] left-0 p-4 absolute top-[2rem] w-[306px] z-[2]">
+                                                                <ul className="grid gap-[0.5rem] mb-0 grid-cols-7	">
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(211, 81, 99)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(211, 81, 207)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(172, 81, 211)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(129, 81, 211)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(85, 81, 211)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(81, 120, 211)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(120, 211, 81)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(81, 211, 85)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(81, 211, 129)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(81, 211, 172)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(81, 207, 211)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(81, 163, 211)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(163, 211, 80)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(207, 211, 80)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(211, 172, 80)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(211, 128, 80)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(211, 84, 80)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(228, 64, 87)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(76, 86, 106)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8" style={{ background: 'rgb(112, 114, 143)' }} />
+                                                                    <li className="rounded-[2px] cursor-pointer w-8 h-8 bg-[#a9aabc] relative" />
+                                                                </ul>
+                                                                <div className="flex mt-2">
+                                                                    <div className="bg-[#f1f1f4] mr-2">
+                                                                        <div className="rounded-[2px] cursor-pointer h-8 w-8" style={{ background: 'rgb(51, 51, 51)' }} />
+                                                                    </div>
+                                                                    <input type="text" maxLength={7} placeholder="Type hex code" className="flex-1 m-0 w-0 border-[#70728f] max-h-[2rem] p-[6px] bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a]" aria-invalid="false" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="cursor-pointer inline-block text-[#434456] transition-linear duration-200 mt-2 ml-2 hover:text-[#25a28c]">
+                                                            <FaRegSave className="w-4 h-4" />
+                                                        </div>
+                                                    </div>
+                                                </>
+                                                :
+                                                <button
+                                                    title="Add tag"
+                                                    className="bg-[#f9f9fb] text-[#008aa8] p-2 text-[.875rem] items-center border-0 rounded inline-flex justify-center text-center"
+                                                    onClick={() => setTagInputShown(true)}
+                                                >
+                                                    <span>Add tag</span>
+                                                    <MdOutlineAdd className="w-4 h-4" />
+                                                </button>
+                                        }
                                     </div>
                                 </div>
                             </fieldset>
@@ -230,12 +296,16 @@ const ModalUserstoryCreate = ({ show, hideStoryModal }: ModalUserstoryCreateProp
                         </div>
                     </div>
                     <div className="flex justify-end">
-                        <button type="submit" className="w-full px-6 py-3 text-[.875rem] items-center bg-[#83eed3] border-0 rounded text-[#2e3440] inline-flex justify-center text-center uppercase">
+                        <button
+                            type="button"
+                            className="w-full px-6 py-3 text-[.875rem] items-center bg-[#83eed3] border-0 rounded text-[#2e3440] inline-flex justify-center text-center uppercase"
+                            onClick={() => handleCreateStory()}
+                        >
                             <span>Create</span>
                         </button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div >
     </>
 }
