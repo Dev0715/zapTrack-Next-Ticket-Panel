@@ -1,12 +1,28 @@
+import { useEffect, useState } from "react";
 import CardUserStory from "../CardUserStory/page";
 import CardUserStoryHint from "../CardUserStoryHint/page";
 
+import { InfModUserstoryStatus, InfModUserstory } from "@/libs/interfaces/model.interface";
+
 interface KanbanBodyProps {
-    stories: Array<any>,
+    status: InfModUserstoryStatus
     hint?: boolean,
+    userStories: Array<InfModUserstory>
 }
 
-const KanbanBody = ({ stories, hint }: KanbanBodyProps) => {
+const KanbanBody = ({ status, hint, userStories }: KanbanBodyProps) => {
+    const [cnt, setCnt] = useState(0);
+
+    useEffect(() => {
+        let userStoryCnt = userStories.length;
+        let curCnt = 0;
+        for (let i = 0; i < userStoryCnt; i++) {
+            if (userStories[i].status === status._id)
+                curCnt++;
+        }
+        setCnt(curCnt);
+    }, [userStories]);
+
     return <>
         <div className="bg-[#eceff4] rounded basis-[292px] grow-0 shrink-0 mr-[5px] max-w-[292px] overflow-x-hidden overflow-y-auto duration-100 transition-all w-[292px]"
             style={{ contain: `content` }}>
@@ -16,13 +32,13 @@ const KanbanBody = ({ stories, hint }: KanbanBodyProps) => {
                 <div className="h-[14px] overflow-hidden relative text-center w-full text-[#70728f]">
                     <div style={{ transform: `-4px 2px 5px -2px rgba(46,52,64,.15)` }}>
                         <div className="block h-[14px] overflow-hidden w-full">
-                            <span className="current">0</span>
+                            <span className="current">{cnt}</span>
                         </div>
                         <div className="block h-[14px] overflow-hidden w-full">
-                            <span className="current">0</span>
+                            <span className="current">{cnt + 1}</span>
                         </div>
                         <div className="block h-[14px] overflow-hidden w-full">
-                            <span className="current">0</span>
+                            <span className="current">{cnt - 1}</span>
                         </div>
                     </div>
                 </div>
@@ -32,8 +48,9 @@ const KanbanBody = ({ stories, hint }: KanbanBodyProps) => {
                 hint &&
                 <CardUserStoryHint />
             }
+
             {
-                stories.map((story, idx) => <CardUserStory />)
+                userStories.map((story, idx) => story.status === status._id && <CardUserStory key={idx} userStory={story} />)
             }
         </div>
     </>

@@ -3,18 +3,12 @@
 import { IoMdAdd } from "react-icons/io"
 import { FaShirtsinbulk, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
+import { InfModUserstoryStatus } from "@/libs/interfaces/model.interface";
+
 interface KanbanHeaderProps {
-    status: {
-        _id: string
-        project_id: string,
-        color: string,
-        name: string,
-        slug: string,
-        is_closed: boolean,
-        is_archived: boolean
-    },
-    handleAddUserstory: (status: any) => void,
-    handleAddBulk: (status: any) => void,
+    status: InfModUserstoryStatus,
+    handleAddUserstory: (status: InfModUserstoryStatus) => void,
+    handleAddBulk: (status: InfModUserstoryStatus) => void,
 }
 
 const KanbanHeader = ({ status, handleAddUserstory, handleAddBulk }: KanbanHeaderProps) => {

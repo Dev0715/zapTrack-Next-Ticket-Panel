@@ -7,7 +7,7 @@ import SectionKanban from "@/app/(project)/_components/SectionKanban/page";
 import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
 import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
 
-import { UserStoryStatus } from "@/libs/interfaces/model.interface";
+import { InfModUserstoryStatus, InfModProject } from "@/libs/interfaces/model.interface";
 
 import { getProjectByUserIdAndProName } from "@/app/actions/project/user/projects";
 import { getStatusesByProId } from "@/app/actions/project/attrs/userstories";
@@ -22,7 +22,7 @@ interface KanbanProps {
 const Kanban = ({ params }: KanbanProps) => {
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
-    const [curStoryStatus, setCurStoryStatus] = useState<UserStoryStatus>({
+    const [curStoryStatus, setCurStoryStatus] = useState<InfModUserstoryStatus>({
         _id: "",
         project_id: "",
         color: "",
@@ -31,7 +31,7 @@ const Kanban = ({ params }: KanbanProps) => {
         is_closed: false,
         is_archived: false
     });
-    const [project, setProject] = useState<any>(null);
+    const [project, setProject] = useState<InfModProject | null>(null);
     const [storyStatuses, setStoryStatuses] = useState<any>([]);
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const Kanban = ({ params }: KanbanProps) => {
         }).catch(err => { });
     }, [project]);
 
-    const showStoryModal = (status: UserStoryStatus) => {
+    const showStoryModal = (status: InfModUserstoryStatus) => {
         setCurStoryStatus(status);
         setShowStoryModal(true);
     }
@@ -64,7 +64,7 @@ const Kanban = ({ params }: KanbanProps) => {
         setShowStoryModal(false);
     }
 
-    const showBulkModal = (status: UserStoryStatus) => {
+    const showBulkModal = (status: InfModUserstoryStatus) => {
         setCurStoryStatus(status);
         setShowBulkModal(true);
     }
@@ -81,6 +81,7 @@ const Kanban = ({ params }: KanbanProps) => {
                 handleAddUserstory={(status) => showStoryModal(status)}
                 handleAddBulk={(status) => showBulkModal(status)}
                 storyStatuses={storyStatuses}
+                project={project}
             />
 
             <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
