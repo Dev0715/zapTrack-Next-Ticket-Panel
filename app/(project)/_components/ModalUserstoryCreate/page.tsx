@@ -6,6 +6,8 @@ import { FaRegClock } from "react-icons/fa6";
 import { IoBagSharp } from "react-icons/io5";
 import { FaLock, FaRegSave } from "react-icons/fa";
 
+import PointItem from "./_components/PointItem/page";
+
 interface ModalUserstoryCreateProps {
     show?: boolean,
     status: number,
@@ -144,7 +146,7 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                             <input id="add-attach" type="file" className="hidden" />
                                         </div>
                                     </div>
-                                    <div className="border-3 border-dashed border-[#eceff4] mt-2 p-4 text-center transition-all duration-200">
+                                    <div className="border-[3px] border-dashed border-[#eceff4] mt-2 p-4 text-center transition-all duration-200 text-[#70728f]">
                                         <div>Drop attachments here!</div>
                                     </div>
                                     <div className="max-h-[7.5rem] overflow-y-auto">
@@ -253,36 +255,10 @@ const ModalUserstoryCreate = ({ show, status, hideStoryModal }: ModalUserstoryCr
                                             <span>Points</span>
                                         </div>
                                         <ul className="flex flex-col">
-                                            <li title="UX" className="text-[.875rem] bg-[#f9f9fb] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative cursor-pointer">
-                                                <span tg-loading="false" className="">UX</span>
-                                                <span className="text-[#4c566a] overflow-hidden text-ellipsis">?</span>
-                                                {/* <ul className="popover pop-points-open  active" style={{ visibility: 'visible', display: 'block' }}>
-                                                    <li><a className="point"><span className="item-text">?</span></a></li>
-                                                    <li><a className="point"><span className="item-text">0</span></a></li>
-                                                    <li><a className="point"><span className="item-text">1/2</span></a></li>
-                                                    <li><a className="point"><span className="item-text">1</span></a></li>
-                                                    <li><a className="point"><span className="item-text">2</span></a></li>
-                                                    <li><a className="point"><span className="item-text">3</span></a></li>
-                                                    <li><a className="point"><span className="item-text">5</span></a></li>
-                                                    <li><a className="point"><span className="item-text">8</span></a></li>
-                                                    <li><a className="point"><span className="item-text">10</span></a></li>
-                                                    <li><a className="point"><span className="item-text">13</span></a></li>
-                                                    <li><a className="point"><span className="item-text">20</span></a></li>
-                                                    <li><a className="point"><span className="item-text">40</span></a></li>
-                                                </ul> */}
-                                            </li>
-                                            <li title="Design" className="text-[.875rem] bg-[#f9f9fb] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative cursor-pointer">
-                                                <span tg-loading="false" className="">Design</span>
-                                                <span className="text-[#4c566a] overflow-hidden text-ellipsis">?</span>
-                                            </li>
-                                            <li title="Front" className="text-[.875rem] bg-[#f9f9fb] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative cursor-pointer">
-                                                <span tg-loading="false" className="">Front</span>
-                                                <span className="text-[#4c566a] overflow-hidden text-ellipsis">?</span>
-                                            </li>
-                                            <li title="Back" className="text-[.875rem] bg-[#f9f9fb] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative cursor-pointer">
-                                                <span tg-loading="false" className="">Back</span>
-                                                <span className="text-[#4c566a] overflow-hidden text-ellipsis">?</span>
-                                            </li>
+                                            <PointItem title={`UX`} />
+                                            <PointItem title={`Design`} />
+                                            <PointItem title={`Front`} />
+                                            <PointItem title={`Back`} />
                                             <li className="bg-[#e5e9f0] border-b-0 text-[.875rem] text-[#70728f] flex justify-between mb-[1.6px] min-h-[2rem] p-2 relative">
                                                 <span className="role">total points</span>
                                                 <span className="text-[#4c566a] overflow-hidden pl-4 text-ellipsis">?</span>
