@@ -87,7 +87,7 @@ const Kanban = ({ params }: KanbanProps) => {
 
     return <>
         <div className="flex h-full" style={{ minHeight: `calc(100vh - 48px)` }}>
-            <SidebarProject projectName={params.projectName} />
+            <SidebarProject projectName={params.projectName} owner={params.owner} />
 
             <SectionKanban
                 handleAddUserstory={(status) => showStoryModal(status)}
