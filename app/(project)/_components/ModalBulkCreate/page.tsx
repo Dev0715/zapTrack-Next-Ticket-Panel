@@ -6,18 +6,18 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { toast } from "sonner";
 
 import { createBulk } from "@/app/actions/project/new/kanban/bulk";
-import { InfModUserstoryStatus } from "@/libs/interfaces/model.interface";
+import { InfModAttrStatusUserstory } from "@/libs/interfaces/model.interface";
 
 interface ModalBulkCreateProps {
     show: boolean,
     hideBulkModal: () => void,
-    storyStatus: InfModUserstoryStatus,
-    storyStatuses: Array<InfModUserstoryStatus>
+    storyStatus: InfModAttrStatusUserstory,
+    storyStatuses: Array<InfModAttrStatusUserstory>
 }
 
 const ModalBulkCreate = ({ show, hideBulkModal, storyStatus, storyStatuses }: ModalBulkCreateProps) => {
     const [popupShown, setPopupShown] = useState<boolean>(false);
-    const [curStatus, setCurStatus] = useState<InfModUserstoryStatus>(storyStatus);
+    const [curStatus, setCurStatus] = useState<InfModAttrStatusUserstory>(storyStatus);
     const [location, setLocation] = useState<boolean>(false);
     const [items, setItems] = useState<string>("");
     const [itemError, setItemError] = useState<string>("");
@@ -26,7 +26,7 @@ const ModalBulkCreate = ({ show, hideBulkModal, storyStatus, storyStatuses }: Mo
         setCurStatus(storyStatus);
     }, [storyStatus]);
 
-    const handleChangeStatus = (status: InfModUserstoryStatus) => {
+    const handleChangeStatus = (status: InfModAttrStatusUserstory) => {
         setCurStatus(status);
         setPopupShown(false);
     }

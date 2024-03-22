@@ -5,15 +5,15 @@ import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
 import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
 import ZoomLabel from "./_components/ZoomLabel/page";
 
-import { InfModProject, InfModUserstoryStatus, InfModUserstory } from "@/libs/interfaces/model.interface";
+import { InfModProject, InfModAttrStatusUserstory, InfModUserstory } from "@/libs/interfaces/model.interface";
 import { getStoriesByProjectId } from "@/app/actions/project/user_story/story";
 
 
 interface SectionKanbanProps {
-    handleAddUserstory: (status: InfModUserstoryStatus) => void,
-    handleAddBulk: (status: InfModUserstoryStatus) => void,
+    handleAddUserstory: (status: InfModAttrStatusUserstory) => void,
+    handleAddBulk: (status: InfModAttrStatusUserstory) => void,
     handleSetAssign: (userStory: InfModUserstory) => void,
-    storyStatuses: Array<InfModUserstoryStatus>,
+    storyStatuses: Array<InfModAttrStatusUserstory>,
     project: InfModProject | null
 }
 

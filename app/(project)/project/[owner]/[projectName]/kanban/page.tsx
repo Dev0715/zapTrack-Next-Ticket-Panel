@@ -8,7 +8,7 @@ import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCrea
 import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
 import ModalSelectAssigner from "@/app/(project)/_components/ModalSelectAssigner/page";
 
-import { InfModUserstoryStatus, InfModProject, InfModUserstory } from "@/libs/interfaces/model.interface";
+import { InfModAttrStatusUserstory, InfModProject, InfModUserstory } from "@/libs/interfaces/model.interface";
 
 import { getProjectByUserIdAndProName } from "@/app/actions/project/user/projects";
 import { getStatusesByProId } from "@/app/actions/project/attrs/userstories";
@@ -24,7 +24,7 @@ const Kanban = ({ params }: KanbanProps) => {
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
     const [isShowAssignModal, setShowAssignModal] = useState(false);
-    const [curStoryStatus, setCurStoryStatus] = useState<InfModUserstoryStatus>({
+    const [curStoryStatus, setCurStoryStatus] = useState<InfModAttrStatusUserstory>({
         _id: "",
         project_id: "",
         color: "",
@@ -58,7 +58,7 @@ const Kanban = ({ params }: KanbanProps) => {
         }).catch(err => { });
     }, [project]);
 
-    const showStoryModal = (status: InfModUserstoryStatus) => {
+    const showStoryModal = (status: InfModAttrStatusUserstory) => {
         setCurStoryStatus(status);
         setShowStoryModal(true);
     }
@@ -67,7 +67,7 @@ const Kanban = ({ params }: KanbanProps) => {
         setShowStoryModal(false);
     }
 
-    const showBulkModal = (status: InfModUserstoryStatus) => {
+    const showBulkModal = (status: InfModAttrStatusUserstory) => {
         setCurStoryStatus(status);
         setShowBulkModal(true);
     }
