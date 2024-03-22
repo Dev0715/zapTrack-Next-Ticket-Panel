@@ -1,3 +1,76 @@
+export interface InfModAttrKanbanSwimline {
+    _id: string,
+    project_id: string,
+    name: string,
+    default: boolean
+}
+
+export interface InfModAttrPoint {
+    _id: string,
+    project_id: string,
+    name: string,
+    value: number
+}
+
+export interface InfModAttrStatusEpic {
+    _id: string,
+    project_id: string,
+    color: string,
+    name: string,
+    slug: string,
+    is_closed: boolean,
+}
+
+export interface InfModAttrStatusIssue {
+    _id: string,
+    project_id: string,
+    color: string,
+    name: string,
+    slug: string,
+    is_closed: string
+}
+
+export interface InfModAttrStatusTask {
+    _id: string,
+    project_id: string,
+    color: string,
+    name: string,
+    slug: string,
+    is_closed: string
+}
+
+export interface InfModAttrStatusUserstory {
+    _id: string,
+    project_id: string,
+    color: string,
+    name: string,
+    slug: string,
+    is_closed: boolean,
+    is_archived: boolean
+}
+
+export interface InfModEmailVerify {
+    _id: string,
+    email: string,
+    token: string
+}
+
+export interface InfModPasswordVerify {
+    _id: string,
+    email: string,
+    token: string
+}
+
+export interface InfModProjectMember {
+    _id: string,
+    project_id: string,
+    email: string,
+    permission: string,
+    description: string,
+    is_admin: boolean,
+    status: number
+}
+
 export interface InfModProject {
     _id: string,
     owner: string,
@@ -28,6 +101,22 @@ export interface InfModProject {
     module_meetup_prefix: string
 }
 
+export interface InfModUser {
+    _id: string,
+    username: string,
+    full_name: string,
+    email: string,
+    password: string,
+    language: string,
+    theme_id: number,
+    bio: string,
+    photo: string,
+    premium_date: string,
+    is_premium: boolean,
+    status: boolean,
+    signin_type: number
+}
+
 export interface InfModUserstory {
     _id: string,
     project_id: string,
@@ -48,14 +137,4 @@ export interface InfModUserstory {
     is_blocked: boolean,
     blocked_reason: string,
     swimlane_id: string
-}
-
-export interface InfModUserstoryStatus {
-    _id: string
-    project_id: string,
-    color: string,
-    name: string,
-    slug: string,
-    is_closed: boolean,
-    is_archived: boolean
 }

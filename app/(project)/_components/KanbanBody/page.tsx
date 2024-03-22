@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import CardUserStory from "../CardUserStory/page";
 import CardUserStoryHint from "../CardUserStoryHint/page";
 
-import { InfModUserstoryStatus, InfModUserstory } from "@/libs/interfaces/model.interface";
+import { InfModAttrStatusUserstory, InfModUserstory } from "@/libs/interfaces/model.interface";
 
 interface KanbanBodyProps {
-    status: InfModUserstoryStatus,
+    status: InfModAttrStatusUserstory,
     hint?: boolean,
     userStories: Array<InfModUserstory>,
     handleSetAssign: (userStory: InfModUserstory) => void
