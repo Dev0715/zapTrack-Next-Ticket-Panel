@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 
 import { InfModUserstory } from "@/libs/interfaces/model.interface";
@@ -10,6 +11,9 @@ interface ModalSelectAssignerProps {
 
 const ModalSelectAssigner = ({ show, hideAssignModal, userStory }: ModalSelectAssignerProps) => {
     console.log(userStory);
+
+    useEffect(() => {
+    }, []);
 
     return <>
         <div className={`${show ? `flex` : `hidden`} items-center justify-center transition-opacity duration-300 bg-white opacity-95 bottom-0 left-0 fixed top-0 right-0 z-[98]`}>
@@ -45,14 +49,14 @@ const ModalSelectAssigner = ({ show, hideAssignModal, userStory }: ModalSelectAs
                         </div>
                     </div>
                     <div >
-                        <div className="flex items-center border-b border-[#e2e3e9] py-1 align-middle">
+                        <button className="flex items-center border-b border-[#e2e3e9] py-1 align-middle w-full">
                             <div className="basis-[3rem] mr-1 max-h-[3rem] max-w-[3rem]">
                                 <img style={{ background: 'rgb(183, 203, 131)', visibility: 'visible' }}
                                     src="https://www.gravatar.com/avatar/919392c43c7449e356…4480%2Fimages%2Fuser-avatars%2Fuser-avatar-04.png"
                                     className="rounded-full w-full" />
                             </div>
                             <div className="text-[#434456] grow-1 ml-2">aasdfasdfadfsdf</div>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div className="mt-8 text-center" >
