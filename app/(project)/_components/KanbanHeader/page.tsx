@@ -19,13 +19,13 @@ const KanbanHeader = ({ status, handleAddUserstory, handleAddBulk }: KanbanHeade
                 <div className="inline-block max-w-[160px] overflow-hidden text-ellipsis text-[.875rem] text-[#2e3440] leading-[1em]">{status.name}</div>
             </div>
             <div className="flex">
-                <button
+                {/* <button
                     title="Add new user story"
                     className="mr-[2px] bg-transparent text-[#70728f] p-1 text-[.875rem] items-center border-0 rounded-[4px] inline-flex justify-center text-center uppercase"
                     onClick={() => handleAddUserstory(status)}
                 >
                     <IoMdAdd />
-                </button>
+                </button> */}
                 <button
                     title="Add new bulk"
                     className="mr-[2px] bg-transparent text-[#70728f] p-1 text-[.875rem] items-center border-0 rounded-[4px] inline-flex justify-center text-center uppercas"
