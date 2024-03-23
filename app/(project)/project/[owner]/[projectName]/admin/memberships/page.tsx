@@ -1,13 +1,25 @@
 "use client"
+
+import { useState } from "react";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 import ModalAddMember from "./_components/ModalAddMember/page";
 
 const Memberships = () => {
+    const [addModalShown, setAddModalShown] = useState<boolean>(false);
+
+    const showAddModal = () => {
+        setAddModalShown(true);
+    }
+
+    const hideAddModal = () => {
+        setAddModalShown(false);
+    }
+
     return <>
         <div className="w-[250px] bg-[#f9f9fb] p-0 flex-0 min-w-0" style={{ minHeight: `calc(100vh - 48px)` }}>
-            <section className="">
+            <section>
                 <nav>
                     <ul className="mb-5">
                         <li className="border-b border-[#a9aabc] uppercase bg-[#f9f9fb] p-0">
@@ -53,8 +65,11 @@ const Memberships = () => {
                         </h1>
                     </header>
                 </header>
-                <div className="">
-                    <button className="bg-[#83eede] text-[#2e3440] transition-all duration-300 text-[.875rem] inline-flex items-center border-0 rounded justify-center text-center uppercase px-4 py-[7.2px]">
+                <div>
+                    <button
+                        className="bg-[#83eede] text-[#2e3440] transition-all duration-300 text-[.875rem] inline-flex items-center border-0 rounded justify-center text-center uppercase px-4 py-[7.2px]"
+                        onClick={() => showAddModal()}
+                    >
                         + New member
                     </button>
                 </div>
@@ -119,7 +134,7 @@ const Memberships = () => {
             <div className="hidden" />
         </section>
 
-        <ModalAddMember />
+        <ModalAddMember shown={addModalShown} hideAddModal={hideAddModal} />
     </>
 }
 

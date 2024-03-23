@@ -3,10 +3,19 @@
 import { MdClose, MdOutlineAdd } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
-const ModalAddMember = () => {
+interface ModalAddMemberProps {
+    shown: boolean,
+    hideAddModal: () => void
+}
+
+const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
     return <>
-        <div className="flex items-center justify-center opacity-95 transition-opacity duration-300 bg-white fixed top-0 left-0 right-0 bottom-0 z-[98]">
-            <button className="w-8 h-8 cursor-pointer block text-[#5a5b72] absolute top-12 right-12 transition-fill duration-200" title="close">
+        <div className={`${shown ? `flex` : `hidden`} items-center justify-center opacity-95 transition-opacity duration-300 bg-white fixed top-0 left-0 right-0 bottom-0 z-[98]`}>
+            <button
+                className="w-8 h-8 cursor-pointer block text-[#5a5b72] absolute top-12 right-12 transition-fill duration-200"
+                title="close"
+                onClick={() => hideAddModal()}
+            >
                 <MdClose className="w-8 h-8" />
             </button>
             <div className="block max-w-[900px] w-[90%]">
