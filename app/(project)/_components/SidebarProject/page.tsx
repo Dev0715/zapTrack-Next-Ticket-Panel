@@ -58,7 +58,7 @@ const SidebarProject = ({ projectName, owner }: SidebarProjectProps) => {
                                     <Link
                                         className="bg-transparent border-0 cursor-pointer pr-2 w-full flex items-center text-[#d8dee9] h-10 p-0 duration-200 transition-color hover:bg-[#2e3440] hover:text-white hover:font-bold"
                                         title="Settings"
-                                        href={`/project/${owner}/${projectName}/admin/project-profile/details`}>
+                                        href={`/project/${owner}/${projectName}/admin/memberships`}>
                                         <CiSettings className="w-6 h-6 text-[#d8dee9] mx-3" />
                                         <span className="cursor-pointer text-[#d8dee9] text-[.875rem] leading-tight"> Settings </span>
                                     </Link>
