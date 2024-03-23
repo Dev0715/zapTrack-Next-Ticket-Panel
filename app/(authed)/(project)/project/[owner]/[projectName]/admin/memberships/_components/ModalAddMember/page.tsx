@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react";
+import Validator from "validator";
 import { MdClose, MdOutlineAdd } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
@@ -8,7 +10,60 @@ interface ModalAddMemberProps {
     hideAddModal: () => void
 }
 
+interface Member {
+    email: string,
+    role: string
+}
+
 const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
+    const INIT_FORM_DATA = { email: "" };
+    const [formData, setFormData] = useState(INIT_FORM_DATA);
+    const [errors, setErrors] = useState(INIT_FORM_DATA);
+    const [step, setStep] = useState(false);
+    const [members, setMembers] = useState<Array<Member>>([]);
+
+    const isEmpty = (value: any) => {
+        return value === undefined ||
+            value === null ||
+            (typeof value === "object" && Object.keys(value).length === 0) ||
+            (typeof value === "string" && value.trim().length === 0);
+    }
+
+    const validationEmailInput = (data: any) => {
+        let errors = { email: "" };
+        let isValid = true;
+
+        data.email = !isEmpty(data.email) ? data.email : "";
+
+        if (Validator.isEmpty(data.email)) {
+            errors.email = "This value is required.";
+            isValid = false;
+        } else if (!Validator.isEmail(data.email)) {
+            errors.email = "Enter a valid email address.";
+            isValid = false;
+        }
+
+        return {
+            errors,
+            isValid
+        };
+    }
+
+    const handleChangeEmail = (e: any) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+
+    const handleAddMember = () => {
+        let { isValid, errors } = validationEmailInput(formData);
+
+        if (!isValid) {
+            setErrors(errors);
+            return;
+        } else setErrors(INIT_FORM_DATA);
+
+        setStep(true);
+    }
+
     return <>
         <div className={`${shown ? `flex` : `hidden`} items-center justify-center opacity-95 transition-opacity duration-300 bg-white fixed top-0 left-0 right-0 bottom-0 z-[98]`}>
             <button
@@ -20,29 +75,34 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
             </button>
             <div className="block max-w-[900px] w-[90%]">
                 <h2 className="text-center text-[1.7rem] leading-tight mb-4 text-[#2e3440] font-normal">New Member</h2>
-                <div className="block">
-                    <form className="flex items-center px-60 relative">
+                <div className={`${step ? `hidden` : `block`}`}>
+                    <div className="flex items-center px-60 relative">
                         <input
                             type="text"
+                            name="email"
                             placeholder="Filter users or write an email to invite"
-                            className="flex-1 mr-1 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] pr-4 pl-[15.2px] py-[4.8px] w-full" />
+                            className={`flex-1 mr-1 bg-white border-2 ${errors.email ? `border-[#e44057]` : `border-[#d8dee9]`} rounded-[3px] text-[#4c566a] pr-4 pl-[15.2px] py-[4.8px] w-full`}
+                            onChange={handleChangeEmail} />
                         <span className="text-[.7rem] text-[#70728f] absolute right-[19rem] top-[.5rem]" >Add email</span>
-                        <button className="bg-[#434456] rounded-[.25rem] px-3 py-2 transition-background duration-200">
+                        <button className="bg-[#434456] rounded-[.25rem] px-3 py-2 transition-background duration-200"
+                            onClick={() => handleAddMember()}>
                             <AiOutlineUserAdd className="w-[1.3rem] h-[1.3rem] text-white" />
                         </button>
-                    </form>
+                    </div>
                     <ul className="grid mt-8" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
                     </ul>
                 </div>
-                <div className="hidden">
+                <div className={`${step ? `block` : `hidden`}`}>
                     <form className="border-t border-[#e2e3e9] mx-20" >
                         <ul className="m-0 mb-4">
                             <li className="flex items-center border-b border-[#e2e3e9] justify-between p-4">
                                 <div className="flex items-center flex-1">
-                                    <span>sacreddevking@gmail.com</span>
+                                    <span>{formData.email}</span>
                                     <a className="text-[#e44057] ml-4 transition-color duration-200">Remove</a>
                                 </div>
-                                <select className="basis-[40%] shrink-0 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full">
+                                <select
+                                    className="basis-[40%] shrink-0 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full"
+                                >
                                     <option>Choose a role</option>
                                     <option label="UX" value={9286422}>UX</option>
                                     <option label="Design" value={9286423}>Design</option>

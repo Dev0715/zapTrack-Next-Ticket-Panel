@@ -101,6 +101,43 @@ export interface InfModProject {
     module_meetup_prefix: string
 }
 
+export interface InfModRole {
+    _id: string,
+    project_id: string,
+    name: string,
+    epic_view: boolean,
+    epic_add: boolean,
+    epic_modify: boolean,
+    epic_delete: boolean,
+    sprint_view: boolean,
+    sprint_add: boolean,
+    sprint_modify: boolean,
+    sprint_delete: boolean,
+    userstory_view: boolean,
+    userstory_add: boolean,
+    userstory_modify: boolean,
+    userstory_comment: boolean,
+    userstory_delete: boolean,
+    task_view: boolean,
+    task_add: boolean,
+    task_modify: boolean,
+    task_comment: boolean,
+    task_delete: boolean,
+    issue_view: boolean,
+    issue_add: boolean,
+    issue_modify: boolean,
+    issue_comment: boolean,
+    issue_delete: boolean,
+    wiki_view: boolean,
+    wiki_add: boolean,
+    wiki_modify: boolean,
+    wiki_delete: boolean,
+    wiki_link_add: boolean,
+    wiki_link_delete: boolean,
+    wiki_link_view: boolean,
+    role_involve: boolean,
+}
+
 export interface InfModUser {
     _id: string,
     username: string,

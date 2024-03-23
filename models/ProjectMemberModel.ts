@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-import { boolean } from 'zod';
 
-const ProjectSchema = new mongoose.Schema({
+const ProjectMemberSchema = new mongoose.Schema({
     project_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Project',
@@ -13,14 +12,14 @@ const ProjectSchema = new mongoose.Schema({
         match: /.+\@.+\..+/
     },
     permission: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Permission',
     },
     description: {
         type: String
     },
     is_admin: {
-        type: boolean
+        type: Boolean
     },
     status: {
         type: Number,
@@ -30,6 +29,6 @@ const ProjectSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Project = mongoose.models.Project || mongoose.model('Project', ProjectSchema);
+const ProjectMember = mongoose.models.ProjectMember || mongoose.model('ProjectMember', ProjectMemberSchema);
 
-export default Project;
+export default ProjectMember;
