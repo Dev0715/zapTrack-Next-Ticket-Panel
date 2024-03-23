@@ -125,8 +125,6 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
     }
 
     const handleInviteMembers = () => {
-        console.log(members);
-
         if (!validationInviteMembers())
             return;
     }
@@ -167,7 +165,7 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                                     <li className="flex items-center border-b border-[#e2e3e9] justify-between p-4" key={idx}>
                                         <div className="flex items-center flex-1">
                                             <span>{member.email}</span>
-                                            <a className="text-[#e44057] ml-4 transition-color duration-200 cursor-pointer"
+                                            <a className="text-[#e44057] ml-4 transition-color duration-200 cursor-pointer hover:text-[#4c566a]"
                                                 onClick={() => handleRemoveMember(idx)}>Remove</a>
                                         </div>
                                         <select
@@ -185,10 +183,9 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                                 )
                             }
                         </ul>
-                        <div className="flex items-center justify-center py-4 cursor-pointer"
-                            onClick={() => setStep(false)}
-                        >
-                            <MdOutlineAdd className="w-8 h-8 text-[#434456] transition-fill duration-200" />
+                        <div className="flex items-center justify-center py-4">
+                            <MdOutlineAdd className="w-8 h-8 text-[#434456] transition-fill duration-200 cursor-pointer hover:text-[#5cbaa9]"
+                                onClick={() => setStep(false)} />
                         </div>
 
                         <textarea
