@@ -90,7 +90,11 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
 
     const handleRemoveMember = (idx: number) => {
         let tempMembers = members;
-        tempMembers.slice(idx);
+        tempMembers = tempMembers.filter((member, memIdx) => memIdx !== idx);
+
+        setMembers(tempMembers);
+        if (tempMembers.length === 0)
+            setStep(false);
     }
 
     const handleChgRole = (e: any, idx: number) => {
