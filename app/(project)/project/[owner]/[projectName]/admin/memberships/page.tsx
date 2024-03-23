@@ -1,6 +1,7 @@
 "use client"
 import { HiBadgeCheck } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { MdClose, MdOutlineAdd } from "react-icons/md";
 
 const Memberships = () => {
     return <>
@@ -117,36 +118,59 @@ const Memberships = () => {
             <div className="hidden" />
         </section>
 
-        <div className="lightbox lightbox-add-member remove-on-close tg-scope open" style={{ display: 'flex' }}>
-            <a className="close" title="close">
-                <svg className="icon icon-close" style={{ fill: '' }}>
-                    <use href="#icon-close">
-                    </use>
-                </svg>
-            </a>
-            <div className="add-members-wrapper" style={{ display: 'block' }}>
-                <h2 className="title">New Member</h2>
-                <div className="add-member-suggest">
-                    <form className="add-member-suggest-filter ng-pristine ng-valid">
-                        <input type="text" placeholder="Filter users or write an email to invite" className="add-member-suggest-filter-input ng-pristine ng-valid ng-empty ng-touched" />
-                        <span className="add-member-suggest-filter-hint" >Add email</span>
+        <div className="flex items-center justify-center opacity-95 transition-opacity duration-300 bg-white fixed top-0 left-0 right-0 bottom-0 z-[98]">
+            <button className="w-8 h-8 cursor-pointer block text-[#5a5b72] absolute top-12 right-12 transition-fill duration-200" title="close">
+                <MdClose className="w-8 h-8" />
+            </button>
+            <div className="block max-w-[900px] w-[90%]">
+                <h2 className="text-center text-[1.7rem] leading-tight mb-4 text-[#2e3440] font-normal">New Member</h2>
+                <div>
+                    <form className="flex items-center px-60 relative">
+                        <input
+                            type="text"
+                            placeholder="Filter users or write an email to invite"
+                            className="flex-1 mr-1 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] pr-4 pl-[15.2px] py-[4.8px] w-full" />
+                        <span className="text-[.7rem] text-[#70728f] absolute right-[16rem] top-[.5rem]" >Add email</span>
                     </form>
-                    <ul className="add-member-suggest-list">
+                    <ul className="grid mt-8" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
                     </ul>
                 </div>
-                <form className="invite-members-form ng-pristine ng-valid ng-valid-maxlength" >
-                    <ul className="invite-members-form-list">
+                <form className="border-t border-[#e2e3e9] mx-20" >
+                    <ul className="m-0 mb-4">
+                        <li className="flex items-center border-b border-[#e2e3e9] justify-between p-4">
+                            <div className="flex items-center flex-1">
+                                <span>sacreddevking@gmail.com</span>
+                                <a className="text-[#e44057] ml-4 transition-color duration-200">Remove</a>
+                            </div>
+                            <select className="basis-[40%] shrink-0 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full">
+                                <option>Choose a role</option>
+                                <option label="UX" value={9286422}>UX</option>
+                                <option label="Design" value={9286423}>Design</option>
+                                <option label="Front" value={9286424}>Front</option>
+                                <option label="Back" value={9286425}>Back</option>
+                                <option label="Product Owner" value={9286426}>Product Owner</option>
+                                <option label="Stakeholder" value={9286427}>Stakeholder</option>
+                            </select>
+                        </li>
                     </ul>
-                    <div className="invite-members-single-new" >
-                        <svg className="icon icon-add" style={{ fill: '' }}>
-                            <use href="#icon-add">
-                            </use>
-                        </svg>
+                    <div className="flex items-center justify-center py-4" >
+                        <MdOutlineAdd className="w-8 h-8 text-[#434456] transition-fill duration-200" />
                     </div>
 
-                    <textarea placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)" maxLength={250} className="invite-members-single-msg ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" aria-invalid="false"  defaultValue={""} />
-                    <button type="submit" className="btn-small invite-members-single-send ">Invite</button>
-                    <p className="invite-members-single-help">If users are already registered on Taiga, they will be added automatically. Otherwise they will receive an invitation.</p>
+                    <textarea
+                        placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)"
+                        maxLength={250}
+                        className="min-h-[10rem] bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] pr-4 pl-[15.2px] py-[4.8px] w-full"
+                        defaultValue={""} />
+                    <button
+                        type="button"
+                        className="text-[1.1rem] block mb-4 mt-6 p-4 w-full bg-[#83eede] text-[#2e3440] transition-all duration-300"
+                    >
+                        Invite
+                    </button>
+                    <p className="text-[.875rem] leading-normal mb-5">
+                        If users are already registered on Taiga, they will be added automatically. Otherwise they will receive an invitation.
+                    </p>
                 </form>
             </div>
         </div>
