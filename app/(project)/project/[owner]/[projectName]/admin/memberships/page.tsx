@@ -52,7 +52,7 @@ const Memberships = () => {
                     </header>
                 </header>
                 <div className="">
-                    <button className="bg-[#83eede] text-[#2e3440] transition-all duration-300 text-[.875rem] inline-flex items-center border-0 rounded justify-center text-center uppercase">
+                    <button className="bg-[#83eede] text-[#2e3440] transition-all duration-300 text-[.875rem] inline-flex items-center border-0 rounded justify-center text-center uppercase px-4 py-[7.2px]">
                         + New member
                     </button>
                 </div>
@@ -64,7 +64,7 @@ const Memberships = () => {
                     <div className="basis-[210px] grow-[3] min-w-[210px] pl-2">Role</div>
                     <div className="basis-[50px] grow pl-2">Status</div>
                 </div>
-                <div className="border-b-0 flex items-center flex-row flex-nowrap py-[4.8px] w-full text-left" style={{}}>
+                <div className="border-b-0 flex items-center flex-row flex-nowrap py-[4.8px] w-full text-left" >
                     <div className="basis-[210px] grow-[3] min-w-[210px]">
                         <div className="items-center flex">
                             <img
@@ -114,8 +114,42 @@ const Memberships = () => {
                     </div>
                 </div>
             </section>
-            <div className="hidden"/>
+            <div className="hidden" />
         </section>
+
+        <div className="lightbox lightbox-add-member remove-on-close tg-scope open" style={{ display: 'flex' }}>
+            <a className="close" title="close">
+                <svg className="icon icon-close" style={{ fill: '' }}>
+                    <use href="#icon-close">
+                    </use>
+                </svg>
+            </a>
+            <div className="add-members-wrapper" style={{ display: 'block' }}>
+                <h2 className="title">New Member</h2>
+                <div className="add-member-suggest">
+                    <form className="add-member-suggest-filter ng-pristine ng-valid">
+                        <input type="text" placeholder="Filter users or write an email to invite" className="add-member-suggest-filter-input ng-pristine ng-valid ng-empty ng-touched" />
+                        <span className="add-member-suggest-filter-hint" >Add email</span>
+                    </form>
+                    <ul className="add-member-suggest-list">
+                    </ul>
+                </div>
+                <form className="invite-members-form ng-pristine ng-valid ng-valid-maxlength" >
+                    <ul className="invite-members-form-list">
+                    </ul>
+                    <div className="invite-members-single-new" >
+                        <svg className="icon icon-add" style={{ fill: '' }}>
+                            <use href="#icon-add">
+                            </use>
+                        </svg>
+                    </div>
+
+                    <textarea placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)" maxLength={250} className="invite-members-single-msg ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" aria-invalid="false"  defaultValue={""} />
+                    <button type="submit" className="btn-small invite-members-single-send ">Invite</button>
+                    <p className="invite-members-single-help">If users are already registered on Taiga, they will be added automatically. Otherwise they will receive an invitation.</p>
+                </form>
+            </div>
+        </div>
     </>
 }
 
