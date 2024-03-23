@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import SidebarProject from "@/app/(project)/_components/SidebarProject/page";
 import SectionKanban from "@/app/(project)/_components/SectionKanban/page";
 import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
 import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
@@ -86,23 +85,19 @@ const Kanban = ({ params }: KanbanProps) => {
     }
 
     return <>
-        <div className="flex h-full" style={{ minHeight: `calc(100vh - 48px)` }}>
-            <SidebarProject projectName={params.projectName} />
+        <SectionKanban
+            handleAddUserstory={(status) => showStoryModal(status)}
+            handleAddBulk={(status) => showBulkModal(status)}
+            handleSetAssign={(userStory) => showAssignModal(userStory)}
+            storyStatuses={storyStatuses}
+            project={project}
+        />
 
-            <SectionKanban
-                handleAddUserstory={(status) => showStoryModal(status)}
-                handleAddBulk={(status) => showBulkModal(status)}
-                handleSetAssign={(userStory) => showAssignModal(userStory)}
-                storyStatuses={storyStatuses}
-                project={project}
-            />
+        <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
 
-            <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
+        <ModalBulkCreate show={isShowBulkModal} storyStatus={curStoryStatus} storyStatuses={storyStatuses} hideBulkModal={hideBulkModal} />
 
-            <ModalBulkCreate show={isShowBulkModal} storyStatus={curStoryStatus} storyStatuses={storyStatuses} hideBulkModal={hideBulkModal} />
-
-            <ModalSelectAssigner show={isShowAssignModal} hideAssignModal={hideAssignModal} userStory={curUserstory} />
-        </div>
+        <ModalSelectAssigner show={isShowAssignModal} hideAssignModal={hideAssignModal} userStory={curUserstory} />
     </>
 }
 
