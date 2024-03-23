@@ -1,23 +1,28 @@
 import { createContext, useContext, PropsWithChildren, useState } from "react";
 
-import { InfModAttrStatusUserstory } from "../interfaces/model.interface";
+import { InfModProject } from "../interfaces/model.interface";
 
 interface ProjectContextValue {
-    setCurProject: (project: InfModAttrStatusUserstory) => void;
-    getCurProject: () => InfModAttrStatusUserstory | null
+    setCurProject: (project: InfModProject) => void;
+    getCurProject: () => InfModProject | null;
+    setCurProjects: (projects: Array<InfModProject>) => void;
+    getCurProjects: () => Array<InfModProject>;
 }
 
 export const ProjectContext = createContext<ProjectContextValue>({
     setCurProject: () => undefined,
-    getCurProject: () => null
+    getCurProject: () => null,
+    setCurProjects: () => undefined,
+    getCurProjects: () => []
 })
 
 export const useProject = () => useContext<ProjectContextValue>(ProjectContext);
 
 export const ProjectProvider = (props: PropsWithChildren<unknown>) => {
-    const [project, setProject] = useState<InfModAttrStatusUserstory | null>(null);
+    const [project, setProject] = useState<InfModProject | null>(null);
+    const [projects, setProjects] = useState<Array<InfModProject>>([]);
 
-    const setCurProject = (curProject: InfModAttrStatusUserstory) => {
+    const setCurProject = (curProject: InfModProject) => {
         setProject(curProject);
     }
 
@@ -25,11 +30,21 @@ export const ProjectProvider = (props: PropsWithChildren<unknown>) => {
         return project;
     }
 
+    const setCurProjects = (curProjects: Array<InfModProject>) => {
+        setProjects(curProjects);
+    }
+
+    const getCurProjects = () => {
+        return projects;
+    }
+
     return (
         <ProjectContext.Provider
             value={{
                 setCurProject,
-                getCurProject
+                getCurProject,
+                setCurProjects,
+                getCurProjects
             }}>
             {props.children}
         </ProjectContext.Provider>

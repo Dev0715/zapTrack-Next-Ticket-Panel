@@ -7,18 +7,27 @@ import ListProject from "../../_components/ListProject/page";
 import { getProjectsByUserId } from "../../../actions/project/user/projects";
 import { getItem, LS_USER } from '@/app/utils/localstore';
 
+import { InfModProject } from "@/libs/interfaces/model.interface";
+
+import { useProject } from "@/libs/contexts/project.context";
+
 const Projects = () => {
-    const [projects, setProjects] = useState<Array<any>>([]);
+
+    const projectObj = useProject();
+
+    const [projects, setProjects] = useState<Array<InfModProject>>([]);
 
     useEffect(() => {
         const user = JSON.parse(getItem(LS_USER) as string);
 
         console.log(user);
+        console.log(projectObj.getCurProjects());
 
         getProjectsByUserId(user._id).then((res: any) => {
             const { status, projects } = res;
             if (status) {
                 setProjects(projects);
+                projectObj.setCurProjects(projects);
             }
         }).catch(err => {
             console.log(err);
@@ -43,9 +52,8 @@ const Projects = () => {
                                 {
                                     (projects && projects.length > 0) &&
                                     projects.map((project, idx) =>
-                                        <>
-                                            <ListProject title={project?.name} description={project?.description} isPrivate={!project?.type} owner={project?.owner} />
-                                        </>)
+                                        <ListProject key={idx} title={project?.name} description={project?.description} isPrivate={!project?.type} owner={project?.owner} />
+                                    )
                                 }
                             </ul>
                         </div>

@@ -1,20 +1,16 @@
 "use client"
 
-import { ProjectProvider } from "@/libs/contexts/project.context";
-
 const ProjectLayout = ({
     children
 }: {
     children: React.ReactNode;
 }) => {
     return <>
-        <ProjectProvider>
-            <div>
-                <div className="h-full min-h-full relative">
-                    {children}
-                </div>
+        <div>
+            <div className="h-full min-h-full relative">
+                {children}
             </div>
-        </ProjectProvider>
+        </div>
     </>
 }
 
