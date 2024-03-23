@@ -1,9 +1,23 @@
 "use client"
 
+import { useState, useEffect } from "react";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
 
+import { InfModRole } from "@/libs/interfaces/model.interface";
+
+import { useProject } from "@/libs/contexts/project.context";
+
 const ItemMember = () => {
+    const projectContext = useProject();
+
+    const [roles, setRoles] = useState<Array<InfModRole>>([]);
+
+    useEffect(() => {
+        const projectRoles = projectContext.getProjectRoles();
+        setRoles(projectRoles);
+    }, []);
+
     return <>
         <div className="border-b-0 flex items-center flex-row flex-nowrap py-[4.8px] w-full text-left" >
             <div className="basis-[210px] grow-[3] min-w-[210px]">
@@ -27,24 +41,13 @@ const ItemMember = () => {
             <div className="basis-0 grow min-w-[70px]" />
             <div className="basis-[210px] grow-[3] min-w-[210px] pr-4">
                 <select className="bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full">
-                    <option value={9286422}>
-                        UX
-                    </option>
-                    <option value={9286423}>
-                        Design
-                    </option>
-                    <option value={9286424}>
-                        Front
-                    </option>
-                    <option value={9286425}>
-                        Back
-                    </option>
-                    <option value={9286426}>
-                        Product Owner
-                    </option>
-                    <option value={9286427}>
-                        Stakeholder
-                    </option>
+                    {
+                        roles.map((role, idx) =>
+                            <option value={role._id} key={idx}>
+                                {role.name}
+                            </option>
+                        )
+                    }
                 </select>
             </div>
             <div className="basis-[50px] grow flex items-center justify-between">

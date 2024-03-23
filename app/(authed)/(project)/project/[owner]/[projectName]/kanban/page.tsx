@@ -12,6 +12,8 @@ import { InfModAttrStatusUserstory, InfModProject, InfModUserstory } from "@/lib
 import { getProjectByUserIdAndProName } from "@/app/actions/project/user/projects";
 import { getStatusesByProId } from "@/app/actions/project/attrs/userstories";
 
+import { useProject } from "@/libs/contexts/project.context";
+
 interface KanbanProps {
     params: {
         owner: string,
@@ -20,6 +22,8 @@ interface KanbanProps {
 }
 
 const Kanban = ({ params }: KanbanProps) => {
+    const projectContext = useProject();
+
     const [isShowStoryModal, setShowStoryModal] = useState(false);
     const [isShowBulkModal, setShowBulkModal] = useState(false);
     const [isShowAssignModal, setShowAssignModal] = useState(false);
@@ -38,9 +42,11 @@ const Kanban = ({ params }: KanbanProps) => {
 
     useEffect(() => {
         getProjectByUserIdAndProName(params.owner, params.projectName).then((res: any) => {
-            const { status, project } = res;
+            const { status, project, roles } = res;
             if (status) {
                 setProject(project);
+                projectContext.setCurProject(project);
+                projectContext.setProjectRoles(roles);
             }
         }).catch(err => { });
     }, []);

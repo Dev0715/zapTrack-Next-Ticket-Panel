@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ModalAddMember from "./_components/ModalAddMember/page";
 import Sidebar from "../_components/Sidebar/page";

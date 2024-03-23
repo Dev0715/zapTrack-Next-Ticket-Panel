@@ -1,26 +1,33 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Validator from "validator";
 import { MdClose, MdOutlineAdd } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
+
+import { useProject } from "@/libs/contexts/project.context";
+
+import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
 interface ModalAddMemberProps {
     shown: boolean,
     hideAddModal: () => void
 }
 
-interface Member {
-    email: string,
-    role: string
-}
-
 const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
+    const projectContext = useProject();
     const INIT_FORM_DATA = { email: "" };
+
     const [formData, setFormData] = useState(INIT_FORM_DATA);
     const [errors, setErrors] = useState(INIT_FORM_DATA);
     const [step, setStep] = useState(false);
-    const [members, setMembers] = useState<Array<Member>>([]);
+    const [roles, setRoles] = useState<Array<InfModRole>>([]);
+    const [members, setMembers] = useState<Array<InfModProjectMember>>([]);
+
+    useEffect(() => {
+        const projectRoles = projectContext.getProjectRoles();
+        setRoles(projectRoles);
+    }, []);
 
     const isEmpty = (value: any) => {
         return value === undefined ||
@@ -62,6 +69,38 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
         } else setErrors(INIT_FORM_DATA);
 
         setStep(true);
+
+        // Add member
+        const project = projectContext.getCurProject();
+        let sameMemberCnt = members.filter((member, idx) => member.email === formData.email).length;
+        if (sameMemberCnt === 0 && project !== null) {
+            let newMembers = members;
+            newMembers.push({
+                _id: "",
+                project_id: project._id,
+                email: formData.email,
+                permission: "",
+                description: "",
+                is_admin: false,
+                status: 0
+            });
+            setMembers(newMembers);
+        }
+    }
+
+    const handleRemoveMember = (idx: number) => {
+        let tempMembers = members;
+        tempMembers.slice(idx);
+    }
+
+    const handleChgRole = (e: any, idx: number) => {
+        let tempMembers = members;
+        tempMembers[idx].permission = e.target.value;
+        setMembers(tempMembers);
+    }
+
+    const handleInviteMembers = () => {
+        console.log(members);
     }
 
     return <>
@@ -95,25 +134,32 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                 <div className={`${step ? `block` : `hidden`}`}>
                     <form className="border-t border-[#e2e3e9] mx-20" >
                         <ul className="m-0 mb-4">
-                            <li className="flex items-center border-b border-[#e2e3e9] justify-between p-4">
-                                <div className="flex items-center flex-1">
-                                    <span>{formData.email}</span>
-                                    <a className="text-[#e44057] ml-4 transition-color duration-200">Remove</a>
-                                </div>
-                                <select
-                                    className="basis-[40%] shrink-0 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full"
-                                >
-                                    <option>Choose a role</option>
-                                    <option label="UX" value={9286422}>UX</option>
-                                    <option label="Design" value={9286423}>Design</option>
-                                    <option label="Front" value={9286424}>Front</option>
-                                    <option label="Back" value={9286425}>Back</option>
-                                    <option label="Product Owner" value={9286426}>Product Owner</option>
-                                    <option label="Stakeholder" value={9286427}>Stakeholder</option>
-                                </select>
-                            </li>
+                            {
+                                members.map((member, idx) =>
+                                    <li className="flex items-center border-b border-[#e2e3e9] justify-between p-4" key={idx}>
+                                        <div className="flex items-center flex-1">
+                                            <span>{member.email}</span>
+                                            <a className="text-[#e44057] ml-4 transition-color duration-200 cursor-pointer"
+                                                onClick={() => handleRemoveMember(idx)}>Remove</a>
+                                        </div>
+                                        <select
+                                            className="basis-[40%] shrink-0 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full"
+                                            onChange={e => handleChgRole(e, idx)}
+                                        >
+                                            <option value={``} selected={member.permission === ""}>Choose a role</option>
+                                            {
+                                                roles.map((role, idx) =>
+                                                    <option key={idx} label={role.name} value={role._id} selected={member.permission === role._id}>{role.name}</option>
+                                                )
+                                            }
+                                        </select>
+                                    </li>
+                                )
+                            }
                         </ul>
-                        <div className="flex items-center justify-center py-4" >
+                        <div className="flex items-center justify-center py-4 cursor-pointer"
+                            onClick={() => setStep(false)}
+                        >
                             <MdOutlineAdd className="w-8 h-8 text-[#434456] transition-fill duration-200" />
                         </div>
 
@@ -125,6 +171,7 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                         <button
                             type="button"
                             className="text-[1.1rem] block mb-4 mt-6 p-4 w-full bg-[#83eede] text-[#2e3440] transition-all duration-300"
+                            onClick={() => handleInviteMembers()}
                         >
                             Invite
                         </button>
