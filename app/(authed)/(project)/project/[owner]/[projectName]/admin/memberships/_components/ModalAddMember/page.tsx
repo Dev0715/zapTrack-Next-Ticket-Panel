@@ -20,6 +20,8 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
 
     const [formData, setFormData] = useState(INIT_FORM_DATA);
     const [errors, setErrors] = useState(INIT_FORM_DATA);
+    const [invDesc, setInvDesc] = useState("");
+    const [errInvDesc, setErrInvDesc] = useState("");
     const [step, setStep] = useState(false);
     const [roles, setRoles] = useState<Array<InfModRole>>([]);
     const [members, setMembers] = useState<Array<InfModProjectMember>>([]);
@@ -54,6 +56,21 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
             errors,
             isValid
         };
+    }
+
+    const validationInviteMembers = () => {
+        let isValid = true;
+
+        if (invDesc === "") {
+            isValid = false;
+            setErrInvDesc("This value is required.");
+        } else setErrInvDesc("");
+
+        let noPermCnt = members.filter((member, idx) => member.permission === "").length;
+        if (noPermCnt > 0)
+            isValid = false;
+
+        return isValid;
     }
 
     const handleChangeEmail = (e: any) => {
@@ -103,8 +120,15 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
         setMembers(tempMembers);
     }
 
+    const handleInvDescChange = (e: any) => {
+        setInvDesc(e.target.value);
+    }
+
     const handleInviteMembers = () => {
         console.log(members);
+
+        if (!validationInviteMembers())
+            return;
     }
 
     return <>
@@ -147,7 +171,7 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                                                 onClick={() => handleRemoveMember(idx)}>Remove</a>
                                         </div>
                                         <select
-                                            className="basis-[40%] shrink-0 bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full"
+                                            className={`basis-[40%] shrink-0 bg-white border-2 ${member.permission === "" ? `border-[#e44057]` : `border-[#d8dee9]`} rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full`}
                                             onChange={e => handleChgRole(e, idx)}
                                         >
                                             <option value={``} selected={member.permission === ""}>Choose a role</option>
@@ -170,8 +194,10 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                         <textarea
                             placeholder="(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)"
                             maxLength={250}
-                            className="min-h-[10rem] bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] pr-4 pl-[15.2px] py-[4.8px] w-full"
-                            defaultValue={""} />
+                            className={`min-h-[10rem] bg-white border-2 ${errInvDesc ? `border-[#e44057]` : `border-[#d8dee9] `} rounded-[3px] text-[#4c566a] pr-4 pl-[15.2px] py-[4.8px] w-full`}
+                            defaultValue={""}
+                            value={invDesc}
+                            onChange={e => handleInvDescChange(e)} />
                         <button
                             type="button"
                             className="text-[1.1rem] block mb-4 mt-6 p-4 w-full bg-[#83eede] text-[#2e3440] transition-all duration-300"
