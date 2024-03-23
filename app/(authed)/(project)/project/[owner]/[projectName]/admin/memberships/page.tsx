@@ -6,8 +6,19 @@ import ModalAddMember from "./_components/ModalAddMember/page";
 import Sidebar from "../_components/Sidebar/page";
 import ItemMember from "./_components/ItemMember/page";
 
+import { useProject } from "@/libs/contexts/project.context";
+import { InfModProjectMember } from "@/libs/interfaces/model.interface";
+
 const Memberships = () => {
+    const projectContext = useProject();
+
     const [addModalShown, setAddModalShown] = useState<boolean>(false);
+    const [members, setMembers] = useState<Array<InfModProjectMember>>([]);
+
+    useEffect(() => {
+        let projectMembers = projectContext.getProjectMembers();
+        setMembers(projectMembers);
+    }, []);
 
     const showAddModal = () => {
         setAddModalShown(true);
@@ -15,6 +26,9 @@ const Memberships = () => {
 
     const hideAddModal = () => {
         setAddModalShown(false);
+
+        let projectMembers = projectContext.getProjectMembers();
+        setMembers(projectMembers);
     }
 
     return <>
@@ -44,7 +58,9 @@ const Memberships = () => {
                     <div className="basis-[210px] grow-[3] min-w-[210px] pl-2">Role</div>
                     <div className="basis-[50px] grow pl-2">Status</div>
                 </div>
-                <ItemMember />
+                {
+                    members.map((member, idx) => <ItemMember key={idx} member={member} />)
+                }
             </section>
             <div className="hidden" />
         </section>

@@ -1,6 +1,6 @@
 import { createContext, useContext, PropsWithChildren, useState } from "react";
 
-import { InfModProject, InfModRole } from "../interfaces/model.interface";
+import { InfModProject, InfModRole, InfModProjectMember } from "../interfaces/model.interface";
 
 interface ProjectContextValue {
     setCurProject: (project: InfModProject) => void;
@@ -9,6 +9,8 @@ interface ProjectContextValue {
     getCurProjects: () => Array<InfModProject>;
     setProjectRoles: (roles: Array<InfModRole>) => void;
     getProjectRoles: () => Array<InfModRole>;
+    setProjectMembers: (members: Array<InfModProjectMember>) => void;
+    getProjectMembers: () => Array<InfModProjectMember>;
 }
 
 export const ProjectContext = createContext<ProjectContextValue>({
@@ -17,7 +19,9 @@ export const ProjectContext = createContext<ProjectContextValue>({
     setCurProjects: () => undefined,
     getCurProjects: () => [],
     setProjectRoles: () => undefined,
-    getProjectRoles: () => []
+    getProjectRoles: () => [],
+    setProjectMembers: () => undefined,
+    getProjectMembers: () => []
 })
 
 export const useProject = () => useContext<ProjectContextValue>(ProjectContext);
@@ -26,6 +30,7 @@ export const ProjectProvider = (props: PropsWithChildren<unknown>) => {
     const [project, setProject] = useState<InfModProject | null>(null);
     const [projects, setProjects] = useState<Array<InfModProject>>([]);
     const [roles, setRoles] = useState<Array<InfModRole>>([]);
+    const [members, setmembers] = useState<Array<InfModProjectMember>>([]);
 
     const setCurProject = (curProject: InfModProject) => {
         setProject(curProject);
@@ -51,6 +56,14 @@ export const ProjectProvider = (props: PropsWithChildren<unknown>) => {
         return roles;
     }
 
+    const setProjectMembers = (curMembers: Array<InfModProjectMember>) => {
+        setmembers(curMembers);
+    }
+
+    const getProjectMembers = () => {
+        return members;
+    }
+
     return (
         <ProjectContext.Provider
             value={{
@@ -59,7 +72,9 @@ export const ProjectProvider = (props: PropsWithChildren<unknown>) => {
                 setCurProjects,
                 getCurProjects,
                 setProjectRoles,
-                getProjectRoles
+                getProjectRoles,
+                setProjectMembers,
+                getProjectMembers
             }}>
             {props.children}
         </ProjectContext.Provider>

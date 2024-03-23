@@ -9,6 +9,8 @@ import { useProject } from "@/libs/contexts/project.context";
 
 import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
+import { inviteMembers } from "@/app/actions/project/memberships/action";
+
 interface ModalAddMemberProps {
     shown: boolean,
     hideAddModal: () => void
@@ -127,6 +129,22 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
     const handleInviteMembers = () => {
         if (!validationInviteMembers())
             return;
+
+        const project = projectContext.getCurProject();
+        console.log(project);
+        if (project !== null) {
+            inviteMembers({
+                projectId: project._id,
+                invitationText: invDesc,
+                memberships: members
+            }).then((res: any) => {
+                const { status, members } = res;
+                if (status) {
+                    projectContext.setProjectMembers(members);
+                    hideAddModal();
+                }
+            });
+        }
     }
 
     return <>

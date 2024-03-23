@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-import { InfModRole } from "@/libs/interfaces/model.interface";
+import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
 import { useProject } from "@/libs/contexts/project.context";
 
-const ItemMember = () => {
+interface ItemMemberProps {
+    member: InfModProjectMember
+}
+
+const ItemMember = ({ member }: ItemMemberProps) => {
     const projectContext = useProject();
 
     const [roles, setRoles] = useState<Array<InfModRole>>([]);
@@ -24,17 +28,17 @@ const ItemMember = () => {
                 <div className="items-center flex">
                     <img
                         src="https://www.gravatar.com/avatar/919392c43c7449e35622450c60cb32b4?s=200&d=https%3A%2F%2Ftree.taiga.io%2Fv-1708969004480%2Fimages%2Fuser-avatars%2Fuser-avatar-04.png"
-                        alt="aasdfasdfadfsdf"
+                        alt={member.email}
                         style={{ backgroundColor: 'rgba( 183, 203, 131, 1 )' }}
                         className="rounded grow-0 mr-2 ml-[4.8px] w-[50px] border-2 border-white"
                     />
                     <div className="user-data">
                         <div className="flex items-center justify-center">
-                            <span>aasdfasdfadfsdf</span>
+                            <span>{member.email}</span>
                             <HiBadgeCheck className="w-4 h-4 ml-1" />
                         </div>
                         <div className="text-[.875rem] text-[#5a5b72] mt-[3.2px]">
-                            <span className="email">a@asdf.com</span>
+                            <span className="email">{member.email}</span>
                         </div>
                     </div>
                 </div></div>
@@ -43,7 +47,7 @@ const ItemMember = () => {
                 <select className="bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full">
                     {
                         roles.map((role, idx) =>
-                            <option value={role._id} key={idx}>
+                            <option value={role._id} key={idx} selected={member.permission === role._id}>
                                 {role.name}
                             </option>
                         )
