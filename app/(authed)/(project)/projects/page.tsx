@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import ListProject from "../_components/ListProject/page";
-import { getProjectsByUserId } from "../../actions/project/user/projects";
+import ListProject from "../../_components/ListProject/page";
+import { getProjectsByUserId } from "../../../actions/project/user/projects";
 import { getItem, LS_USER } from '@/app/utils/localstore';
 
 const Projects = () => {

@@ -7,7 +7,7 @@ import { GiWorld } from "react-icons/gi";
 import { IoMdKey } from "react-icons/io";
 import { toast } from "sonner";
 
-import { validateNewKanban } from "@/app/(project)/_utils/validations/project-new-kanban";
+import { validateNewKanban } from "@/app/(authed)/_utils/validations/project-new-kanban";
 import { newKanban } from "@/app/actions/project/new/kanban";
 import { getItem, LS_USER } from '@/app/utils/localstore';
 

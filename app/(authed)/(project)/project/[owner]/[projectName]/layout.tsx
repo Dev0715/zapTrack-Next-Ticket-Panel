@@ -1,6 +1,8 @@
+"use client"
+
 import React from "react";
 
-import SidebarProject from "@/app/(project)/_components/SidebarProject/page";
+import SidebarProject from "@/app/(authed)/_components/SidebarProject/page";
 
 const ProjectLayout = ({
     children, params

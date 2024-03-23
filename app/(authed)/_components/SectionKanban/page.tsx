@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { CiSearch, CiFilter } from "react-icons/ci";
 
-import KanbanHeader from "@/app/(project)/_components/KanbanHeader/page";
-import KanbanBody from "@/app/(project)/_components/KanbanBody/page";
+import KanbanHeader from "@/app/(authed)/_components/KanbanHeader/page";
+import KanbanBody from "@/app/(authed)/_components/KanbanBody/page";
 import ZoomLabel from "./_components/ZoomLabel/page";
 
 import { InfModProject, InfModAttrStatusUserstory, InfModUserstory } from "@/libs/interfaces/model.interface";

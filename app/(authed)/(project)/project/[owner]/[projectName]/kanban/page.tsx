@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-import SectionKanban from "@/app/(project)/_components/SectionKanban/page";
-import ModalUserstoryCreate from "@/app/(project)/_components/ModalUserstoryCreate/page";
-import ModalBulkCreate from "@/app/(project)/_components/ModalBulkCreate/page";
-import ModalSelectAssigner from "@/app/(project)/_components/ModalSelectAssigner/page";
+import SectionKanban from "@/app/(authed)/_components/SectionKanban/page";
+import ModalUserstoryCreate from "@/app/(authed)/_components/ModalUserstoryCreate/page";
+import ModalBulkCreate from "@/app/(authed)/_components/ModalBulkCreate/page";
+import ModalSelectAssigner from "@/app/(authed)/_components/ModalSelectAssigner/page";
 
 import { InfModAttrStatusUserstory, InfModProject, InfModUserstory } from "@/libs/interfaces/model.interface";
 

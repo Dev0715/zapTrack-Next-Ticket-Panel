@@ -5,7 +5,6 @@ import { MdClose } from "react-icons/md";
 import { FaRegLightbulb } from "react-icons/fa";
 import { FaTasks } from "react-icons/fa";
 
-
 const Team = () => {
     return <>
         <div className="bg-[#f9f9fb] flex-[0_0_auto] min-w-0 p-0" style={{ minHeight: `calc(100vh - 48px)` }}>

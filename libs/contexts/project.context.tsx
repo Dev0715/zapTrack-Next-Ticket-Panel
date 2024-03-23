@@ -3,27 +3,33 @@ import { createContext, useContext, PropsWithChildren, useState } from "react";
 import { InfModAttrStatusUserstory } from "../interfaces/model.interface";
 
 interface ProjectContextValue {
-    setProject: ({ project_id, color, name, slug, is_closed, is_archived }: InfModAttrStatusUserstory) => void;
-    // getProject: () => InfModAttrStatusUserstory
+    setCurProject: (project: InfModAttrStatusUserstory) => void;
+    getCurProject: () => InfModAttrStatusUserstory | null
 }
 
 export const ProjectContext = createContext<ProjectContextValue>({
-    setProject: () => undefined
+    setCurProject: () => undefined,
+    getCurProject: () => null
 })
 
 export const useProject = () => useContext<ProjectContextValue>(ProjectContext);
 
 export const ProjectProvider = (props: PropsWithChildren<unknown>) => {
-    const [curProject, setCurProject] = useState<InfModAttrStatusUserstory>();
+    const [project, setProject] = useState<InfModAttrStatusUserstory | null>(null);
 
-    const setProject = ({ project_id, color, name, slug, is_closed, is_archived }: InfModAttrStatusUserstory) => {
-        // setCurProject({ project_id, color, name, slug, is_closed, is_archived });
+    const setCurProject = (curProject: InfModAttrStatusUserstory) => {
+        setProject(curProject);
+    }
+
+    const getCurProject = () => {
+        return project;
     }
 
     return (
         <ProjectContext.Provider
             value={{
-                setProject
+                setCurProject,
+                getCurProject
             }}>
             {props.children}
         </ProjectContext.Provider>

@@ -3,9 +3,9 @@
 import { useEffect } from 'react';
 import { getSession } from 'next-auth/react'
 
-import ContainerDboard from '../_components/ContainerDboard/page';
-import CardProject from '../_components/CardProject/page';
-import BtnBgGreen from '../_components/BtnBgGreen/page';
+import ContainerDboard from '../../_components/ContainerDboard/page';
+import CardProject from '../../_components/CardProject/page';
+import BtnBgGreen from '../../_components/BtnBgGreen/page';
 
 import { getUserByEmail } from '@/app/actions/auth';
 import { setItem, LS_USER } from '@/app/utils/localstore';
