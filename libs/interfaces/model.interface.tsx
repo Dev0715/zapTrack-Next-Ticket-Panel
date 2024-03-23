@@ -108,6 +108,7 @@ export interface InfModRole {
     epic_view: boolean,
     epic_add: boolean,
     epic_modify: boolean,
+    epic_comment: boolean,
     epic_delete: boolean,
     sprint_view: boolean,
     sprint_add: boolean,

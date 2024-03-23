@@ -5,7 +5,7 @@ import { LuKanbanSquare } from "react-icons/lu";
 import { HiDuplicate } from "react-icons/hi";
 import { CiImport } from "react-icons/ci";
 
-import CardCreateProject from "../../_components/CardCreateProject/page";
+import CardCreateProject from "../../../_components/CardCreateProject/page";
 
 const CreateProject = () => {
     return <>

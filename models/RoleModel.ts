@@ -22,6 +22,10 @@ const RoleSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    epic_comment: {
+        type: Boolean,
+        required: true
+    },
     epic_delete: {
         type: Boolean,
         required: true
