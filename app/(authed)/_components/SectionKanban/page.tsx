@@ -51,7 +51,7 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk, handleSetAssign }: S
                     </h1>
                 </header>
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <button title="0 filters applied" className="bg-[#f9f9fb] text-[#008aa8] p-2 text-[.875rem] items-center border-0 rounded inline-flex text-center">
                             <CiFilter className="mr-1" />
                             <span>Filters</span>
@@ -60,8 +60,8 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk, handleSetAssign }: S
                             <input type="search" placeholder="subject or reference" className="text-[16px] pr-[25px] bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pt-[4.8px] pb-[4.8px] pl-[15.2px] w-full" />
                             <CiSearch className="w-[14px] h-[14px] absolute right-[1rem] top-[9px]" />
                         </div>
-                    </div>
-                    <div className="baseline">
+                    </div> */}
+                    {/* <div className="baseline">
                         <div className="flex items-center">
                             <div className="font-medium text-[.7rem] text-[#008aa8] mr-2 uppercase">Zoom:</div>
                             <ZoomLabel title="Compact" value={0} selected={zoom === 0} handleSelected={() => setZoom(0)} />
@@ -69,7 +69,7 @@ const SectionKanban = ({ handleAddUserstory, handleAddBulk, handleSetAssign }: S
                             <ZoomLabel title="Detailed" value={2} selected={zoom === 2} handleSelected={() => setZoom(2)} />
                             <ZoomLabel title="Expanded" value={3} selected={zoom === 3} handleSelected={() => setZoom(3)} />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="grid items-start h-full overflow-hidden mt-[1px] gap-x-[1rem] gap-y-[1rem]" style={{ gridTemplateColumns: '10fr' }}>

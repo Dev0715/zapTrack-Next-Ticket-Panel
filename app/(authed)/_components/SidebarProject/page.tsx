@@ -36,7 +36,7 @@ const SidebarProject = ({ projectName, owner }: SidebarProjectProps) => {
                                 </li>
                             </ul>
                             <ul className="border-b border-t border-[#2e3440] mt-auto pb-2">
-                                <li className="list-none mb-2">
+                                {/* <li className="list-none mb-2">
                                     <button
                                         type="button"
                                         className="bg-transparent border-0 cursor-pointer pr-2 w-full flex items-center text-[#d8dee9] h-10 p-0 duration-200 transition-color hover:bg-[#2e3440] hover:text-white hover:font-bold"
@@ -44,7 +44,7 @@ const SidebarProject = ({ projectName, owner }: SidebarProjectProps) => {
                                         <CiSearch className="w-6 h-6 text-[#d8dee9] mx-3" />
                                         <span className="cursor-pointer text-[#d8dee9] text-[.875rem] leading-tight"> Search </span>
                                     </button>
-                                </li>
+                                </li> */}
                                 <li className="list-none mb-2">
                                     <Link
                                         className="bg-transparent border-0 cursor-pointer pr-2 w-full flex items-center text-[#d8dee9] h-10 p-0 duration-200 transition-color hover:bg-[#2e3440] hover:text-white hover:font-bold"
@@ -64,10 +64,10 @@ const SidebarProject = ({ projectName, owner }: SidebarProjectProps) => {
                                     </Link>
                                 </li>
                             </ul>
-                            <button type="button" className="text-[#d8dee9] flex justify-end w-full p-2 text-[.875rem]">
+                            {/* <button type="button" className="text-[#d8dee9] flex justify-end w-full p-2 text-[.875rem]">
                                 <span className="text-[#d8dee9] text-[#d8dee9]"> collapse menu </span>
                                 <CiMenuKebab className="bg-[#2e3440] rounded-full text-[#008aa8] w-6 h-6 ml-2 p-1" />
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>
