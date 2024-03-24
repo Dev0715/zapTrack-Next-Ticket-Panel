@@ -40,9 +40,20 @@ const setAdmin = (formData: any) => {
     })
 }
 
+const changeRole = (formData: any) => {
+    return new Promise((resolve, reject) => {
+        axios.post(`/api/project/memberships/change_role`, formData).then((res) => {
+            resolve(res.data);
+        }).catch((err: any) => {
+            reject(err);
+        })
+    })
+}
+
 export {
     inviteMembers,
     deleteMember,
     resendMember,
-    setAdmin
+    setAdmin,
+    changeRole
 }

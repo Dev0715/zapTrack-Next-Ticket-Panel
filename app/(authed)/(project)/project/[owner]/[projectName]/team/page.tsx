@@ -82,7 +82,7 @@ const Team = () => {
                                 <img
                                     alt="aasdfasdfadfsdf"
                                     src="https://www.gravatar.com/avatar/919392c43c7449e35622450c60cb32b4?s=200&d=https%3A%2F%2Ftree.taiga.io%2Fv-1708969004480%2Fimages%2Fuser-avatars%2Fuser-avatar-04.png"
-                                    title="aasdfasdfadfsdf" 
+                                    title="aasdfasdfadfsdf"
                                     className="bg-[#b7cb83] basis-[66px] grow-0 shrink-0 w-[66px] border-2 border-white rounded-[8%]" />
                                 <div className="ml-4">
                                     <div className="flex items-center w-full">

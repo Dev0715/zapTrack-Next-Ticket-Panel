@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
 import { useProject } from "@/libs/contexts/project.context";
-import { deleteMember, resendMember, setAdmin } from "@/app/actions/project/memberships/action";
+import { deleteMember, resendMember, setAdmin, changeRole } from "@/app/actions/project/memberships/action";
 
 interface ItemMemberProps {
     member: InfModProjectMember
@@ -67,6 +67,20 @@ const ItemMember = ({ member }: ItemMemberProps) => {
         })
     }
 
+    const handleChangeRole = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        changeRole({
+            memberId: member._id,
+            role: e.target.value,
+            projectId: member.project_id
+        }).then((res: any) => {
+            const { status, members, msg } = res;
+            if (status) {
+                projectContext.setProjectMembers(members);
+                toast.success(msg);
+            }
+        })
+    }
+
     return <>
         <div className="border-b-0 flex items-center flex-row flex-nowrap py-[4.8px] w-full text-left" >
             <div className="basis-[210px] grow-[3] min-w-[210px]">
@@ -105,7 +119,8 @@ const ItemMember = ({ member }: ItemMemberProps) => {
                 </div>
             </div>
             <div className="basis-[210px] grow-[3] min-w-[210px] pr-4">
-                <select className="bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full">
+                <select className="bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full"
+                    onChange={(e) => handleChangeRole(e)}>
                     {
                         roles.map((role, idx) =>
                             <option value={role._id} key={idx} selected={member.role === role._id}>
