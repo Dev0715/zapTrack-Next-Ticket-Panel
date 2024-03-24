@@ -6,22 +6,22 @@ import connectDB from "@/services/connectDB";
 
 interface RequestValue {
     memberId: string,
-    projectId: string
+    email: string,
+    projectId: string,
+    desc: string
 }
 
 export async function POST(req: Request, res: Response) {
     await connectDB();
 
-    let { memberId, projectId }: RequestValue = await req.json();
+    let { memberId, email, projectId, desc }: RequestValue = await req.json();
 
     try {
-        await ProjectMemberModel.findByIdAndDelete(memberId);
-        let members = await ProjectMemberModel.find({ project_id: projectId });
+        // TODO - Send mail to member
 
         return NextResponse.json({
             status: true,
-            members: members,
-            msg: "Member has been deleted."
+            msg: `We've sent invitation to ${email}`
         }, { status: 200 });
     } catch (err) {
         return NextResponse.json({

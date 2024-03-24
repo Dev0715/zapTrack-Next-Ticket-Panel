@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
 import { useProject } from "@/libs/contexts/project.context";
-import { deleteMember } from "@/app/actions/project/memberships/action";
+import { deleteMember, resendMember } from "@/app/actions/project/memberships/action";
 
 interface ItemMemberProps {
     member: InfModProjectMember
@@ -37,6 +37,20 @@ const ItemMember = ({ member }: ItemMemberProps) => {
             const { status, members, msg } = res;
             if (status) {
                 projectContext.setProjectMembers(members);
+                toast.success(msg);
+            }
+        })
+    }
+
+    const handleResend = () => {
+        resendMember({
+            memberId: member._id,
+            projectId: member.project_id,
+            email: member.email,
+            desc: member.description
+        }).then((res: any) => {
+            const { status, msg } = res;
+            if (status) {
                 toast.success(msg);
             }
         })
@@ -99,6 +113,7 @@ const ItemMember = ({ member }: ItemMemberProps) => {
                         <button
                             className="text-white transition-color duration-300 bg-[#008aa8] text-[.875rem] items-center flex justify-center min-w-[4rem] px-2 py-[6.4px] cursor-pointer hover:text-[#4c566a]"
                             title="Resend"
+                            onClick={() => handleResend()}
                         >
                             Resend
                         </button>

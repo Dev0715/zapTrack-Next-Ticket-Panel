@@ -20,7 +20,18 @@ const deleteMember = (formData: any) => {
     })
 }
 
+const resendMember = (formData: any) => {
+    return new Promise((resolve, reject) => {
+        axios.post(`/api/project/memberships/resend`, formData).then((res) => {
+            resolve(res.data);
+        }).catch((err: any) => {
+            reject(err);
+        })
+    })
+}
+
 export {
     inviteMembers,
-    deleteMember
+    deleteMember,
+    resendMember
 }
