@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { toast } from "sonner";
 
 import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
 import { useProject } from "@/libs/contexts/project.context";
+import { deleteMember } from "@/app/actions/project/memberships/action";
 
 interface ItemMemberProps {
     member: InfModProjectMember
@@ -25,6 +27,19 @@ const ItemMember = ({ member }: ItemMemberProps) => {
 
     const handleChgIsAdmin = () => {
         setIsAdmin(!isAdmin);
+    }
+
+    const handleDeleteMember = () => {
+        deleteMember({
+            memberId: member._id,
+            projectId: member.project_id
+        }).then((res: any) => {
+            const { status, members, msg } = res;
+            if (status) {
+                projectContext.setProjectMembers(members);
+                toast.success(msg);
+            }
+        })
     }
 
     return <>
@@ -88,7 +103,8 @@ const ItemMember = ({ member }: ItemMemberProps) => {
                             Resend
                         </button>
                 }
-                <a className="text-[#70728f] transition-fill duration-200 text-[#008aa8]" title="Delete member">
+                <a className="text-[#70728f] transition-fill duration-200 text-[#008aa8] cursor-pointer" title="Delete member"
+                    onClick={() => handleDeleteMember()}>
                     <FaRegTrashAlt className="w-4 h-4 text-[#008aa8]" />
                 </a>
             </div>

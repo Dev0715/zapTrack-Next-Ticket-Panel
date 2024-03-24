@@ -42,11 +42,12 @@ const Kanban = ({ params }: KanbanProps) => {
 
     useEffect(() => {
         getProjectByUserIdAndProName(params.owner, params.projectName).then((res: any) => {
-            const { status, project, roles } = res;
+            const { status, project, roles, members } = res;
             if (status) {
                 setProject(project);
                 projectContext.setCurProject(project);
                 projectContext.setProjectRoles(roles);
+                projectContext.setProjectMembers(members);
             }
         }).catch(err => { });
     }, []);

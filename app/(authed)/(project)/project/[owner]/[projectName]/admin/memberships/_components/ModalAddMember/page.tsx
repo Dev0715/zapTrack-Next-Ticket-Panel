@@ -68,7 +68,7 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
             setErrInvDesc("This value is required.");
         } else setErrInvDesc("");
 
-        let noPermCnt = members.filter((member, idx) => member.permission === "").length;
+        let noPermCnt = members.filter((member, idx) => member.role === "").length;
         if (noPermCnt > 0)
             isValid = false;
 
@@ -96,9 +96,10 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
             let newMembers = members;
             newMembers.push({
                 _id: "",
+                name: "",
                 project_id: project._id,
                 email: formData.email,
-                permission: "",
+                role: "",
                 description: "",
                 is_admin: false,
                 status: 0
@@ -118,7 +119,7 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
 
     const handleChgRole = (e: any, idx: number) => {
         let tempMembers = members;
-        tempMembers[idx].permission = e.target.value;
+        tempMembers[idx].role = e.target.value;
         setMembers(tempMembers);
     }
 
@@ -187,13 +188,13 @@ const ModalAddMember = ({ shown, hideAddModal }: ModalAddMemberProps) => {
                                                 onClick={() => handleRemoveMember(idx)}>Remove</a>
                                         </div>
                                         <select
-                                            className={`basis-[40%] shrink-0 bg-white border-2 ${member.permission === "" ? `border-[#e44057]` : `border-[#d8dee9]`} rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full`}
+                                            className={`basis-[40%] shrink-0 bg-white border-2 ${member.role === "" ? `border-[#e44057]` : `border-[#d8dee9]`} rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full`}
                                             onChange={e => handleChgRole(e, idx)}
                                         >
-                                            <option value={``} selected={member.permission === ""}>Choose a role</option>
+                                            <option value={``} selected={member.role === ""}>Choose a role</option>
                                             {
                                                 roles.map((role, idx) =>
-                                                    <option key={idx} label={role.name} value={role._id} selected={member.permission === role._id}>{role.name}</option>
+                                                    <option key={idx} label={role.name} value={role._id} selected={member.role === role._id}>{role.name}</option>
                                                 )
                                             }
                                         </select>

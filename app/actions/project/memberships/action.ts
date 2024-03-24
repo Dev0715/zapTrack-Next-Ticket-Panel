@@ -10,6 +10,17 @@ const inviteMembers = (formData: any) => {
     })
 }
 
+const deleteMember = (formData: any) => {
+    return new Promise((resolve, reject) => {
+        axios.post(`/api/project/memberships/delete`, formData).then((res) => {
+            resolve(res.data);
+        }).catch((err: any) => {
+            reject(err);
+        })
+    })
+}
+
 export {
-    inviteMembers
+    inviteMembers,
+    deleteMember
 }

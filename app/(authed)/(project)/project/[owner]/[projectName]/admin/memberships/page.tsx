@@ -18,7 +18,7 @@ const Memberships = () => {
     useEffect(() => {
         let projectMembers = projectContext.getProjectMembers();
         setMembers(projectMembers);
-    }, []);
+    }, [projectContext.getProjectMembers()])
 
     const showAddModal = () => {
         setAddModalShown(true);
@@ -26,9 +26,6 @@ const Memberships = () => {
 
     const hideAddModal = () => {
         setAddModalShown(false);
-
-        let projectMembers = projectContext.getProjectMembers();
-        setMembers(projectMembers);
     }
 
     return <>
