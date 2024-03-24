@@ -8,29 +8,39 @@ import ZoomLabel from "./_components/ZoomLabel/page";
 import { InfModProject, InfModAttrStatusUserstory, InfModUserstory } from "@/libs/interfaces/model.interface";
 import { getStoriesByProjectId } from "@/app/actions/project/user_story/story";
 
+import { useProject } from "@/libs/contexts/project.context";
 
 interface SectionKanbanProps {
     handleAddUserstory: (status: InfModAttrStatusUserstory) => void,
     handleAddBulk: (status: InfModAttrStatusUserstory) => void,
     handleSetAssign: (userStory: InfModUserstory) => void,
-    storyStatuses: Array<InfModAttrStatusUserstory>,
-    project: InfModProject | null
 }
 
-const SectionKanban = ({ handleAddUserstory, handleAddBulk, handleSetAssign, storyStatuses, project }: SectionKanbanProps) => {
+const SectionKanban = ({ handleAddUserstory, handleAddBulk, handleSetAssign }: SectionKanbanProps) => {
+    const projectContext = useProject();
+
     const [zoom, setZoom] = useState<number>(0);
     const [userStories, setUserStories] = useState<Array<InfModUserstory>>([]);
+    const [storyStatuses, setStoryStatuses] = useState<Array<InfModAttrStatusUserstory>>([]);
 
     useEffect(() => {
-        if (project === null)
-            return;
+        setUserStories(projectContext.getUserStories());
+    }, [projectContext.getUserStories()]);
 
-        getStoriesByProjectId(project._id).then((res: any) => {
-            const { status, stories } = res;
-            if (status)
-                setUserStories(stories);
-        });
-    }, [project]);
+    useEffect(() => {
+        setStoryStatuses(projectContext.getUserStoryStatuses());
+    }, [projectContext.getUserStoryStatuses()]);
+
+    // useEffect(() => {
+    //     if (project === null)
+    //         return;
+
+    //     getStoriesByProjectId(project._id).then((res: any) => {
+    //         const { status, stories } = res;
+    //         if (status)
+    //             setUserStories(stories);
+    //     });
+    // }, [project]);
 
     return <>
         <section className="flex flex-col max-h-full max-w-full pt-4 pl-4 relative flex-1">
