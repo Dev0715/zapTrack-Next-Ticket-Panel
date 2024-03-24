@@ -37,18 +37,21 @@ const ItemMember = ({ member }: ItemMemberProps) => {
                         style={{ backgroundColor: 'rgba( 183, 203, 131, 1 )' }}
                         className="rounded grow-0 mr-2 ml-[4.8px] w-[50px] border-2 border-white"
                     />
-                    <div className="user-data">
+                    <div className="text-left">
                         {
                             member.status ?
-                                <div className="flex items-center justify-center">
-                                    <span>{member.email}</span>
+                                <div className="flex items-center">
+                                    <span>{member.name}</span>
                                     <HiBadgeCheck className="w-4 h-4 ml-1" />
                                 </div>
                                 : <></>
                         }
                         <div className="text-[.875rem] text-[#5a5b72] mt-[3.2px]">
                             <span className="email">{member.email}</span>
-                            <span className="text-[#ffa0a0] inline-block pl-[4.8px]">Pending</span>
+                            {
+                                !member.status &&
+                                <span className="text-[#ffa0a0] inline-block pl-[4.8px]">Pending</span>
+                            }
                         </div>
                     </div>
                 </div></div>
@@ -65,7 +68,7 @@ const ItemMember = ({ member }: ItemMemberProps) => {
                 <select className="bg-white border-2 border-[#d8dee9] rounded-[3px] text-[#4c566a] m-0 pr-4 pl-[15.2px] py-[4.8px] w-full">
                     {
                         roles.map((role, idx) =>
-                            <option value={role._id} key={idx} selected={member.permission === role._id}>
+                            <option value={role._id} key={idx} selected={member.role === role._id}>
                                 {role.name}
                             </option>
                         )

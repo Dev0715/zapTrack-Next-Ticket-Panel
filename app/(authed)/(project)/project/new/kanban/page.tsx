@@ -10,9 +10,11 @@ import { toast } from "sonner";
 import { validateNewKanban } from "@/app/(authed)/_utils/validations/project-new-kanban";
 import { newKanban } from "@/app/actions/project/new/kanban";
 import { getItem, LS_USER } from '@/app/utils/localstore';
+import { useProject } from "@/libs/contexts/project.context";
 
 const Kanban = () => {
     const router = useRouter();
+    const projectContext = useProject();
     const INIT_FORM_DATA = { name: "", desc: "" };
 
     const [isPublic, setIsPublic] = useState(true);
@@ -44,9 +46,14 @@ const Kanban = () => {
             description: formData.desc,
             type: isPublic
         }).then((res: any) => {
-            const { status, msg, project } = res;
+            const { status, msg, project, attrStatuseUserstories, roles, members } = res;
             if (status) {
                 toast.success(msg);
+
+                projectContext.setCurProject(project);
+                projectContext.setProjectMembers(members);
+                projectContext.setProjectRoles(roles);
+
                 router.push(`/project/${project.owner}/${project.name}/kanban`);
             } else
                 toast.error(msg);

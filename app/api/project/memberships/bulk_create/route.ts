@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import UserStoryModel from "@/models/UserStoryModel";
+
 import ProjectMemberModel from "@/models/ProjectMemberModel";
 
 import { InfModProjectMember } from "@/libs/interfaces/model.interface";
@@ -26,8 +26,9 @@ export async function POST(req: Request, res: Response) {
             if (!isExist) {
                 await ProjectMemberModel.create({
                     project_id: projectId,
+                    name: "",
                     email: memberships[i].email,
-                    permission: memberships[i].permission,
+                    role: memberships[i].role,
                     description: invitationText,
                     is_admin: memberships[i].is_admin,
                     status: memberships[i].status

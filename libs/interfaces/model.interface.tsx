@@ -64,8 +64,9 @@ export interface InfModPasswordVerify {
 export interface InfModProjectMember {
     _id: string,
     project_id: string,
+    name: string,
     email: string,
-    permission: string,
+    role: string,
     description: string,
     is_admin: boolean,
     status: number

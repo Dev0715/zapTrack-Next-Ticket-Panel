@@ -2,10 +2,12 @@ import { NextResponse } from "next/server";
 import ProjectModel from "@/models/ProjectModel";
 import AttrStatusUserstoryModel from "@/models/AttrStatusUserstoryModel";
 import RoleModel from "@/models/RoleModel";
+import ProjectMemberModel from "@/models/ProjectMemberModel";
 
 import connectDB from "@/services/connectDB";
+import UserModel from "@/models/UserModel";
 
-async function seedProject(projectId: any) {
+async function seedProject(projectId: any, userId: any) {
     // --- AttrStatusUserstory --- 
     const attrStatuses = [
         { color: `#70728F`, name: `New`, slug: `new`, is_closed: false, is_archived: false },
@@ -90,6 +92,21 @@ async function seedProject(projectId: any) {
             role_involve: roles[i].role_involve
         });
     }
+
+    // ---- Member ----
+    const user = await UserModel.findById(userId);
+    const ownerRole = await RoleModel.findOne({ project_id: projectId, name: "Product Owner" });
+    console.log(ownerRole);
+
+    await ProjectMemberModel.create({
+        project_id: projectId,
+        name: user.username,
+        email: user.email,
+        role: ownerRole._id,
+        description: "",
+        is_admin: true,
+        status: true
+    });
 }
 
 export async function POST(req: Request, res: Response) {
@@ -113,11 +130,18 @@ export async function POST(req: Request, res: Response) {
             type
         });
 
-        await seedProject(project._id);
+        await seedProject(project._id, userId);
+
+        const attrStatuseUserstories = await AttrStatusUserstoryModel.find({ project_id: project._id });
+        const roles = await RoleModel.find({ project_id: project._id });
+        const members = await ProjectMemberModel.find({ project_id: project._id });
 
         return NextResponse.json({
             status: true,
             project: project,
+            attrStatuseUserstories: attrStatuseUserstories,
+            roles: roles,
+            members: members,
             msg: "The Kanban project has been created successfully."
         }, { status: 200 });
     } catch (err) {

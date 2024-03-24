@@ -6,14 +6,17 @@ const ProjectMemberSchema = new mongoose.Schema({
         ref: 'Project',
         required: true
     },
+    name: {
+        type: String
+    },
     email: {
         type: String,
         required: true,
         match: /.+\@.+\..+/
     },
-    permission: {
+    role: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Permission',
+        ref: 'Role',
     },
     description: {
         type: String
