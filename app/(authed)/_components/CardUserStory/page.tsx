@@ -11,7 +11,6 @@ interface CardUserStoryProps {
 
 const CardUserStory = ({ userStory, handleSetAssign }: CardUserStoryProps) => {
     return <>
-
         <div className="min-h-[120px] bg-white rounded cursor-move m-4 outline-0 overflow-hidden duration-200 transition-[box-shadow]"
             style={{ boxShadow: `4px 4px 8px rgba(216,222,233,.5)`, contain: `content` }}>
             <div className="bg-white rounded-[0.25rem] pb-3 pt-4">
@@ -41,7 +40,7 @@ const CardUserStory = ({ userStory, handleSetAssign }: CardUserStoryProps) => {
                         onClick={() => handleSetAssign(userStory)}>
                         <div className="items-center flex cursor-pointer -mr-1 relative">
                             <img title="Not assigned" src="https://tree.taiga.io/v-1708969004480/images/unnamed.png" className="border-2 border-white rounded-[15px] flex w-[30px] h-[30px]" />
-                            <span className="text-[.875rem] text-[#70728f] ml-2">Not assigned</span>
+                            <span className="text-[.875rem] text-[#70728f] ml-2">{userStory.assigner ? userStory.assigner : `Not assigned`}</span>
                         </div>
                     </div>
                     <div className="justify-between mb-2 px-3 items-center text-[#70728f] flex text-[14px] flex-wrap w-full">

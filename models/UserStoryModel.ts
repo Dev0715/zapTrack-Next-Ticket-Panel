@@ -27,9 +27,12 @@ const UserStorySchema = new mongoose.Schema({
     location: {
         type: Number
     },
+    // assigner: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
     assigner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String
     },
     point_ux: {
         type: Number

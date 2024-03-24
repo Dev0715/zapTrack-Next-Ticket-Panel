@@ -31,7 +31,8 @@ export async function POST(req: Request, res: Response) {
                     role: memberships[i].role,
                     description: invitationText,
                     is_admin: memberships[i].is_admin,
-                    status: memberships[i].status
+                    // status: memberships[i].status
+                    status: true
                 });
 
                 // TODO - Send mail to member
