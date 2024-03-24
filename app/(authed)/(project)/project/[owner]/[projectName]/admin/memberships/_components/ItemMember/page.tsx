@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { InfModRole, InfModProjectMember } from "@/libs/interfaces/model.interface";
 
 import { useProject } from "@/libs/contexts/project.context";
-import { deleteMember, resendMember } from "@/app/actions/project/memberships/action";
+import { deleteMember, resendMember, setAdmin } from "@/app/actions/project/memberships/action";
 
 interface ItemMemberProps {
     member: InfModProjectMember
@@ -26,7 +26,18 @@ const ItemMember = ({ member }: ItemMemberProps) => {
     }, []);
 
     const handleChgIsAdmin = () => {
-        setIsAdmin(!isAdmin);
+        setAdmin({
+            memberId: member._id,
+            projectId: member.project_id,
+            is_admin: !isAdmin,
+        }).then((res: any) => {
+            const { status, members, msg } = res;
+            if (status) {
+                projectContext.setProjectMembers(members);
+                setIsAdmin(!isAdmin);
+                toast.success(msg);
+            }
+        })
     }
 
     const handleDeleteMember = () => {

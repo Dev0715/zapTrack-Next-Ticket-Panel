@@ -30,8 +30,19 @@ const resendMember = (formData: any) => {
     })
 }
 
+const setAdmin = (formData: any) => {
+    return new Promise((resolve, reject) => {
+        axios.post(`/api/project/memberships/set_admin`, formData).then((res) => {
+            resolve(res.data);
+        }).catch((err: any) => {
+            reject(err);
+        })
+    })
+}
+
 export {
     inviteMembers,
     deleteMember,
-    resendMember
+    resendMember,
+    setAdmin
 }

@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-import ProjectMemberModel from "@/models/ProjectMemberModel";
-
 import connectDB from "@/services/connectDB";
 
 interface RequestValue {
