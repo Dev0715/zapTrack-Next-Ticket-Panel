@@ -9,7 +9,14 @@ import ItemMember from "./_components/ItemMember/page";
 import { useProject } from "@/libs/contexts/project.context";
 import { InfModProjectMember } from "@/libs/interfaces/model.interface";
 
-const Memberships = () => {
+const Memberships = ({
+    params
+}: {
+    params: {
+        owner: string,
+        projectName: string
+    }
+}) => {
     const projectContext = useProject();
 
     const [addModalShown, setAddModalShown] = useState<boolean>(false);
@@ -29,7 +36,7 @@ const Memberships = () => {
     }
 
     return <>
-        <Sidebar />
+        <Sidebar owner={params.owner} projectName={params.projectName} />
         <section className="flex-1 min-w-0 p-4">
             <div className="flex items-center justify-between mb-4">
                 <header className="w-full">
