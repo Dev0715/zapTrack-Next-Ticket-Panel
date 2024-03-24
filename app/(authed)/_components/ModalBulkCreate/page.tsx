@@ -7,20 +7,27 @@ import { toast } from "sonner";
 
 import { createBulk } from "@/app/actions/project/new/kanban/bulk";
 import { InfModAttrStatusUserstory } from "@/libs/interfaces/model.interface";
+import { useProject } from "@/libs/contexts/project.context";
 
 interface ModalBulkCreateProps {
     show: boolean,
     hideBulkModal: () => void,
     storyStatus: InfModAttrStatusUserstory,
-    storyStatuses: Array<InfModAttrStatusUserstory>
 }
 
-const ModalBulkCreate = ({ show, hideBulkModal, storyStatus, storyStatuses }: ModalBulkCreateProps) => {
+const ModalBulkCreate = ({ show, hideBulkModal, storyStatus }: ModalBulkCreateProps) => {
+    const projectContext = useProject();
+
+    const [userstoryStatues, setUserstoryStatues] = useState<Array<InfModAttrStatusUserstory>>([]);
     const [popupShown, setPopupShown] = useState<boolean>(false);
     const [curStatus, setCurStatus] = useState<InfModAttrStatusUserstory>(storyStatus);
     const [location, setLocation] = useState<boolean>(false);
     const [items, setItems] = useState<string>("");
     const [itemError, setItemError] = useState<string>("");
+
+    useEffect(() => {
+        setUserstoryStatues(projectContext.getUserStoryStatuses());
+    }, [projectContext.getUserStoryStatuses()]);
 
     useEffect(() => {
         setCurStatus(storyStatus);
@@ -52,9 +59,10 @@ const ModalBulkCreate = ({ show, hideBulkModal, storyStatus, storyStatuses }: Mo
             location,
             items
         }).then((res: any) => {
-            const { status, msg } = res;
+            const { status, userstories, msg } = res;
             if (status) {
                 toast.success(msg);
+                projectContext.setUserStories(userstories);
                 hideBulkModal();
             }
         });
@@ -83,7 +91,7 @@ const ModalBulkCreate = ({ show, hideBulkModal, storyStatus, storyStatuses }: Mo
                         <div className={`bg-white border border-[#d8dee9] rounded p-2 absolute w-full z-[2] ${popupShown ? `block` : `hidden`}`}
                             style={{ boxShadow: `4px 4px 8px rgba(216,222,233,.5)`, top: `calc(1.5rem + 4px)` }}>
                             {
-                                storyStatuses.map((status, idx) =>
+                                userstoryStatues.map((status, idx) =>
                                     <button
                                         type="button"
                                         key={idx}

@@ -28,8 +28,11 @@ export async function POST(req: Request, res: Response) {
             });
         }
 
+        const userstories = await UserStoryModel.find({ project_id: projectId });
+
         return NextResponse.json({
             status: true,
+            userstories: userstories,
             msg: "The Userstories have been created successfully."
         }, { status: 200 });
     } catch (err) {

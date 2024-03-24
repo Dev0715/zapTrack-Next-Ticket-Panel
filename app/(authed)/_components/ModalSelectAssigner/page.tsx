@@ -10,6 +10,8 @@ interface ModalSelectAssignerProps {
 }
 
 const ModalSelectAssigner = ({ show, hideAssignModal, userStory }: ModalSelectAssignerProps) => {
+    console.log(userStory);
+
     useEffect(() => {
     }, []);
 

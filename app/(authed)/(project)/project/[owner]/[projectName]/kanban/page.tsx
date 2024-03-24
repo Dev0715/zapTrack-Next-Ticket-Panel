@@ -35,7 +35,6 @@ const Kanban = ({ params }: KanbanProps) => {
     });
     const [curUserstory, setCurUserstory] = useState<InfModUserstory | null>(null);
     const [project, setProject] = useState<InfModProject | null>(null);
-    const [storyStatuses, setStoryStatuses] = useState<any>([]);
 
     useEffect(() => {
         getProjectByUserIdAndProName(params.owner, params.projectName).then((res: any) => {
@@ -87,7 +86,7 @@ const Kanban = ({ params }: KanbanProps) => {
 
         <ModalUserstoryCreate show={isShowStoryModal} hideStoryModal={hideStoryModal} />
 
-        <ModalBulkCreate show={isShowBulkModal} storyStatus={curStoryStatus} storyStatuses={storyStatuses} hideBulkModal={hideBulkModal} />
+        <ModalBulkCreate show={isShowBulkModal} storyStatus={curStoryStatus} hideBulkModal={hideBulkModal} />
 
         <ModalSelectAssigner show={isShowAssignModal} hideAssignModal={hideAssignModal} userStory={curUserstory} />
     </>
